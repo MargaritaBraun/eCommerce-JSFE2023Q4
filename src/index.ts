@@ -1,5 +1,5 @@
-// import './assets/horse.svg';
 import './sass/styles.scss';
+// import './assets/horse.svg';
 // import "./style.css";
 
 console.log('Hello my team');

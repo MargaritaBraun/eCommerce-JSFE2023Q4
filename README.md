@@ -1,4 +1,5 @@
 # eCommerce-JSFE2023Q4
+
 A team of JSFE2023Q4 students perform the final eCommerce Application task.
 
     "build": "webpack --mode=production --node-env=production",
@@ -19,3 +20,7 @@ A team of JSFE2023Q4 students perform the final eCommerce Application task.
     команда lint-fix автоматически исправляет файлы ts по правилам eslint и prettier и ts
     "deploy": "gh-pages -d dist -b gh-pages"
     команда deploy отправляет файлы из папки dist в ветку gh-pages для развертывания
+
+    Команды husky
+    pre-commit  - при каждом коммите подключен husky и выполняет команды для финального редактирования кода при помощи prettier (команда npm run format) затем выполянется проверка кода на ошибки eslint и автоисправления ошибок при помощи команды (npm run lint-fix)
+    pre-push - на данный момент выполняет тоже самое что и pre-commit
