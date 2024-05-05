@@ -57,7 +57,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}`, "",{"version":3,"sources":["webpack://./src/sass/abstract/_reset.scss","webpack://./src/sass/styles.scss","webpack://./src/sass/abstract/_constants.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/mixin/_mixin.scss"],"names":[],"mappings":"AAAA;;;EAGE,UAAA;EACA,SAAA;EACA,SAAA;EACA,sBAAA;EACA,eAAA;ACCF;;ADEA;;;EAGE,gBAAA;ACCF;;ADEA;EACE,qBAAA;EACA,cEjBgB;ADkBlB;;AEnBA;EACE,eAAA;EACA,8CAAA;AFsBF;AGXE;EDbF;IAKM,cAAA;EFuBJ;AACF;;AEpBA;EACE,yBDVW;ECWX,aAAA;EACA,uBAAA;EACA,mBAAA;AFuBF","sourcesContent":["*,\r\n*::before,\r\n*::after {\r\n  padding: 0;\r\n  margin: 0;\r\n  border: 0;\r\n  box-sizing: border-box;\r\n  font-size: 10px;\r\n}\r\n\r\nul,\r\nol,\r\nli {\r\n  list-style: none;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n  color: $color-auto-text;\r\n}\r\n","*,\n*::before,\n*::after {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\nul,\nol,\nli {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n  color: #ee17bf;\n}\n\nhtml {\n  font-size: 10px;\n  font-family: \"Courier New\", Courier, monospace;\n}\n@media (max-width: 668px) {\n  html {\n    font-size: 6px;\n  }\n}\n\nbody {\n  background-color: #d4f132;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}","$color-body: #d4f132;\r\n$color-auto-text: #ee17bf;\r\n\r\n$content-width: 1360px;\r\n$desktop-small-width: 1024px;\r\n$tablet-width: 668px;\r\n$mobile-big-width: 518px;\r\n$mobile-small-width: 380px;","html {\r\n  font-size: 10px;\r\n  font-family: 'Courier New', Courier, monospace;\r\n\r\n  @include media-tablet {\r\n      font-size: 6px;\r\n  }\r\n}\r\n\r\nbody {\r\n  background-color: $color-body;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}","@mixin media-narrowing($media-narrowing) {\r\n  @media (max-width: $media-narrowing) {\r\n    @content;\r\n  }\r\n}\r\n\r\n@mixin desktop-small-width {\r\n  @media (max-width: $desktop-small-width) {\r\n    @content;\r\n  }\r\n}\r\n\r\n@mixin media-tablet {\r\n  @media (max-width: $tablet-width) {\r\n    @content;\r\n  }\r\n}\r\n\r\n@mixin mobile-big-width {\r\n  @media (max-width: $mobile-big-width) {\r\n    @content;\r\n  }\r\n}\r\n@mixin mobile-small-width {\r\n  @media (max-width: $mobile-small-width) {\r\n    @content;\r\n  }\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/sass/abstract/_reset.scss","webpack://./src/sass/styles.scss","webpack://./src/sass/abstract/_constants.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/mixin/_mixin.scss"],"names":[],"mappings":"AAAA;;;EAGI,UAAA;EACA,SAAA;EACA,SAAA;EACA,sBAAA;EACA,eAAA;ACCJ;;ADEA;;;EAGI,gBAAA;ACCJ;;ADEA;EACI,qBAAA;EACA,cEjBc;ADkBlB;;AEnBA;EACI,eAAA;EACA,8CAAA;AFsBJ;AGXI;EDbJ;IAKQ,cAAA;EFuBN;AACF;;AEpBA;EACI,yBDVS;ECWT,aAAA;EACA,uBAAA;EACA,mBAAA;AFuBJ","sourcesContent":["*,\n*::before,\n*::after {\n    padding: 0;\n    margin: 0;\n    border: 0;\n    box-sizing: border-box;\n    font-size: 10px;\n}\n\nul,\nol,\nli {\n    list-style: none;\n}\n\na {\n    text-decoration: none;\n    color: $color-auto-text;\n}\n","*,\n*::before,\n*::after {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\nul,\nol,\nli {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n  color: #ee17bf;\n}\n\nhtml {\n  font-size: 10px;\n  font-family: \"Courier New\", Courier, monospace;\n}\n@media (max-width: 668px) {\n  html {\n    font-size: 6px;\n  }\n}\n\nbody {\n  background-color: #d4f132;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}","$color-body: #d4f132;\n$color-auto-text: #ee17bf;\n\n$content-width: 1360px;\n$desktop-small-width: 1024px;\n$tablet-width: 668px;\n$mobile-big-width: 518px;\n$mobile-small-width: 380px;\n","html {\n    font-size: 10px;\n    font-family: 'Courier New', Courier, monospace;\n\n    @include media-tablet {\n        font-size: 6px;\n    }\n}\n\nbody {\n    background-color: $color-body;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n","@mixin media-narrowing($media-narrowing) {\n    @media (max-width: $media-narrowing) {\n        @content;\n    }\n}\n\n@mixin desktop-small-width {\n    @media (max-width: $desktop-small-width) {\n        @content;\n    }\n}\n\n@mixin media-tablet {\n    @media (max-width: $tablet-width) {\n        @content;\n    }\n}\n\n@mixin mobile-big-width {\n    @media (max-width: $mobile-big-width) {\n        @content;\n    }\n}\n@mixin mobile-small-width {\n    @media (max-width: $mobile-small-width) {\n        @content;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -500,6 +500,59 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/index.ts":
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./sass/styles.scss */ "./src/sass/styles.scss");
+const testingFin_1 = __importDefault(__webpack_require__(/*! ./js/testingFin */ "./src/js/testingFin.ts"));
+// import './assets/horse.svg';
+// import "./style.css";
+console.log('Hello my team');
+const img = document.createElement('img');
+img.setAttribute('src', './img/horse.svg');
+document.body.appendChild(img);
+const input = document.createElement('input');
+document.body.appendChild(input);
+const error = document.createElement('p');
+document.body.appendChild(error);
+input.addEventListener('input', () => (0, testingFin_1.default)(input, error));
+
+
+/***/ }),
+
+/***/ "./src/js/testingFin.ts":
+/*!******************************!*\
+  !*** ./src/js/testingFin.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+function validateValueOnInput(input, error) {
+    console.log(input.value);
+    let valueInput = input.value;
+    const pattern = /^[A-Za-z-0-9]+$/;
+    if (pattern.test(valueInput)) {
+        error.textContent = '';
+        return valueInput;
+    }
+    else {
+        return (error.textContent = 'Please enter only English alphabet letters.');
+    }
+}
+exports["default"] = validateValueOnInput;
+
+
 /***/ })
 
 /******/ 	});
@@ -522,7 +575,7 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -575,25 +628,12 @@ module.exports = styleTagTransform;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-var exports = __webpack_exports__;
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-// import './assets/horse.svg';
-__webpack_require__(/*! ./sass/styles.scss */ "./src/sass/styles.scss");
-// import "./style.css";
-console.log('Hello my team');
-const img = document.createElement('img');
-img.setAttribute('src', './img/horse.svg');
-document.body.appendChild(img);
-
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map
