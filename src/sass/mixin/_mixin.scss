@@ -1,28 +1,82 @@
-@mixin media-narrowing($media-narrowing) {
-    @media (max-width: $media-narrowing) {
-        @content;
+@mixin heading-1($color: $color-text, $style: normal) {
+    font: {
+        family: 'Open Sans', sans-serif;
+        size: 6.4rem;
+        style: $style;
+        weight: 800;
+    }
+
+    line-height: 105%;
+    color: $color;
+}
+
+@mixin basic-text($color: $color-text, $style: normal) {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 6.4rem;
+        style: $style;
+        weight: 600;
+    }
+
+    line-height: 105%;
+    color: $color;
+}
+
+@mixin input-placeholder($color: $color-border, $style: normal) {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 0.9rem;
+        style: $style;
+        weight: 600;
+    }
+
+    line-height: 105%;
+    color: $color;
+}
+
+@mixin button-text($color: $color-primary, $style: normal) {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 2.4rem;
+        style: $style;
+        weight: 800;
+    }
+
+    line-height: 105%;
+    color: $color;
+}
+
+@mixin input() {
+    width: 19.4rem;
+    height: 2.3rem;
+    border: $color-border 2px solid;
+    border-radius: 0.6rem;
+    &::placeholder {
+        @include input-placeholder($style: italic);
+        // color: $color-border-input;
+        // font-style: italic;
+        padding-left: 1rem;
     }
 }
 
-@mixin desktop-small-width {
-    @media (max-width: $desktop-small-width) {
-        @content;
-    }
-}
+@mixin button-basic($color-bg: $color-light) {
+    display: block;
+    width: 15rem;
+    height: 8rem;
+    background-color: $color-bg;
+    border-radius: 1rem;
+    border: solid 2px $color-border;
+    text-align: center;
+    @include button-text;
+    cursor: pointer;
 
-@mixin media-tablet {
-    @media (max-width: $tablet-width) {
-        @content;
+    &:hover {
+        background-color: $color-additional;
+        color: $color-light;
     }
-}
 
-@mixin mobile-big-width {
-    @media (max-width: $mobile-big-width) {
-        @content;
-    }
-}
-@mixin mobile-small-width {
-    @media (max-width: $mobile-small-width) {
-        @content;
+    &.active {
+        background-color: $color-primary;
+        color: $color-additional;
     }
 }

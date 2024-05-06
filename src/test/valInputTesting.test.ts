@@ -1,7 +1,5 @@
 import validateValueOnInput from '../js/testingFin';
 
-// const validateValueOnInput = require('../js/testingFin');
-
 describe('validateValueOnInput', () => {
     it('should return the value if it consists of alphanumeric characters and has a length greater than 5', () => {
         const input = document.createElement('input');

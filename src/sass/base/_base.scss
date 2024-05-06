@@ -1,6 +1,6 @@
 html {
     font-size: 10px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
 
     @include media-tablet {
         font-size: 6px;
@@ -10,6 +10,15 @@ html {
 body {
     background-color: $color-body;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.title {
+    @include heading-1($color: #218888, $style: italic);
+}
+
+.basic-text {
+    @include basic-text($color: #650e70, $style: normal);
 }

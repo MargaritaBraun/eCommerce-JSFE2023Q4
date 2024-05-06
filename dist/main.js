@@ -39,12 +39,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #ee17bf;
+  color: #422779;
 }
 
 html {
   font-size: 10px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Quicksand", sans-serif;
 }
 @media (max-width: 668px) {
   html {
@@ -53,11 +53,71 @@ html {
 }
 
 body {
-  background-color: #d4f132;
+  background-color: #ff8e08;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}`, "",{"version":3,"sources":["webpack://./src/sass/abstract/_reset.scss","webpack://./src/sass/styles.scss","webpack://./src/sass/abstract/_constants.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/mixin/_mixin.scss"],"names":[],"mappings":"AAAA;;;EAGI,UAAA;EACA,SAAA;EACA,SAAA;EACA,sBAAA;EACA,eAAA;ACCJ;;ADEA;;;EAGI,gBAAA;ACCJ;;ADEA;EACI,qBAAA;EACA,cEjBc;ADkBlB;;AEnBA;EACI,eAAA;EACA,8CAAA;AFsBJ;AGXI;EDbJ;IAKQ,cAAA;EFuBN;AACF;;AEpBA;EACI,yBDVS;ECWT,aAAA;EACA,uBAAA;EACA,mBAAA;AFuBJ","sourcesContent":["*,\n*::before,\n*::after {\n    padding: 0;\n    margin: 0;\n    border: 0;\n    box-sizing: border-box;\n    font-size: 10px;\n}\n\nul,\nol,\nli {\n    list-style: none;\n}\n\na {\n    text-decoration: none;\n    color: $color-auto-text;\n}\n","*,\n*::before,\n*::after {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\nul,\nol,\nli {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n  color: #ee17bf;\n}\n\nhtml {\n  font-size: 10px;\n  font-family: \"Courier New\", Courier, monospace;\n}\n@media (max-width: 668px) {\n  html {\n    font-size: 6px;\n  }\n}\n\nbody {\n  background-color: #d4f132;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}","$color-body: #d4f132;\n$color-auto-text: #ee17bf;\n\n$content-width: 1360px;\n$desktop-small-width: 1024px;\n$tablet-width: 668px;\n$mobile-big-width: 518px;\n$mobile-small-width: 380px;\n","html {\n    font-size: 10px;\n    font-family: 'Courier New', Courier, monospace;\n\n    @include media-tablet {\n        font-size: 6px;\n    }\n}\n\nbody {\n    background-color: $color-body;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n","@mixin media-narrowing($media-narrowing) {\n    @media (max-width: $media-narrowing) {\n        @content;\n    }\n}\n\n@mixin desktop-small-width {\n    @media (max-width: $desktop-small-width) {\n        @content;\n    }\n}\n\n@mixin media-tablet {\n    @media (max-width: $tablet-width) {\n        @content;\n    }\n}\n\n@mixin mobile-big-width {\n    @media (max-width: $mobile-big-width) {\n        @content;\n    }\n}\n@mixin mobile-small-width {\n    @media (max-width: $mobile-small-width) {\n        @content;\n    }\n}\n"],"sourceRoot":""}]);
+}
+
+.title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 6.4rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 105%;
+  color: #218888;
+}
+
+.basic-text {
+  font-family: "Quicksand", sans-serif;
+  font-size: 6.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+  color: #650e70;
+}
+
+.button-basic {
+  display: block;
+  width: 15rem;
+  height: 8rem;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  border: solid 2px #3a4e58;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 105%;
+  color: #ff5a00;
+  cursor: pointer;
+}
+.button-basic:hover {
+  background-color: #650e70;
+  color: #f5f5f5;
+}
+.button-basic.active {
+  background-color: #ff5a00;
+  color: #650e70;
+}
+
+.input_login {
+  width: 19.4rem;
+  height: 2.3rem;
+  border: #3a4e58 2px solid;
+  border-radius: 0.6rem;
+}
+.input_login::placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 105%;
+  color: #3a4e58;
+  padding-left: 1rem;
+}`, "",{"version":3,"sources":["webpack://./src/sass/abstract/_reset.scss","webpack://./src/sass/styles.scss","webpack://./src/sass/abstract/_constants.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/mixin/_mixin-media.scss","webpack://./src/sass/mixin/_mixin.scss","webpack://./src/sass/base/_buttons.scss","webpack://./src/sass/pages/_login.scss"],"names":[],"mappings":"AAAA;;;EAGI,UAAA;EACA,SAAA;EACA,SAAA;EACA,sBAAA;EACA,eAAA;ACCJ;;ADEA;;;EAGI,gBAAA;ACCJ;;ADEA;EACI,qBAAA;EACA,cERS;ADSb;;AEnBA;EACI,eAAA;EACA,oCAAA;AFsBJ;AGXE;EDbF;IAKQ,cAAA;EFuBN;AACF;;AEpBA;EACI,yBDGS;ECFT,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;AFuBJ;;AEpBA;EEfQ,oCAAA;EACA,iBAAA;EACA,kBFcwC;EEbxC,gBAAA;EAGJ,iBAAA;EACA,cFS2B;AF4B/B;;AEzBA;EEPQ,oCAAA;EACA,iBAAA;EACA,kBFMyC;EELzC,gBAAA;EAGJ,iBAAA;EACA,cFC4B;AFiChC;;AKvDA;ED8DI,cAAA;EACA,YAAA;EACA,YAAA;EACA,yBHjEU;EGkEV,mBAAA;EACA,yBAAA;EACA,kBAAA;EA9BI,oCAAA;EACA,iBAAA;EACA,kBAJ2C;EAK3C,gBAAA;EAGJ,iBAAA;EACA,cH5CY;EGqEZ,eAAA;AJEJ;AIAI;EACI,yBHtEW;EGuEX,cH1EM;AD4Ed;AICI;EACI,yBH7EQ;EG8ER,cH5EW;AD6EnB;;AMhFA;EFiDI,cAAA;EACA,cAAA;EACA,yBAAA;EACA,qBAAA;AJmCJ;AIlCI;EA3BI,oCAAA;EACA,iBAAA;EACA,kBA0BmC;EAzBnC,gBAAA;EAGJ,iBAAA;EACA,cHxBW;EGgDP,kBAAA;AJuCR","sourcesContent":["*,\n*::before,\n*::after {\n    padding: 0;\n    margin: 0;\n    border: 0;\n    box-sizing: border-box;\n    font-size: 10px;\n}\n\nul,\nol,\nli {\n    list-style: none;\n}\n\na {\n    text-decoration: none;\n    color: $color-link;\n}\n","*,\n*::before,\n*::after {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\nul,\nol,\nli {\n  list-style: none;\n}\n\na {\n  text-decoration: none;\n  color: #422779;\n}\n\nhtml {\n  font-size: 10px;\n  font-family: \"Quicksand\", sans-serif;\n}\n@media (max-width: 668px) {\n  html {\n    font-size: 6px;\n  }\n}\n\nbody {\n  background-color: #ff8e08;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.title {\n  font-family: \"Open Sans\", sans-serif;\n  font-size: 6.4rem;\n  font-style: italic;\n  font-weight: 800;\n  line-height: 105%;\n  color: #218888;\n}\n\n.basic-text {\n  font-family: \"Quicksand\", sans-serif;\n  font-size: 6.4rem;\n  font-style: normal;\n  font-weight: 600;\n  line-height: 105%;\n  color: #650e70;\n}\n\n.button-basic {\n  display: block;\n  width: 15rem;\n  height: 8rem;\n  background-color: #f5f5f5;\n  border-radius: 1rem;\n  border: solid 2px #3a4e58;\n  text-align: center;\n  font-family: \"Quicksand\", sans-serif;\n  font-size: 2.4rem;\n  font-style: normal;\n  font-weight: 800;\n  line-height: 105%;\n  color: #ff5a00;\n  cursor: pointer;\n}\n.button-basic:hover {\n  background-color: #650e70;\n  color: #f5f5f5;\n}\n.button-basic.active {\n  background-color: #ff5a00;\n  color: #650e70;\n}\n\n.input_login {\n  width: 19.4rem;\n  height: 2.3rem;\n  border: #3a4e58 2px solid;\n  border-radius: 0.6rem;\n}\n.input_login::placeholder {\n  font-family: \"Quicksand\", sans-serif;\n  font-size: 0.9rem;\n  font-style: italic;\n  font-weight: 600;\n  line-height: 105%;\n  color: #3a4e58;\n  padding-left: 1rem;\n}","$color-light: #f5f5f5;\n$color-primary: #ff5a00;\n// $color-additional: #422779;\n$color-additional: #650e70;\n\n$color-primary-light: #ff8e08;\n\n$color-text: #f5f5f5;\n$color-dark: #303030;\n$color-border: #3a4e58;\n$color-link: #422779;\n$color-hovered: #ff5a00;\n\n$color-body: #ff8e08;\n\n$color-overlay: rgba(80, 80, 80, 0.4);\n\n$content-width: 1360px;\n$desktop-small-width: 1024px;\n$tablet-width: 668px;\n$mobile-big-width: 518px;\n$mobile-small-width: 380px;\n","html {\n    font-size: 10px;\n    font-family: 'Quicksand', sans-serif;\n\n    @include media-tablet {\n        font-size: 6px;\n    }\n}\n\nbody {\n    background-color: $color-body;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.title {\n    @include heading-1($color: #218888, $style: italic);\n}\n\n.basic-text {\n    @include basic-text($color: #650e70, $style: normal);\n}\n","@mixin media-narrowing($media-narrowing) {\r\n  @media (max-width: $media-narrowing) {\r\n      @content;\r\n  }\r\n}\r\n\r\n@mixin desktop-small-width {\r\n  @media (max-width: $desktop-small-width) {\r\n      @content;\r\n  }\r\n}\r\n\r\n@mixin media-tablet {\r\n  @media (max-width: $tablet-width) {\r\n      @content;\r\n  }\r\n}\r\n\r\n@mixin mobile-big-width {\r\n  @media (max-width: $mobile-big-width) {\r\n      @content;\r\n  }\r\n}\r\n@mixin mobile-small-width {\r\n  @media (max-width: $mobile-small-width) {\r\n      @content;\r\n  }\r\n}","@mixin heading-1($color: $color-text, $style: normal) {\n    font: {\n        family: 'Open Sans', sans-serif;\n        size: 6.4rem;\n        style: $style;\n        weight: 800;\n    }\n\n    line-height: 105%;\n    color: $color;\n}\n\n@mixin basic-text($color: $color-text, $style: normal) {\n    font: {\n        family: 'Quicksand', sans-serif;\n        size: 6.4rem;\n        style: $style;\n        weight: 600;\n    }\n\n    line-height: 105%;\n    color: $color;\n}\n\n@mixin input-placeholder($color: $color-border, $style: normal) {\n    font: {\n        family: 'Quicksand', sans-serif;\n        size: 0.9rem;\n        style: $style;\n        weight: 600;\n    }\n\n    line-height: 105%;\n    color: $color;\n}\n\n@mixin button-text($color: $color-primary, $style: normal) {\n    font: {\n        family: 'Quicksand', sans-serif;\n        size: 2.4rem;\n        style: $style;\n        weight: 800;\n    }\n\n    line-height: 105%;\n    color: $color;\n}\n\n@mixin input() {\n    width: 19.4rem;\n    height: 2.3rem;\n    border: $color-border 2px solid;\n    border-radius: 0.6rem;\n    &::placeholder {\n        @include input-placeholder($style: italic);\n        // color: $color-border-input;\n        // font-style: italic;\n        padding-left: 1rem;\n    }\n}\n\n@mixin button-basic($color-bg: $color-light) {\n    display: block;\n    width: 15rem;\n    height: 8rem;\n    background-color: $color-bg;\n    border-radius: 1rem;\n    border: solid 2px $color-border;\n    text-align: center;\n    @include button-text;\n    cursor: pointer;\n\n    &:hover {\n        background-color: $color-additional;\n        color: $color-light;\n    }\n\n    &.active {\n        background-color: $color-primary;\n        color: $color-additional;\n    }\n}\n",".button-basic {\r\n  @include button-basic;\r\n}",".input_login {\r\n    @include input;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -502,34 +562,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__webpack_require__(/*! ./sass/styles.scss */ "./src/sass/styles.scss");
-const testingFin_1 = __importDefault(__webpack_require__(/*! ./js/testingFin */ "./src/js/testingFin.ts"));
-// import './assets/horse.svg';
-// import "./style.css";
-console.log('Hello my team');
-const img = document.createElement('img');
-img.setAttribute('src', './img/horse.svg');
-document.body.appendChild(img);
-const input = document.createElement('input');
-document.body.appendChild(input);
-const error = document.createElement('p');
-document.body.appendChild(error);
-input.addEventListener('input', () => (0, testingFin_1.default)(input, error));
-
-
-/***/ }),
-
 /***/ "./src/js/testingFin.ts":
 /*!******************************!*\
   !*** ./src/js/testingFin.ts ***!
@@ -538,19 +570,40 @@ input.addEventListener('input', () => (0, testingFin_1.default)(input, error));
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-function validateValueOnInput(input, error) {
+function validateValueOnInput(input) {
     console.log(input.value);
-    let valueInput = input.value;
-    const pattern = /^[A-Za-z-0-9]+$/;
+    const valueInput = input.value;
+    const pattern = /^[A-Za-z0-9]+$/;
     if (pattern.test(valueInput)) {
-        error.textContent = '';
-        return valueInput;
+        if (valueInput.length > 5) {
+            return valueInput;
+        }
     }
-    else {
-        return (error.textContent = 'Please enter only English alphabet letters.');
-    }
+    return null;
 }
 exports["default"] = validateValueOnInput;
+console.log('Hello my team');
+const img = document.createElement('img');
+img.setAttribute('src', './img/logo.png');
+document.body.appendChild(img);
+const input = document.createElement('input');
+input.classList.add('input_login');
+input.placeholder = 'Введите логин';
+document.body.appendChild(input);
+const title = document.createElement('h1');
+title.classList.add('title');
+title.textContent = 'eCommerce Application';
+document.body.appendChild(title);
+const title2 = document.createElement('p');
+title2.classList.add('basic-text');
+title2.textContent = '2eCommerce Application';
+document.body.appendChild(title2);
+const button = document.createElement('button');
+button.classList.add('button-basic');
+// button.classList.add('active');
+button.textContent = 'Click';
+document.body.appendChild(button);
+input.addEventListener('input', () => validateValueOnInput(input));
 
 
 /***/ })
@@ -575,7 +628,7 @@ exports["default"] = validateValueOnInput;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -628,12 +681,20 @@ exports["default"] = validateValueOnInput;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./sass/styles.scss */ "./src/sass/styles.scss");
+__webpack_require__(/*! ./js/testingFin */ "./src/js/testingFin.ts");
+
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map
