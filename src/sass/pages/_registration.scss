@@ -1,0 +1,88 @@
+.registration_container {
+    background-color: $color-light;
+    flex-basis: 50%;
+    // width: 700px;
+    // height: 700px;
+    margin: 15rem;
+    border-radius: 10px;
+}
+
+.registration {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.label_basic {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    /*
+  font: {
+    family: 'Quicksand', sans-serif;
+    size: 0.9rem;
+    style: normal;
+    weight: 600;
+}
+
+line-height: 105%;
+color: $color-link;
+*/
+}
+
+.input_basic {
+    @include input;
+
+    &:focus {
+        background-color: #ff900893;
+        color: $color-primary;
+        border-color: $color-primary;
+        outline: 0;
+    }
+}
+
+.svg_user {
+    background-image: url('img/icon/user.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg_users {
+    background-image: url('img/icon/users.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg_email {
+    background-image: url('img/icon/mail.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg_password {
+    background-image: url('img/icon/lock.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg_calendar {
+  background-image: url('img/icon/calendar.svg');
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.svg_map_pin {
+  background-image: url('img/icon/map-pin.svg');
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
