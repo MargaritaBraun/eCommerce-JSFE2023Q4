@@ -6,5 +6,5 @@ export default class LoginPage extends Page {
         return this.container;
     }
 
-    public loginRun() {}
+    public run() {}
 }

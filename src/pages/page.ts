@@ -9,6 +9,8 @@ abstract class Page {
     public render(): HTMLElement {
         return this.container;
     }
+
+    public run(): void {}
 }
 
 export default Page;

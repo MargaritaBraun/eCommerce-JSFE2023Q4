@@ -6,5 +6,5 @@ export default class RegistrationPage extends Page {
         return this.container;
     }
 
-    public registrationRun() {}
+    public run() {}
 }
