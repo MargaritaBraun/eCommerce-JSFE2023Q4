@@ -1,2 +1,10 @@
-const nameLoginTemplate: string = 'Класс для отрисовки страницы Логина/Авторизации';
-export default nameLoginTemplate;
+import Page from '../page';
+
+export default class LoginPage extends Page {
+    public render(): HTMLElement {
+        this.container.innerHTML = 'Login Page';
+        return this.container;
+    }
+
+    public run() {}
+}
