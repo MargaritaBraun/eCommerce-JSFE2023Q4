@@ -84,21 +84,22 @@
     height: 2rem;
 }
 
-.svg-alert {
-    background-image: url(/src/assets/icons/alert-circle.svg);
-    display: block;
-    width: 1.6rem;
-    height: 1.6rem;
-}
-
-.errors {
+.error-pass {
     display: flex;
     gap: 5px;
     width: 175px;
-    margin-left: 8%;
-    margin-bottom: 5%;
+    height: 40px;
+    margin-left: 12%;
     color: #ff0000;
-    visibility: hidden;
+}
+
+.error-email {
+    display: flex;
+    gap: 5px;
+    width: 175px;
+    height: 25px;
+    margin-left: 12%;
+    color: #ff0000;
 }
 
 .btn-submit {
@@ -110,7 +111,7 @@
     color: #f5f5f5;
     border: none;
     border-radius: 5px;
-    margin-bottom: 6%;
+    margin-bottom: 9%;
     opacity: 0.5;
 }
 
@@ -125,5 +126,20 @@
     color: #ff8e08;
     font-weight: 700;
     font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.show-pass-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1% 0;
+    font-size: 1.1rem;
+    margin-right: 25%;
+    gap: 3px;
+}
+
+.show-pass {
     cursor: pointer;
 }
