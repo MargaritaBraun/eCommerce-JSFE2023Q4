@@ -5,19 +5,19 @@ const loginInner: string = `
     <fieldset class="inputs">
       <div class="title-inputs">Авторизация</div>
       <div class="email-box">
-        <img class="logo-email">
+        <span class="svg-email"></span>
         <input class="email-input" placeholder="Введите почту" type="text" autocomplete="on">
       </div>
       <div class="pass-box">
-        <img class="logo-lock">
-        <input class="pass-input" placeholder="Введите пароль" type="text" autocomplete="on">
+        <span class="svg-lock"></span>
+        <input class="pass-input" placeholder="Введите пароль" type="password" autocomplete="on">
       </div>
     </fieldset>
-    <div class="errors">
-      <img class="logo-error">
-      <label class="error-text"></label>
-    </div>
   </form>
+  <div class="errors">
+    <span class="svg-alert"></span>
+    <label class="error-text"></label>
+  </div>
   <button type="submit" class="btn-submit" disabled>Войти</button>
   <div class="text-register">У вас нет аккаунта? <span>Регистрация</span></div>
 </main>
