@@ -1,7 +1,7 @@
 .login-page {
     display: flex;
     background-color: #f5f5f5;
-    width: 20%;
+    width: 300px;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
@@ -10,12 +10,15 @@
     left: calc(50vw - 200px);
     padding: 1%;
     border-radius: 30px;
+    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.58);
 }
 
 .title-page {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ff8e08;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
     margin-bottom: 30px;
@@ -34,4 +37,93 @@
     font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;
+}
+
+.email-box,
+.pass-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0;
+    width: 200px;
+    gap: 3%;
+}
+
+.email-input,
+.pass-input {
+    width: 100%;
+    height: 25px;
+    padding: 1% 5%;
+    border: 1px solid #757575;
+    box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.75);
+    font-size: 1.2rem;
+}
+
+.email-input:focus,
+.pass-input:focus {
+    outline: none;
+}
+
+.email-input::placeholder,
+.pass-input::placeholder {
+    color: #757575;
+    outline: none;
+}
+
+.svg-email {
+    background-image: url(/src/assets/icons/mail.svg);
+    display: block;
+    width: 2.2rem;
+    height: 2rem;
+}
+
+.svg-lock {
+    background-image: url(/src/assets/icons/lock.svg);
+    display: block;
+    width: 2.2rem;
+    height: 2rem;
+}
+
+.svg-alert {
+    background-image: url(/src/assets/icons/alert-circle.svg);
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.errors {
+    display: flex;
+    gap: 5px;
+    width: 175px;
+    margin-left: 8%;
+    margin-bottom: 5%;
+    color: #ff0000;
+    visibility: hidden;
+}
+
+.btn-submit {
+    width: 100px;
+    background-color: #ff8e08;
+    height: 30px;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 6%;
+    opacity: 0.5;
+}
+
+.text-register {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4%;
+}
+
+.text-register span {
+    color: #ff8e08;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
 }
