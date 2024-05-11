@@ -1,11 +1,11 @@
 import { isValidEmail, isValidPass } from '../../utils/functions/validation-loginpage';
 import Page from '../page';
-import loginInner from '../template/loginInner';
+import loginPage from '../template/loginPage';
 import './login.scss';
 
 export default class LoginPage extends Page {
     public render(): HTMLElement {
-        this.container.innerHTML = loginInner;
+        this.container.innerHTML = loginPage;
         return this.container;
     }
 
@@ -28,9 +28,9 @@ export default class LoginPage extends Page {
         }
     }
 
-    // чек-бокс Показать пароль
+    // чек-бокс для показа пароля
     private showPass() {
-        const btnShowPass = document.querySelectorAll('.show-pass');
+        const btnShowPass: HTMLInputElement | null = document.querySelector('.show-pass');
         const input: HTMLInputElement = document.querySelector('.pass-box input.pass-input') as HTMLInputElement;
 
         const toggleType = () => {
@@ -40,7 +40,7 @@ export default class LoginPage extends Page {
                 input.type = 'password';
             }
         };
-        btnShowPass.forEach((item) => item.addEventListener('click', toggleType));
+        btnShowPass?.addEventListener('click', toggleType);
     }
 
     public run() {
