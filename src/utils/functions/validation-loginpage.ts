@@ -6,12 +6,7 @@ export function isValidEmail(inputEmail: HTMLInputElement): boolean {
     const domain: string = emailText.split('@')[1];
 
     if (errorText) {
-        if (!emailRegex.test(emailText)) {
-            (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = 'Неверный формат почты';
-            return false;
-        }
-        if (emailText !== inputEmail.value) {
+        if (/\s/.test(emailText)) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Адрес не должен содержать пробелов';
             return false;
@@ -24,6 +19,11 @@ export function isValidEmail(inputEmail: HTMLInputElement): boolean {
         if (!domain.includes('.')) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Адрес должен содержать доменное имя';
+            return false;
+        }
+        if (!emailRegex.test(emailText)) {
+            (errorsBox as HTMLElement).style.visibility = 'visible';
+            (errorText as HTMLElement).textContent = 'Неверный формат почты';
             return false;
         }
     }
