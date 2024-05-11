@@ -1,4 +1,4 @@
-const loginInner: string = `
+const loginPage: string = `
 <main class="login-page">
   <form class="login-form">
     <label class="title-page">.Apoint</label>
@@ -6,7 +6,7 @@ const loginInner: string = `
       <div class="title-inputs">Авторизация</div>
       <div class="email-box">
         <span class="svg-email"></span>
-        <input class="email-input" placeholder="hello@example.com" type="text" autocomplete="on">
+        <input class="email-input" placeholder="hello@example.com" type="email" autocomplete="on">
       </div>
       <div class="errorsbox-email">
         <label class="error-email"></label>
@@ -28,4 +28,4 @@ const loginInner: string = `
 </main>
 `;
 
-export default loginInner;
+export default loginPage;
