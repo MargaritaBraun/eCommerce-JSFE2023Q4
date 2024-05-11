@@ -35,11 +35,11 @@
     padding: 0.5rem;
 }
 
-@mixin input-text($color: $color-link, $style: normal) {
+@mixin input-text($color: $color-link, $size: 2rem) {
     font: {
         family: 'Quicksand', sans-serif;
-        size: 2rem;
-        style: $style;
+        size: $size;
+        style: normal;
         weight: 600;
     }
 
