@@ -6,5 +6,5 @@ export default class MainPage extends Page {
         return this.container;
     }
 
-    public mainRun() {}
+    public run() {}
 }

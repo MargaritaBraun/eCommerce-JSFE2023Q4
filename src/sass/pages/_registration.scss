@@ -77,45 +77,71 @@ color: $color-link;
 }
 
 .svg_user {
-    background-image: url('img/icon/user.svg');
+    background-image: url('img/icons/user.svg');
     display: block;
     width: 2rem;
     height: 2rem;
 }
 
 .svg_users {
-    background-image: url('img/icon/users.svg');
+    background-image: url('img/icons/users.svg');
     display: block;
     width: 2rem;
     height: 2rem;
 }
 
 .svg_email {
-    background-image: url('img/icon/mail.svg');
+    background-image: url('img/icons/mail.svg');
     display: block;
     width: 2rem;
     height: 2rem;
 }
 
 .svg_password {
-    background-image: url('img/icon/lock.svg');
+    background-image: url('img/icons/lock.svg');
     display: block;
     width: 2rem;
     height: 2rem;
 }
 
 .svg_calendar {
-    background-image: url('img/icon/calendar.svg');
+    background-image: url('img/icons/calendar.svg');
     display: block;
     width: 2rem;
     height: 2rem;
 }
 
 .svg_map_pin {
-    background-image: url('img/icon/map-pin.svg');
+    background-image: url('img/icons/map-pin.svg');
     display: block;
     width: 2rem;
     height: 2rem;
+}
+
+.address_block {
+    border: $color-border 2px solid;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.address_span {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 1rem;
+        style: normal;
+        weight: 600;
+    }
+
+    line-height: 105%;
+    color: $color-primary;
+}
+
+.checkbox_span {
+    @include input-text($size: 1.5rem);
 }
 
 .select_block {
@@ -131,7 +157,7 @@ color: $color-link;
     @include input-text($size: 1.5rem);
     border: $color-border 2px solid;
     border-radius: 0.6rem;
-    // font-size: 1.5rem;
+    cursor: pointer;
     &:focus {
         border-color: $color-primary;
         outline: 0;
@@ -144,8 +170,23 @@ color: $color-link;
     }
 }
 
+.address_title {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 2rem;
+        style: normal;
+        weight: 500;
+    }
+
+    line-height: 105%;
+    color: $color-primary;
+    text-align: center;
+    border-bottom: 1px solid $color-dark;
+    width: 20rem;
+    display: none;
+}
+
 .button_registration {
-    // @include button-basic;
     font-family: 'Open Sans', sans-serif;
     width: 26rem;
     font-weight: 500;
@@ -157,7 +198,6 @@ color: $color-link;
     border-radius: 1rem;
     border: solid 2px $color-link;
     text-align: center;
-    // @include button-text;
     cursor: pointer;
     margin-top: 2rem;
 
@@ -170,4 +210,20 @@ color: $color-link;
         background-color: darkgrey;
         cursor: not-allowed;
     }
+}
+
+.shipping_address {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.billing_address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
 }

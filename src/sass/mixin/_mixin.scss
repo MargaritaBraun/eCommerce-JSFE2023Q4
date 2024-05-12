@@ -66,6 +66,7 @@
     border-radius: 0.6rem;
     padding-left: 0.5rem;
     padding-bottom: 0.5rem;
+    cursor: pointer;
     @include input-text;
     &::placeholder {
         @include input-placeholder($style: italic);
