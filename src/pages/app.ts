@@ -1,3 +1,4 @@
+import getAccessToken from '../api/login/api';
 import LoginPage from './login/login';
 import MainPage from './main/main';
 import RegistrationPage from './registration/registration';
@@ -13,10 +14,18 @@ export type Page = LoginPage | RegistrationPage | MainPage;
 export class App {
     static container: HTMLElement = document.body;
 
+    static accessToken: null | string;
+
     static renderNewPage(id: string): void {
         App.container.innerHTML = '';
         const page: Page = this.getPage(id);
         this.renderPage(page);
+    }
+
+    // сохранение токена клиента
+
+    private async saveAccessToken(): Promise<void> {
+        App.accessToken = await getAccessToken();
     }
 
     private static getPage(id: string): Page {
@@ -44,7 +53,8 @@ export class App {
         });
     }
 
-    public run(): void {
+    public async run(): Promise<void> {
+        await this.saveAccessToken();
         const hash: string = window.location.hash.slice(1);
         App.renderNewPage(hash);
         this.routingChange();
