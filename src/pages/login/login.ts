@@ -49,13 +49,12 @@ export default class LoginPage extends Page {
 
     // действие при нажатии на активную кнопку SUBMIT
 
-    private avtorizationUser() {
+    private authorizationUser() {
         const btn: HTMLButtonElement | null = document.querySelector('.btn-submit');
         if (btn) {
             btn.addEventListener('click', async () => {
-                if (btn.disabled === false) {
-                    await this.noEmail();
-                    await this.yesEmail();
+                if (!btn.disabled) {
+                    await this.checkEmail();
                 }
             });
         }
@@ -65,40 +64,45 @@ export default class LoginPage extends Page {
 
     private async getStatusEmail() {
         const inputEmail: HTMLInputElement = document.querySelector('.email-input') as HTMLInputElement;
-        const statusEmail = await checkoutCustomer();
-        const arr = Array.from(statusEmail.results);
-        const arrEmail = arr.map((x) => x.email);
-        return arrEmail.includes(inputEmail.value);
+        const infoUser = await checkoutCustomer();
+        const users = Array.from(infoUser.results);
+        const usersEmail = users.map((x) => x.email);
+        return usersEmail.includes(inputEmail.value);
     }
 
     // действие при отсутствии EMAIL
 
-    private async noEmail() {
+    private async checkEmail() {
         const errorText: HTMLElement | null = document.querySelector('.error-email');
         const errorsBox: HTMLElement | null = document.querySelector('.errorsbox-email');
         if (errorText && errorsBox) {
             if (!(await this.getStatusEmail())) {
                 (errorsBox as HTMLElement).style.visibility = 'visible';
                 (errorText as HTMLElement).textContent = 'Такая электронная почта не зарегестрирована.';
+            } else {
+                this.loginUser();
             }
         }
     }
 
     // действие, если есть EMAIL
 
-    private async yesEmail() {
+    private async loginUser() {
         const inputEmail: HTMLInputElement = document.querySelector('.email-input') as HTMLInputElement;
         const input: HTMLInputElement = document.querySelector('.pass-box input.pass-input') as HTMLInputElement;
         if (inputEmail && input) {
-            if (await this.getStatusEmail()) {
-                if (!(await loginCustomer(inputEmail.value, input.value))) {
-                    this.errorPass();
-                } else {
-                    const infoUser = (await loginCustomer(inputEmail.value, input.value)) as UserInfo;
-                    if (infoUser) {
-                        localStorage.setItem('id', JSON.stringify(infoUser.customer!.id));
-                        window.location.hash = PagesID.MAIN;
-                    }
+            if (!(await loginCustomer(inputEmail.value, input.value))) {
+                this.errorPass();
+            } else {
+                const infoUser = (await loginCustomer(inputEmail.value, input.value)) as UserInfo;
+                if (infoUser) {
+                    const userSave = {
+                        id: infoUser.customer!.id,
+                        firstName: infoUser.customer!.firstName,
+                        lastName: infoUser.customer!.lastName,
+                    };
+                    localStorage.setItem('user', JSON.stringify(userSave));
+                    window.location.hash = PagesID.MAIN;
                 }
             }
         }
@@ -118,6 +122,6 @@ export default class LoginPage extends Page {
     public run() {
         this.isValidation();
         this.showPass();
-        this.avtorizationUser();
+        this.authorizationUser();
     }
 }
