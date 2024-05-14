@@ -90,20 +90,18 @@ export default class LoginPage extends Page {
     private async loginUser() {
         const inputEmail: HTMLInputElement = document.querySelector('.email-input') as HTMLInputElement;
         const input: HTMLInputElement = document.querySelector('.pass-box input.pass-input') as HTMLInputElement;
+        const infoUser = await loginCustomer(inputEmail.value, input.value);
         if (inputEmail && input) {
-            if (!(await loginCustomer(inputEmail.value, input.value))) {
+            if (!infoUser) {
                 this.errorPass();
             } else {
-                const infoUser = (await loginCustomer(inputEmail.value, input.value)) as UserInfo;
-                if (infoUser) {
-                    const userSave = {
-                        id: infoUser.customer!.id,
-                        firstName: infoUser.customer!.firstName,
-                        lastName: infoUser.customer!.lastName,
-                    };
-                    localStorage.setItem('user', JSON.stringify(userSave));
-                    window.location.hash = PagesID.MAIN;
-                }
+                const userSave = {
+                    id: (infoUser as UserInfo).customer!.id,
+                    firstName: (infoUser as UserInfo).customer!.firstName,
+                    lastName: (infoUser as UserInfo).customer!.lastName,
+                };
+                localStorage.setItem('user', JSON.stringify(userSave));
+                window.location.hash = PagesID.MAIN;
             }
         }
     }
