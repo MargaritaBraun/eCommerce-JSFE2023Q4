@@ -1,4 +1,3 @@
-// <div class="registration">
 const registrationPageTemplate: string = `
       <form class="registration">
         <div class='logo_registration'></div>
@@ -42,7 +41,7 @@ const registrationPageTemplate: string = `
         </select>
         </div>
         <div class='billing_address'>
-        
+
         <p class="address_title">Адрес прописки</p>
         <p class="postal_code_error registration__error"></p>
         <label class="label_basic">
@@ -92,7 +91,8 @@ const registrationPageTemplate: string = `
         </div>
       <button class='button_registration' disabled='true'>Зарегистрироваться</button>
         </div>
+        <div class='text-register'><a href='#login' class='link_to_loginPages'>Есть уже страничка, войти в приложение</a></div>
         </form>
         `;
-// </div>
+
 export default registrationPageTemplate;

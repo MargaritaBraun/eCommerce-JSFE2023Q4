@@ -1,8 +1,6 @@
 .registration_container {
     background-color: $color-light;
     flex-basis: 50%;
-    // width: 700px;
-    // height: 700px;
     margin: 15rem;
     border-radius: 10px;
 }
@@ -41,17 +39,6 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    /*
-  font: {
-    family: 'Quicksand', sans-serif;
-    size: 0.9rem;
-    style: normal;
-    weight: 600;
-}
-
-line-height: 105%;
-color: $color-link;
-*/
 }
 
 .input_basic {
@@ -226,4 +213,19 @@ color: $color-link;
     align-items: flex-end;
     justify-content: space-between;
     gap: 0.5rem;
+}
+
+.link_to_loginPages {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    color: $color-link;
+    font-size: 1.9rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+
+    &:hover {
+        background-color: $color-additional;
+        color: $color-light;
+    }
 }

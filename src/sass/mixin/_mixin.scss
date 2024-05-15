@@ -70,9 +70,6 @@
     @include input-text;
     &::placeholder {
         @include input-placeholder($style: italic);
-        // color: $color-border-input;
-        // font-style: italic;
-        // padding-left: 1rem;
     }
 }
 

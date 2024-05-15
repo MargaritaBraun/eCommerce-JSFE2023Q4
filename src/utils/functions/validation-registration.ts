@@ -1,15 +1,15 @@
 export function validationOnInputName(inputName: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.name_error') as HTMLParagraphElement;
-    const pattern = /^[А-ЯЁа-яё0-9]+$/;
-    const pattern2 = /^[А-ЯЁ]/;
+    const patternOnCyrillicAlphabetAndNumbers: RegExp = /^[А-ЯЁа-яё0-9]+$/;
+    const patternOnUppercaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
+    const countOnMinimalLengthOnName: number = 3;
     let isValid = false;
 
-    console.log(inputName.value);
-    if (pattern.test(inputName.value)) {
+    if (patternOnCyrillicAlphabetAndNumbers.test(inputName.value)) {
         errorName.textContent = '';
-        if (pattern2.test(inputName.value)) {
+        if (patternOnUppercaseCyrillicAlphabet.test(inputName.value)) {
             errorName.textContent = '';
-            if (inputName.value.length > 3) {
+            if (inputName.value.length > countOnMinimalLengthOnName) {
                 errorName.textContent = '';
                 isValid = true;
             } else {
@@ -27,17 +27,16 @@ export function validationOnInputName(inputName: HTMLInputElement) {
 
 export function validationOnInputBaseName(basename: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.basename_error') as HTMLParagraphElement;
-    const pattern = /^[А-ЯЁа-яё]+$/;
-    const pattern2 = /^[А-ЯЁ]/;
+    const patternOnCyrillicAlphabet: RegExp = /^[А-ЯЁа-яё]+$/;
+    const patternOnUppercaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
+    const countOnMinimalLengthOnBasename: number = 4;
     let isValid = false;
 
-    console.log(basename.value);
-
-    if (pattern.test(basename.value)) {
+    if (patternOnCyrillicAlphabet.test(basename.value)) {
         errorName.textContent = '';
-        if (pattern2.test(basename.value)) {
+        if (patternOnUppercaseCyrillicAlphabet.test(basename.value)) {
             errorName.textContent = '';
-            if (basename.value.length > 4) {
+            if (basename.value.length > countOnMinimalLengthOnBasename) {
                 errorName.textContent = '';
                 isValid = true;
             } else {
@@ -55,17 +54,16 @@ export function validationOnInputBaseName(basename: HTMLInputElement) {
 
 export function validationOnInputLogin(emailInput: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.login_error') as HTMLParagraphElement;
-    const pattern = /^[A-Za-z-0-9@.]+$/;
-    const pattern2 = /@/;
-    const pattern3 = /\.(com|ru)$/;
+    const patternOnEnglishAlphabetAndNumbers: RegExp = /^[A-Za-z-0-9@.]+$/;
+    const patternAtSymbol: RegExp = /@/;
+    const patternOnDomainName: RegExp = /\.(com|ru)$/;
     let isValid = false;
 
-    console.log(emailInput.value);
-    if (pattern.test(emailInput.value)) {
+    if (patternOnEnglishAlphabetAndNumbers.test(emailInput.value)) {
         errorName.textContent = '';
-        if (pattern2.test(emailInput.value)) {
+        if (patternAtSymbol.test(emailInput.value)) {
             errorName.textContent = '';
-            if (pattern3.test(emailInput.value)) {
+            if (patternOnDomainName.test(emailInput.value)) {
                 errorName.textContent = '';
                 isValid = true;
             } else {
@@ -82,23 +80,22 @@ export function validationOnInputLogin(emailInput: HTMLInputElement) {
 
 export function validationOnInputPassword(passwordInput: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.password_error') as HTMLParagraphElement;
-    const pattern = /^[A-Za-z-0-9!@#$%^&*-.]+$/;
-    const pattern2 = /[A-Z]/;
-    const pattern3 = /[a-z]/;
-    const pattern4 = /[0-9]/;
-    const pattern5 = /[!@#$%^&*-.]/;
+    const patternOnEnglishAlphabetAndNumbersAndSymbols: RegExp = /^[A-Za-z-0-9!@#$%^&*-.]+$/;
+    const patternOnUppercaseEnglishAlphabet: RegExp = /[A-Z]/;
+    const patternOnLowercaseEnglishAlphabet: RegExp = /[a-z]/;
+    const patternOnNumbers: RegExp = /[0-9]/;
+    const patternOnSpecialSymbols: RegExp = /[!@#$%^&*-.]/;
     let isValid = false;
 
-    console.log(passwordInput.value);
-    if (pattern.test(passwordInput.value)) {
+    if (patternOnEnglishAlphabetAndNumbersAndSymbols.test(passwordInput.value)) {
         errorName.textContent = '';
-        if (pattern2.test(passwordInput.value)) {
+        if (patternOnUppercaseEnglishAlphabet.test(passwordInput.value)) {
             errorName.textContent = '';
-            if (pattern3.test(passwordInput.value)) {
+            if (patternOnLowercaseEnglishAlphabet.test(passwordInput.value)) {
                 errorName.textContent = '';
-                if (pattern4.test(passwordInput.value)) {
+                if (patternOnNumbers.test(passwordInput.value)) {
                     errorName.textContent = '';
-                    if (pattern5.test(passwordInput.value)) {
+                    if (patternOnSpecialSymbols.test(passwordInput.value)) {
                         errorName.textContent = '';
                         if (passwordInput.value.length > 7) {
                             errorName.textContent = '';
@@ -126,10 +123,10 @@ export function validationOnInputPassword(passwordInput: HTMLInputElement) {
 
 export function validationOnInputBirthday(birthdayInput: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.birthday_error') as HTMLParagraphElement;
-    const maxDate = new Date('2010-01-01');
+    const maxDate: Date = new Date('2010-01-01');
     let isValid = false;
 
-    const enteredDate = new Date(birthdayInput.value);
+    const enteredDate: Date = new Date(birthdayInput.value);
     if (enteredDate > maxDate) {
         errorName.textContent = 'Дата рождения не может быть после 01-01-2010';
     } else {
@@ -142,7 +139,7 @@ export function validationOnInputBirthday(birthdayInput: HTMLInputElement) {
 
 export function validationOnInputPostalCode(postalCodeInput: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.postal_code_error') as HTMLParagraphElement;
-    const expectedPrefix = '2460';
+    const expectedPrefix: string = '2460';
     const postalCodeLength: number = 6;
     let isValid = false;
 
@@ -160,17 +157,16 @@ export function validationOnInputPostalCode(postalCodeInput: HTMLInputElement) {
 
 export function validationOnInputStreet(streetInput: HTMLInputElement) {
     const errorName: HTMLParagraphElement = document.querySelector('.street_error') as HTMLParagraphElement;
-    const pattern = /^[А-ЯЁа-яё]+$/;
-    const pattern2 = /^[А-ЯЁ]/;
+    const patternOnCyrillicAlphabet: RegExp = /^[А-ЯЁа-яё]+$/;
+    const patternOnUpperCaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
+    const countOnMinimalLengthOnStreet: number = 4;
     let isValid = false;
 
-    console.log(streetInput.value);
-
-    if (pattern.test(streetInput.value)) {
+    if (patternOnCyrillicAlphabet.test(streetInput.value)) {
         errorName.textContent = '';
-        if (pattern2.test(streetInput.value)) {
+        if (patternOnUpperCaseCyrillicAlphabet.test(streetInput.value)) {
             errorName.textContent = '';
-            if (streetInput.value.length > 4) {
+            if (streetInput.value.length > countOnMinimalLengthOnStreet) {
                 errorName.textContent = '';
                 isValid = true;
             } else {
@@ -189,8 +185,7 @@ export function validationOnInputStreet(streetInput: HTMLInputElement) {
 export function checkedOnField() {
     const registrationblock: HTMLInputElement = document.querySelector('.input_checkbox') as HTMLInputElement;
     const isChecked = registrationblock.checked;
-    registrationblock.addEventListener('click', (event) => {
-        console.log(event.target);
+    registrationblock.addEventListener('click', () => {
         const addressTitleAll: HTMLParagraphElement[] = Array.from(document.querySelectorAll('.address_title'));
         const billingAddress: HTMLDivElement = document.querySelector('.shipping_address') as HTMLDivElement;
         if (registrationblock.checked) {

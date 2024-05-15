@@ -20,9 +20,7 @@ export default class RegistrationPage extends Page {
 
     public validateOnField() {
         const registrationForm: HTMLFormElement = document.querySelector('.registration') as HTMLFormElement;
-
         const inputName: HTMLInputElement = document.querySelector('.name_input') as HTMLInputElement;
-
         const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
@@ -49,7 +47,6 @@ export default class RegistrationPage extends Page {
             streetInput.addEventListener('input', isValidStreet);
             checkedOnField();
             registrationForm.addEventListener('click', () => {
-                console.log(`isValidName ${isValidName()}`);
                 if (
                     isValidName() &&
                     isValidBaseName() &&
@@ -60,9 +57,6 @@ export default class RegistrationPage extends Page {
                     isValidStreet()
                 ) {
                     buttonSubmit.removeAttribute('disabled');
-                    console.log(
-                        `isValidName ${isValidName()}, isValidBaseName ${validationOnInputBaseName(basename)},`
-                    );
                 }
             });
         }
