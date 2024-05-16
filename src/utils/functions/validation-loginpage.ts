@@ -6,11 +6,6 @@ export function isValidEmail(inputEmail: HTMLInputElement): boolean {
     const domain: string = emailText.split('@')[1];
 
     if (errorText) {
-        if (/\s/.test(emailText)) {
-            (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = 'Адрес не должен содержать пробелов';
-            return false;
-        }
         if (!emailText.includes('@')) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Адрес должен содержать символ "@"';
@@ -24,6 +19,11 @@ export function isValidEmail(inputEmail: HTMLInputElement): boolean {
         if (!emailRegex.test(emailText)) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Неверный формат почты';
+            return false;
+        }
+        if (emailText !== inputEmail.value) {
+            (errorsBox as HTMLElement).style.visibility = 'visible';
+            (errorText as HTMLElement).textContent = 'Адрес не должен содержать пробелы в начале и в конце';
             return false;
         }
     }
@@ -51,12 +51,12 @@ export function isValidPass(inputPass: HTMLInputElement): boolean {
         }
         if (!upperRegex.test(inputText)) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = 'Пароль должен содержать хотя бы одну заглавную букву';
+            (errorText as HTMLElement).textContent = 'Пароль должен содержать хотя бы одну заглавную букву A-Z';
             return false;
         }
         if (!lowerRegex.test(inputText)) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = 'Пароль должен содержать хотя бы одну строчную букву';
+            (errorText as HTMLElement).textContent = 'Пароль должен содержать хотя бы одну строчную букву a-z';
             return false;
         }
 

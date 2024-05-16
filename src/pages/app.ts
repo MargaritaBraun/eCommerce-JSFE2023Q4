@@ -25,7 +25,6 @@ export class App {
     }
 
     // сохранение токена клиента
-
     private async saveAccessToken(): Promise<void> {
         App.accessToken = await getAccessToken();
     }
@@ -39,7 +38,7 @@ export class App {
             case PagesID.MAIN:
                 return new MainPage(id);
             default:
-                return new ErrorPage(id); // TODO будет 404 page
+                return new ErrorPage(id);
         }
     }
 
