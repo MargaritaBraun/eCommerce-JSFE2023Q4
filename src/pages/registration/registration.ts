@@ -1,10 +1,68 @@
 import Page from '../page';
+import registrationPageTemplate from '../template/registrationPage';
+import {
+    validationOnInputName,
+    validationOnInputBaseName,
+    validationOnInputLogin,
+    validationOnInputPassword,
+    validationOnInputBirthday,
+    validationOnInputPostalCode,
+    validationOnInputStreet,
+    checkedOnField,
+} from '../../utils/functions/validation-registration';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
-        this.container.innerHTML = 'Registration Page';
+        this.container.classList.add('registration_container');
+        this.container.innerHTML = registrationPageTemplate;
         return this.container;
     }
 
-    public run() {}
+    public validateOnField() {
+        const registrationForm: HTMLFormElement = document.querySelector('.registration') as HTMLFormElement;
+        const inputName: HTMLInputElement = document.querySelector('.name_input') as HTMLInputElement;
+        const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
+        const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
+        const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
+        const birthdayInput: HTMLInputElement = document.querySelector('.input_birthday') as HTMLInputElement;
+        const postalCodeInput: HTMLInputElement = document.querySelector('.input_postal_code') as HTMLInputElement;
+        const streetInput: HTMLInputElement = document.querySelector('.input_street') as HTMLInputElement;
+
+        const buttonSubmit: HTMLButtonElement | null = document.querySelector('.button_registration');
+
+        if (buttonSubmit) {
+            const isValidName = () => validationOnInputName(inputName);
+            inputName.addEventListener('input', isValidName);
+            const isValidBaseName = () => validationOnInputBaseName(basename);
+            basename.addEventListener('input', isValidBaseName);
+            const isValidLogin = () => validationOnInputLogin(emailInput);
+            emailInput.addEventListener('input', isValidLogin);
+            const isValidPassword = () => validationOnInputPassword(passwordInput);
+            passwordInput.addEventListener('input', isValidPassword);
+            const isValidBirthday = () => validationOnInputBirthday(birthdayInput);
+            birthdayInput.addEventListener('input', isValidBirthday);
+            const isValidPostalCode = () => validationOnInputPostalCode(postalCodeInput);
+            postalCodeInput.addEventListener('input', isValidPostalCode);
+            const isValidStreet = () => validationOnInputStreet(streetInput);
+            streetInput.addEventListener('input', isValidStreet);
+            checkedOnField();
+            registrationForm.addEventListener('click', () => {
+                if (
+                    isValidName() &&
+                    isValidBaseName() &&
+                    isValidLogin() &&
+                    isValidPassword() &&
+                    isValidBirthday() &&
+                    isValidPostalCode() &&
+                    isValidStreet()
+                ) {
+                    buttonSubmit.removeAttribute('disabled');
+                }
+            });
+        }
+    }
+
+    public run() {
+        this.validateOnField();
+    }
 }

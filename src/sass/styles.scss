@@ -1,4 +1,5 @@
 @import 'abstract/constants';
+@import 'abstract/colors';
 @import 'abstract/reset';
 @import 'mixin/mixin-media';
 @import 'mixin/mixin';
@@ -6,4 +7,5 @@
 @import 'base/base';
 @import 'base/buttons';
 
+@import 'pages/registration';
 @import 'pages/login';

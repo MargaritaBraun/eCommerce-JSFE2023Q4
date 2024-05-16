@@ -4,7 +4,6 @@ import UserInfo from '../../utils/interface/userInfo';
 import { PagesID } from '../app';
 import Page from '../page';
 import loginPage from '../template/loginPage';
-import './login.scss';
 
 export default class LoginPage extends Page {
     public render(): HTMLElement {

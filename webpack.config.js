@@ -44,7 +44,7 @@ module.exports = {
     rules: [
       {
         test: /\.(jpg|png|svg|jpeg|gif)$/,
-        type: 'asset/resource',
+        type: 'asset/inline',
       },
       {
         test: /\.scss$/,
