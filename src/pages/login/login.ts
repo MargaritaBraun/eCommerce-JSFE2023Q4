@@ -131,6 +131,7 @@ export default class LoginPage extends Page {
         }
     }
 
+    // переход на Главную авторизированным пользователям
     private switchMainLoggedIn() {
         const btnSubmit: HTMLButtonElement | null = document.querySelector('.btn-submit');
         if (btnSubmit) {

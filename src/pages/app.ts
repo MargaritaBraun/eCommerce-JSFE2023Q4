@@ -2,14 +2,16 @@ import getAccessToken from '../api/login/api';
 import LoginPage from './login/login';
 import MainPage from './main/main';
 import RegistrationPage from './registration/registration';
+import ErrorPage from './404/error';
 
 export const enum PagesID {
     REGISTRATION = 'registration',
     LOGIN = 'login',
     MAIN = 'main',
+    ERROR = 'error',
 }
 
-export type Page = LoginPage | RegistrationPage | MainPage;
+export type Page = LoginPage | RegistrationPage | MainPage | ErrorPage;
 
 export class App {
     static container: HTMLElement = document.body;
@@ -37,7 +39,7 @@ export class App {
             case PagesID.MAIN:
                 return new MainPage(id);
             default:
-                return new LoginPage(id); // TODO будет 404 page
+                return new ErrorPage(id); // TODO будет 404 page
         }
     }
 
