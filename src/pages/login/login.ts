@@ -121,10 +121,21 @@ export default class LoginPage extends Page {
         }
     }
 
+    // переход на Главную всем пользователем
+    private switchMain() {
+        const btnMain: HTMLElement | null = document.querySelector('.title-page');
+        if (btnMain) {
+            btnMain.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
     public run() {
         this.isValidation();
         this.showPass();
         this.authorizationUser();
         this.switchRegistration();
+        this.switchMain();
     }
 }
