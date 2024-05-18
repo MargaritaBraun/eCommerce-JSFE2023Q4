@@ -1,2 +1,10 @@
-const nameAboutTemplate: string = 'Класс для отрисовки страницы О команде разработчиков';
-export default nameAboutTemplate;
+import Page from '../page';
+
+export default class AboutPage extends Page {
+    public render(): HTMLElement {
+        this.container.innerHTML = 'About Page';
+        return this.container;
+    }
+
+    public run() {}
+}
