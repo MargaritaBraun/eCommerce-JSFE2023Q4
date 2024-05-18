@@ -2,7 +2,7 @@ import { PagesID } from '../app';
 import Page from '../page';
 import errorPage from '../template/errorPage';
 
-export default class ErorrPage extends Page {
+export default class ErrorPage extends Page {
     public render(): HTMLElement {
         this.container.innerHTML = errorPage;
         return this.container;
