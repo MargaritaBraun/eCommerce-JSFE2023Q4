@@ -3,15 +3,31 @@ import LoginPage from './login/login';
 import MainPage from './main/main';
 import RegistrationPage from './registration/registration';
 import ErrorPage from './404/error';
+import CategoryPage from './category/category';
+import DiscountsPage from './discounts/discounts';
+import AboutPage from './about/about';
+import BasketPage from './basket/basket';
 
 export const enum PagesID {
     REGISTRATION = 'registration',
     LOGIN = 'login',
     MAIN = 'main',
     ERROR = 'error',
+    CATEGORY = 'category',
+    DISCOUNTS = 'discounts',
+    ABOUT = 'about',
+    BASKET = 'basket',
 }
 
-export type Page = LoginPage | RegistrationPage | MainPage | ErrorPage;
+export type Page =
+    | LoginPage
+    | RegistrationPage
+    | MainPage
+    | ErrorPage
+    | CategoryPage
+    | DiscountsPage
+    | AboutPage
+    | BasketPage;
 
 export class App {
     static container: HTMLElement = document.body;
@@ -37,6 +53,14 @@ export class App {
                 return new RegistrationPage(id);
             case PagesID.MAIN:
                 return new MainPage(id);
+            case PagesID.CATEGORY:
+                return new CategoryPage(id);
+            case PagesID.DISCOUNTS:
+                return new DiscountsPage(id);
+            case PagesID.ABOUT:
+                return new AboutPage(id);
+            case PagesID.BASKET:
+                return new BasketPage(id);
             default:
                 return new ErrorPage(id);
         }

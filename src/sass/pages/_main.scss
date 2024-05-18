@@ -16,7 +16,7 @@
     font-size: 4rem;
     font-weight: 700;
     color: $color-primary-light;
-    cursor: pointer;
+    cursor: default;
 }
 
 .btn-header {
@@ -96,14 +96,14 @@
 }
 
 .btn-user-logout {
-    display: none;
+    display: block;
     font-size: 1.5rem;
     cursor: pointer;
     background-color: $color-primary-light;
     color: $color-text;
     border: none;
     border-radius: 5px;
-    padding: 2%;
+    padding: 3%;
 }
 
 /* lines animation */

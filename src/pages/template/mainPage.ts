@@ -3,7 +3,6 @@ const mainPage = `
   <div class="header-logo">.Apoint</div>
   <div class="burger-nav">
     <ul class="navigation">
-      <li class="main-pg">Главная</li>
       <li class="category-pg">Категории</li>
       <li class="discounts-pg">Скидки</li>
       <li class="about-pg">О нас</li>
