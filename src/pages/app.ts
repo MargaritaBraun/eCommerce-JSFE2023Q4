@@ -25,7 +25,12 @@ export class App {
     // сохранение токена клиента
 
     private async saveAccessToken(): Promise<void> {
-        App.accessToken = await getAccessToken();
+        const token = localStorage.getItem('user');
+        if (token) {
+            App.accessToken = token;
+        } else {
+            App.accessToken = await getAccessToken();
+        }
     }
 
     private static getPage(id: string): Page {
@@ -53,10 +58,15 @@ export class App {
         });
     }
 
+    private startHash() {
+        window.location.hash = PagesID.LOGIN;
+    }
+
     public async run(): Promise<void> {
         await this.saveAccessToken();
         const hash: string = window.location.hash.slice(1);
         App.renderNewPage(hash);
+        this.startHash();
         this.routingChange();
     }
 }

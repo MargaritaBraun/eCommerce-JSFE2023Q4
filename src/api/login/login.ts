@@ -1,7 +1,7 @@
 import { App } from '../../pages/app';
 import AllUserInfo from '../../utils/interface/allUsersInfo';
 import UserInfo from '../../utils/interface/userInfo';
-import { projectKey, region } from '../constAPI';
+import { clientId, clientSecret, projectKey, region } from '../constAPI';
 
 export async function checkoutCustomer(): Promise<AllUserInfo> {
     const url: string = `https://api.${region}.commercetools.com/${projectKey}/customers?`;
@@ -34,4 +34,26 @@ export async function loginCustomer(email: string, password: string): Promise<Us
 
     const customerData: UserInfo = await loginResponse.json();
     return customerData;
+}
+
+export async function getCustomerToken(email: string, password: string): Promise<string | null> {
+    const authHost = 'https://auth.europe-west1.gcp.commercetools.com';
+    const authData = `grant_type=password&username=${email}&password=${password}`;
+    const authUrl = `${authHost}/oauth/${projectKey}/customers/token`;
+    const authHeader = `Basic ${btoa(`${clientId}:${clientSecret}`)}`;
+
+    const response = await fetch(authUrl, {
+        method: 'POST',
+        headers: {
+            Authorization: authHeader,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: authData,
+    });
+    const data = await response.json();
+    if (response.ok) {
+        const customerToken = data.access_token;
+        return customerToken;
+    }
+    return null;
 }

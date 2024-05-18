@@ -1,7 +1,6 @@
-import { checkoutCustomer, loginCustomer } from '../../api/login/login';
+import { checkoutCustomer, getCustomerToken, loginCustomer } from '../../api/login/login';
 import { isValidEmail, isValidPass } from '../../utils/functions/validation-loginpage';
-import UserInfo from '../../utils/interface/userInfo';
-import { PagesID } from '../app';
+import { App, PagesID } from '../app';
 import Page from '../page';
 import loginPage from '../template/loginPage';
 
@@ -94,12 +93,9 @@ export default class LoginPage extends Page {
             if (!infoUser) {
                 this.errorPass();
             } else {
-                const userSave = {
-                    id: (infoUser as UserInfo).customer!.id,
-                    firstName: (infoUser as UserInfo).customer!.firstName,
-                    lastName: (infoUser as UserInfo).customer!.lastName,
-                };
-                localStorage.setItem('user', JSON.stringify(userSave));
+                const customerToken = await getCustomerToken(inputEmail.value, input.value);
+                localStorage.setItem('user', JSON.stringify(customerToken));
+                App.accessToken = customerToken;
                 window.location.hash = PagesID.MAIN;
             }
         }
@@ -116,9 +112,19 @@ export default class LoginPage extends Page {
         }
     }
 
+    private goRegistration() {
+        const goRegistrationButton: HTMLButtonElement | null = document.querySelector('.text-register');
+        if (goRegistrationButton) {
+            goRegistrationButton.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
     public run() {
         this.isValidation();
         this.showPass();
         this.authorizationUser();
+        this.goRegistration();
     }
 }
