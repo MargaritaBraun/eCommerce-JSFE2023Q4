@@ -116,7 +116,7 @@ export default class LoginPage extends Page {
         const goRegistrationButton: HTMLButtonElement | null = document.querySelector('.text-register');
         if (goRegistrationButton) {
             goRegistrationButton.addEventListener('click', () => {
-                window.location.hash = PagesID.MAIN;
+                window.location.hash = PagesID.REGISTRATION;
             });
         }
     }

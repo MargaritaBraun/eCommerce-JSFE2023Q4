@@ -42,7 +42,7 @@ export class App {
             case PagesID.MAIN:
                 return new MainPage(id);
             default:
-                return new LoginPage(id); // TODO будет 404 page
+                return new LoginPage(id);
         }
     }
 
@@ -53,20 +53,27 @@ export class App {
 
     private routingChange(): void {
         window.addEventListener('hashchange', () => {
-            const hash: string = window.location.hash.slice(1);
-            App.renderNewPage(hash);
+            App.renderNewPage(this.getHash());
         });
     }
 
-    private startHash() {
-        window.location.hash = PagesID.LOGIN;
+    private getHash() {
+        let hash = window.location.hash.slice(1);
+        const token = localStorage.getItem('user');
+        if (!hash) {
+            hash = PagesID.LOGIN;
+        }
+        if (token && (hash === PagesID.LOGIN || hash === PagesID.REGISTRATION)) {
+            hash = PagesID.MAIN;
+        }
+        window.location.hash = hash;
+        return hash;
     }
 
     public async run(): Promise<void> {
         await this.saveAccessToken();
-        const hash: string = window.location.hash.slice(1);
+        const hash: string = this.getHash();
         App.renderNewPage(hash);
-        this.startHash();
         this.routingChange();
     }
 }

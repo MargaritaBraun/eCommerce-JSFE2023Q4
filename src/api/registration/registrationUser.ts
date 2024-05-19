@@ -11,7 +11,6 @@ export default async function createCustomer(accessToken: string, projectKey: st
     });
     const customer = await response.json();
     if (response.ok) {
-        console.log('Customer created:', customer);
         return customer;
     }
     return null;

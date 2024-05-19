@@ -68,16 +68,16 @@ export default class RegistrationPage extends Page {
     }
 
     async registrationUser() {
-        // const registrationForm: HTMLFormElement = document.querySelector('.registration') as HTMLFormElement;
+        const registrationForm: HTMLFormElement = document.querySelector('.registration') as HTMLFormElement;
         const inputName: HTMLInputElement = document.querySelector('.name_input') as HTMLInputElement;
         const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
-        // const birthdayInput: HTMLInputElement = document.querySelector('.input_birthday') as HTMLInputElement;
-        // const postalCodeInput: HTMLInputElement = document.querySelector('.input_postal_code') as HTMLInputElement;
-        // const streetInput: HTMLInputElement = document.querySelector('.input_street') as HTMLInputElement;
-        const buttonSubmit: HTMLButtonElement | null = document.querySelector('.button_registration'); // закомиченное будет потом использоваться
+        const buttonSubmit: HTMLButtonElement | null = document.querySelector('.button_registration');
         if (buttonSubmit) {
+            registrationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+            });
             buttonSubmit.addEventListener('click', async () => {
                 const userInfo: CreateUser = {
                     email: emailInput.value,
@@ -89,22 +89,28 @@ export default class RegistrationPage extends Page {
                         key: 'general',
                     },
                 };
-                const responseCreateUser = await createCustomer(App.accessToken!, projectKey, userInfo);
-                if (responseCreateUser) {
-                    const customerToken = await getCustomerToken(emailInput.value, passwordInput.value);
-                    if (customerToken) {
-                        localStorage.setItem('user', JSON.stringify(customerToken));
-                        App.accessToken = customerToken;
-                        window.location.hash = PagesID.MAIN;
-                    }
+                const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
+                if (customer) {
+                    await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
                 } else {
-                    const errorName: HTMLParagraphElement = document.querySelector(
-                        '.login_error'
-                    ) as HTMLParagraphElement;
-                    errorName.innerHTML = 'Такая почта уже используется';
+                    this.showEmailError();
                 }
             });
         }
+    }
+
+    private async saveTokenAfterRegistration(email: string, password: string) {
+        const customerToken = await getCustomerToken(email, password);
+        if (customerToken) {
+            localStorage.setItem('user', JSON.stringify(customerToken));
+            App.accessToken = customerToken;
+            window.location.hash = PagesID.MAIN;
+        }
+    }
+
+    private showEmailError() {
+        const errorName: HTMLParagraphElement = document.querySelector('.login_error') as HTMLParagraphElement;
+        errorName.innerHTML = 'Такая почта уже используется';
     }
 
     public async run() {
@@ -112,3 +118,4 @@ export default class RegistrationPage extends Page {
         await this.registrationUser();
     }
 }
+// отрефакторить
