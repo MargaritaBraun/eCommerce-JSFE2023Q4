@@ -3,10 +3,10 @@ const mainPageTemplate: string = `
   <div class="header-logo">.Apoint</div>
   <div class="burger-nav">
     <ul class="navigation">
-      <li class="category-pg">Категории</li>
-      <li class="discounts-pg">Скидки</li>
-      <li class="about-pg">О нас</li>
-      <li class="basket-pg">Корзина</li>
+      <li class="category-pg"><a class="burger-link" href="#category">Категории</a></li>
+      <li class="discounts-pg"><a class="burger-link" href="#discounts">Скидки</a></li>
+      <li class="about-pg"><a class="burger-link" href="#about">О нас</a></li>
+      <li class="basket-pg"><a class="burger-link" href="#basket">Корзина</a></li>
     </ul>
   </div>
   <div class="btn-header">

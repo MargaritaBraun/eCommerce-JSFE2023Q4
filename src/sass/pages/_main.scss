@@ -31,7 +31,7 @@
     gap: 5%;
 }
 
-.navigation li {
+.navigation a {
     display: flex;
     width: 100%;
     font-size: 2rem;
@@ -108,7 +108,7 @@
 
 /* lines animation */
 
-.navigation li::after {
+.navigation a::after {
     display: block;
     position: absolute;
     width: 0;
@@ -121,7 +121,7 @@
     cursor: pointer;
 }
 
-.navigation li:hover::after,
-.navigation li:focus::after {
+.navigation a:hover::after,
+.navigation a:focus::after {
     width: 100%;
 }
