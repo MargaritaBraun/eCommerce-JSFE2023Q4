@@ -1,15 +1,33 @@
 import getAccessToken from '../api/login/api';
-import LoginPage from './login/login';
-import MainPage from './main/main';
-import RegistrationPage from './registration/registration';
+import LoginPage from './login/loginPage';
+import MainPage from './main/mainPage';
+import RegistrationPage from './registration/registrationPage';
+import ErrorPage from './404/errorPage';
+import CategoryPage from './category/categoryPage';
+import DiscountsPage from './discounts/discountsPage';
+import AboutPage from './about/aboutPage';
+import BasketPage from './basket/basketPage';
 
 export const enum PagesID {
     REGISTRATION = 'registration',
     LOGIN = 'login',
     MAIN = 'main',
+    ERROR = 'error',
+    CATEGORY = 'category',
+    DISCOUNTS = 'discounts',
+    ABOUT = 'about',
+    BASKET = 'basket',
 }
 
-export type Page = LoginPage | RegistrationPage | MainPage;
+export type Page =
+    | LoginPage
+    | RegistrationPage
+    | MainPage
+    | ErrorPage
+    | CategoryPage
+    | DiscountsPage
+    | AboutPage
+    | BasketPage;
 
 export class App {
     static container: HTMLElement = document.body;
@@ -23,7 +41,6 @@ export class App {
     }
 
     // сохранение токена клиента
-
     private async saveAccessToken(): Promise<void> {
         const token = localStorage.getItem('user');
         if (token) {
@@ -41,8 +58,16 @@ export class App {
                 return new RegistrationPage(id);
             case PagesID.MAIN:
                 return new MainPage(id);
+            case PagesID.CATEGORY:
+                return new CategoryPage(id);
+            case PagesID.DISCOUNTS:
+                return new DiscountsPage(id);
+            case PagesID.ABOUT:
+                return new AboutPage(id);
+            case PagesID.BASKET:
+                return new BasketPage(id);
             default:
-                return new LoginPage(id);
+                return new ErrorPage(id);
         }
     }
 

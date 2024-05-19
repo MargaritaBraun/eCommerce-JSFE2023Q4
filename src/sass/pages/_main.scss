@@ -1,0 +1,127 @@
+#main {
+    background-color: $color-light;
+    width: 90svw;
+    height: 100vh;
+    padding: 1% 2%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.header-logo {
+    font-size: 4rem;
+    font-weight: 700;
+    color: $color-primary-light;
+    cursor: default;
+}
+
+.btn-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation {
+    display: flex;
+    gap: 5%;
+}
+
+.navigation a {
+    display: flex;
+    width: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+}
+
+.tagline {
+    font-size: 2rem;
+    color: $color-link;
+    margin-bottom: 1%;
+}
+
+.input-search {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1%;
+}
+
+.main-search {
+    width: 50%;
+    height: 30px;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    padding-left: 1%;
+    border: 1px solid $color-black;
+}
+
+.btn-search {
+    width: 100px;
+    background-color: $color-primary-light;
+    height: 30px;
+    font-size: 1.5rem;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 9%;
+    cursor: pointer;
+}
+
+.header-user-name {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-user-login {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-text;
+}
+
+.btn-user-signup {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-primary-light;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+}
+
+.btn-user-logout {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-primary-light;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+}
+
+/* lines animation */
+
+.navigation a::after {
+    display: block;
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: 28px;
+    height: 2px;
+    background-color: $color-primary-light;
+    content: '';
+    transition: width 0.4s ease-out;
+    cursor: pointer;
+}
+
+.navigation a:hover::after,
+.navigation a:focus::after {
+    width: 100%;
+}
