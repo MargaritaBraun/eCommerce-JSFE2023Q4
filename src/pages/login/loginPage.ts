@@ -3,7 +3,7 @@ import { isValidEmail, isValidPass } from '../../utils/functions/validation-logi
 import UserInfo from '../../utils/interface/userInfo';
 import { PagesID } from '../app';
 import Page from '../page';
-import loginPage from '../template/loginPage';
+import loginPage from '../template/loginPageTemplate';
 
 export default class LoginPage extends Page {
     public render(): HTMLElement {
@@ -47,7 +47,6 @@ export default class LoginPage extends Page {
     }
 
     // действие при нажатии на активную кнопку SUBMIT
-
     private authorizationUser() {
         const btn: HTMLButtonElement | null = document.querySelector('.btn-submit');
         if (btn) {
@@ -60,7 +59,6 @@ export default class LoginPage extends Page {
     }
 
     // проверка на наличие введенного EMAIL
-
     private async getStatusEmail() {
         const inputEmail: HTMLInputElement = document.querySelector('.email-input') as HTMLInputElement;
         const infoUser = await checkoutCustomer();
@@ -70,7 +68,6 @@ export default class LoginPage extends Page {
     }
 
     // действие при отсутствии EMAIL
-
     private async checkEmail() {
         const errorText: HTMLElement | null = document.querySelector('.error-email');
         const errorsBox: HTMLElement | null = document.querySelector('.errorsbox-email');
@@ -85,7 +82,6 @@ export default class LoginPage extends Page {
     }
 
     // действие, если есть EMAIL
-
     private async loginUser() {
         const inputEmail: HTMLInputElement = document.querySelector('.email-input') as HTMLInputElement;
         const input: HTMLInputElement = document.querySelector('.pass-box input.pass-input') as HTMLInputElement;
@@ -106,7 +102,6 @@ export default class LoginPage extends Page {
     }
 
     // действие, если EMAIL есть, но пароль не подходит
-
     private errorPass() {
         const errorText: HTMLElement | null = document.querySelector('.error-pass');
         const errorsBox: HTMLElement | null = document.querySelector('.errorsbox-pass');
@@ -116,9 +111,42 @@ export default class LoginPage extends Page {
         }
     }
 
+    // переход на Регистрацию
+    private switchRegistration() {
+        const btnRegistration: HTMLElement | null = document.querySelector('.text-register span');
+        if (btnRegistration) {
+            btnRegistration.addEventListener('click', () => {
+                window.location.hash = PagesID.REGISTRATION;
+            });
+        }
+    }
+
+    // переход на Главную всем пользователем
+    private switchMain() {
+        const btnMain: HTMLElement | null = document.querySelector('.title-page');
+        if (btnMain) {
+            btnMain.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
+    // переход на Главную авторизированным пользователям
+    private switchMainLoggedIn() {
+        const btnSubmit: HTMLButtonElement | null = document.querySelector('.btn-submit');
+        if (btnSubmit) {
+            btnSubmit.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
     public run() {
         this.isValidation();
         this.showPass();
         this.authorizationUser();
+        this.switchRegistration();
+        this.switchMain();
+        this.switchMainLoggedIn();
     }
 }

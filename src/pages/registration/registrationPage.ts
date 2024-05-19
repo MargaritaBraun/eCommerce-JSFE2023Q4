@@ -1,5 +1,5 @@
 import Page from '../page';
-import registrationPageTemplate from '../template/registrationPage';
+import registrationPageTemplate from '../template/registrationPageTemplate';
 import {
     validationOnInputName,
     validationOnInputBaseName,
