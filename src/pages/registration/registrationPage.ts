@@ -10,6 +10,11 @@ import {
     validationOnInputStreet,
     checkedOnField,
 } from '../../utils/functions/validation-registration';
+import CreateUser from '../../utils/interface/createUser';
+import { App, PagesID } from '../app';
+import { projectKey } from '../../api/constAPI';
+import createCustomer from '../../api/registration/registrationUser';
+import { getCustomerToken } from '../../api/login/login';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
@@ -62,7 +67,73 @@ export default class RegistrationPage extends Page {
         }
     }
 
-    public run() {
+    async registrationUser() {
+        const buttonSubmit: HTMLButtonElement | null = document.querySelector('.button_registration');
+        if (buttonSubmit) {
+            this.preventDefaultForm();
+            this.createUserAndSaveHisToken();
+        }
+    }
+
+    private createUserAndSaveHisToken() {
+        const buttonSubmit: HTMLButtonElement | null = document.querySelector('.button_registration');
+        const inputName: HTMLInputElement = document.querySelector('.name_input') as HTMLInputElement;
+        const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
+        const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
+        const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
+        buttonSubmit!.addEventListener('click', async () => {
+            const userInfo: CreateUser = {
+                email: emailInput.value,
+                password: passwordInput.value,
+                firstName: inputName.value,
+                lastName: basename.value,
+                customerGroup: {
+                    typeId: 'customer-group',
+                    key: 'general',
+                },
+            };
+            const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
+            if (customer) {
+                await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
+            } else {
+                this.showEmailError();
+            }
+        });
+    }
+
+    private preventDefaultForm() {
+        const registrationForm: HTMLFormElement = document.querySelector('.registration') as HTMLFormElement;
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+    }
+
+    private async saveTokenAfterRegistration(email: string, password: string) {
+        const customerToken = await getCustomerToken(email, password);
+        if (customerToken) {
+            localStorage.setItem('user', JSON.stringify(customerToken));
+            App.accessToken = customerToken;
+            window.location.hash = PagesID.MAIN;
+        }
+    }
+
+    private showEmailError() {
+        const errorName: HTMLParagraphElement = document.querySelector('.login_error') as HTMLParagraphElement;
+        errorName.innerHTML = 'Такая почта уже используется';
+    }
+
+    private initMainPageListener() {
+        const logo: HTMLElement | null = document.querySelector('.logo_registration');
+        if (logo) {
+            logo.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
+    public async run() {
         this.validateOnField();
+        await this.registrationUser();
+        this.initMainPageListener();
     }
 }

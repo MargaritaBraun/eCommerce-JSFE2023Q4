@@ -42,7 +42,12 @@ export class App {
 
     // сохранение токена клиента
     private async saveAccessToken(): Promise<void> {
-        App.accessToken = await getAccessToken();
+        const token = localStorage.getItem('user');
+        if (token) {
+            App.accessToken = token;
+        } else {
+            App.accessToken = await getAccessToken();
+        }
     }
 
     private static getPage(id: string): Page {
@@ -73,14 +78,26 @@ export class App {
 
     private routingChange(): void {
         window.addEventListener('hashchange', () => {
-            const hash: string = window.location.hash.slice(1);
-            App.renderNewPage(hash);
+            App.renderNewPage(this.getHash());
         });
+    }
+
+    private getHash() {
+        let hash = window.location.hash.slice(1);
+        const token = localStorage.getItem('user');
+        if (!hash) {
+            hash = PagesID.LOGIN;
+        }
+        if (token && (hash === PagesID.LOGIN || hash === PagesID.REGISTRATION)) {
+            hash = PagesID.MAIN;
+        }
+        window.location.hash = hash;
+        return hash;
     }
 
     public async run(): Promise<void> {
         await this.saveAccessToken();
-        const hash: string = window.location.hash.slice(1);
+        const hash: string = this.getHash();
         App.renderNewPage(hash);
         this.routingChange();
     }
