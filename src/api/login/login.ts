@@ -51,9 +51,5 @@ export async function getCustomerToken(email: string, password: string): Promise
         body: authData,
     });
     const data = await response.json();
-    if (response.ok) {
-        const customerToken = data.access_token;
-        return customerToken;
-    }
-    return null;
+    return response.ok ? data.access_token : null;
 }

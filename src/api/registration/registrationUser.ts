@@ -1,6 +1,10 @@
 import CreateUser from '../../utils/interface/createUser';
 
-export default async function createCustomer(accessToken: string, projectKey: string, customerData: CreateUser) {
+export default async function createCustomer(
+    accessToken: string,
+    projectKey: string,
+    customerData: CreateUser
+): Promise<string | null> {
     const response = await fetch(`https://api.commercetools.com/${projectKey}/customers`, {
         method: 'POST',
         headers: {
@@ -10,8 +14,5 @@ export default async function createCustomer(accessToken: string, projectKey: st
         body: JSON.stringify(customerData),
     });
     const customer = await response.json();
-    if (response.ok) {
-        return customer;
-    }
-    return null;
+    return response.ok ? customer : null;
 }
