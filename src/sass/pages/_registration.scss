@@ -2,7 +2,8 @@
     background-color: $color-light;
     flex-basis: 50%;
     margin: 15rem;
-    border-radius: 10px;
+    border-radius: 3rem;
+    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.58);
 }
 
 .registration {
@@ -20,6 +21,7 @@
     width: 11.4rem;
     height: 3.4rem;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .registration__error {
@@ -53,13 +55,14 @@
 
     &:invalid {
         border: 2px solid $color-error;
-        color: $color-light;
-        background-color: $color-overlay;
+        color: $color-dark;
+        background-color: $color-invalid-body;
     }
+
     &:valid {
         border: 2px solid $color-valid;
         color: $color-primary;
-        background-color: rgb(110, 248, 98);
+        background-color: $color-valid-body;
     }
 }
 

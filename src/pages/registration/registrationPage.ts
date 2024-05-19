@@ -51,6 +51,7 @@ export default class RegistrationPage extends Page {
             const isValidStreet = () => validationOnInputStreet(streetInput);
             streetInput.addEventListener('input', isValidStreet);
             checkedOnField();
+            this.showPass();
             registrationForm.addEventListener('click', () => {
                 if (
                     isValidName() &&
@@ -65,6 +66,20 @@ export default class RegistrationPage extends Page {
                 }
             });
         }
+    }
+
+    private showPass() {
+        const btnShowPass: HTMLInputElement | null = document.querySelector('.show-pass');
+        const input: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
+
+        const toggleType = () => {
+            if (input.type === 'password') {
+                input.type = 'text';
+            } else {
+                input.type = 'password';
+            }
+        };
+        btnShowPass?.addEventListener('click', toggleType);
     }
 
     async registrationUser() {

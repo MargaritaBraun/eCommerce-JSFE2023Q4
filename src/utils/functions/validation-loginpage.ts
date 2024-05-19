@@ -44,11 +44,6 @@ export function isValidPass(inputPass: HTMLInputElement): boolean {
     const specialRegex: RegExp = /[!@#$%^&*-]/;
 
     if (errorText) {
-        if (inputText.length < minSymbol) {
-            (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = `Минимум ${minSymbol} символов`;
-            return false;
-        }
         if (!upperRegex.test(inputText)) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Пароль должен содержать хотя бы одну заглавную букву A-Z';
@@ -75,6 +70,11 @@ export function isValidPass(inputPass: HTMLInputElement): boolean {
         if (inputText !== inputPass.value) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
             (errorText as HTMLElement).textContent = 'Пароль не должен содержать пробелы в начале или в конце';
+            return false;
+        }
+        if (inputText.length < minSymbol) {
+            (errorsBox as HTMLElement).style.visibility = 'visible';
+            (errorText as HTMLElement).textContent = `Минимум ${minSymbol} символов`;
             return false;
         }
     }

@@ -16,6 +16,7 @@ export function validationOnInputName(inputName: HTMLInputElement) {
                 errorName.textContent = 'Минимум 4 символа';
             }
         } else {
+            inputName.classList.add('input_basic:invalid');
             errorName.textContent = 'Первый символ должен быть заглавной буквой';
         }
     } else {

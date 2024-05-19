@@ -22,3 +22,17 @@ body {
 .basic-text {
     @include basic-text($color: #650e70, $style: normal);
 }
+
+.text-register {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4%;
+}
+
+.link_to_pages {
+    color: $color-primary-light;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
