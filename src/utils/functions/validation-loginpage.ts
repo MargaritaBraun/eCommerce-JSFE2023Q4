@@ -23,7 +23,7 @@ export function isValidEmail(inputEmail: HTMLInputElement): boolean {
         }
         if (emailText !== inputEmail.value) {
             (errorsBox as HTMLElement).style.visibility = 'visible';
-            (errorText as HTMLElement).textContent = 'Адрес не должен содержать пробелы в начале и в конце';
+            errorText.textContent = 'Адрес не должен содержать пробелы в начале и в конце';
             return false;
         }
     }

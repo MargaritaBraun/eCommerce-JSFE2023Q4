@@ -1,4 +1,4 @@
-const loginPage: string = `
+const loginPageTemplate: string = `
 <main class="login-page">
   <form class="login-form">
     <label class="title-page">.Apoint</label>
@@ -28,4 +28,4 @@ const loginPage: string = `
 </main>
 `;
 
-export default loginPage;
+export default loginPageTemplate;

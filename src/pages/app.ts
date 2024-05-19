@@ -1,12 +1,12 @@
 import getAccessToken from '../api/login/api';
-import LoginPage from './login/login';
-import MainPage from './main/main';
-import RegistrationPage from './registration/registration';
-import ErrorPage from './404/error';
-import CategoryPage from './category/category';
-import DiscountsPage from './discounts/discounts';
-import AboutPage from './about/about';
-import BasketPage from './basket/basket';
+import LoginPage from './login/loginPage';
+import MainPage from './main/mainPage';
+import RegistrationPage from './registration/registrationPage';
+import ErrorPage from './404/errorPage';
+import CategoryPage from './category/categoryPage';
+import DiscountsPage from './discounts/discountsPage';
+import AboutPage from './about/aboutPage';
+import BasketPage from './basket/basketPage';
 
 export const enum PagesID {
     REGISTRATION = 'registration',

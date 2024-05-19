@@ -1,6 +1,6 @@
 import { PagesID } from '../app';
 import Page from '../page';
-import mainPage from '../template/mainPage';
+import mainPage from '../template/mainPageTemplate';
 
 export default class MainPage extends Page {
     public render(): HTMLElement {

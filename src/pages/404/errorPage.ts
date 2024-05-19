@@ -1,6 +1,6 @@
 import { PagesID } from '../app';
 import Page from '../page';
-import errorPage from '../template/errorPage';
+import errorPage from '../template/errorPageTemplate';
 
 export default class ErrorPage extends Page {
     public render(): HTMLElement {
@@ -9,7 +9,7 @@ export default class ErrorPage extends Page {
     }
 
     // переход на Главную
-    private switchMainfromError() {
+    private switchMainFromError() {
         const btnSwitchMain: HTMLButtonElement | null = document.querySelector('.btn-switch-main');
         if (btnSwitchMain) {
             btnSwitchMain.addEventListener('click', () => {
@@ -19,6 +19,6 @@ export default class ErrorPage extends Page {
     }
 
     public run() {
-        this.switchMainfromError();
+        this.switchMainFromError();
     }
 }

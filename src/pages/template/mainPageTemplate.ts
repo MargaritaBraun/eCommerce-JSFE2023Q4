@@ -1,4 +1,4 @@
-const mainPage = `
+const mainPageTemplate: string = `
 <header class="header">
   <div class="header-logo">.Apoint</div>
   <div class="burger-nav">
@@ -32,4 +32,4 @@ const mainPage = `
 </footer>
 `;
 
-export default mainPage;
+export default mainPageTemplate;

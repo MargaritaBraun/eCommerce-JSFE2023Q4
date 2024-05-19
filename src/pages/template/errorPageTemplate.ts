@@ -1,4 +1,4 @@
-const errorPage = `
+const errorPageTemplate: string = `
 <main class="error-page">
   <section class="left">
     <div class="left-404">404</div>
@@ -13,4 +13,4 @@ const errorPage = `
 </main>
 `;
 
-export default errorPage;
+export default errorPageTemplate;

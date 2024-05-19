@@ -3,7 +3,7 @@ import { isValidEmail, isValidPass } from '../../utils/functions/validation-logi
 import UserInfo from '../../utils/interface/userInfo';
 import { PagesID } from '../app';
 import Page from '../page';
-import loginPage from '../template/loginPage';
+import loginPage from '../template/loginPageTemplate';
 
 export default class LoginPage extends Page {
     public render(): HTMLElement {
