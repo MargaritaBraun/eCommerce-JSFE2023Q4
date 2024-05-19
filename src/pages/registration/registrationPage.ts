@@ -113,9 +113,18 @@ export default class RegistrationPage extends Page {
         errorName.innerHTML = 'Такая почта уже используется';
     }
 
+    private goMainPage() {
+        const logo: HTMLElement | null = document.querySelector('.logo_registration');
+        if (logo) {
+            logo.addEventListener('click', () => {
+                window.location.hash = PagesID.MAIN;
+            });
+        }
+    }
+
     public async run() {
         this.validateOnField();
         await this.registrationUser();
+        this.goMainPage();
     }
 }
-// отрефакторить

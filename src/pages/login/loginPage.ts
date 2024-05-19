@@ -127,22 +127,11 @@ export default class LoginPage extends Page {
         }
     }
 
-    // переход на Главную авторизированным пользователям
-    private switchMainLoggedIn() {
-        const btnSubmit: HTMLButtonElement | null = document.querySelector('.btn-submit');
-        if (btnSubmit) {
-            btnSubmit.addEventListener('click', () => {
-                window.location.hash = PagesID.MAIN;
-            });
-        }
-    }
-
     public run() {
         this.isValidation();
         this.showPass();
         this.authorizationUser();
         this.switchRegistration();
         this.switchMain();
-        this.switchMainLoggedIn();
     }
 }
