@@ -71,6 +71,7 @@
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
 
 .svg_users {
@@ -78,13 +79,15 @@
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
-
+/*
 .svg_email {
     background-image: url('img/icons/mail.svg');
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
 
 .svg_password {
@@ -92,13 +95,15 @@
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
-
+*/
 .svg_calendar {
     background-image: url('img/icons/calendar.svg');
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
 
 .svg_map_pin {
@@ -106,6 +111,7 @@
     display: block;
     width: 2rem;
     height: 2rem;
+    background-size: contain;
 }
 
 .address_block {

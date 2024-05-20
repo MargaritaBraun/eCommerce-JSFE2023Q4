@@ -113,7 +113,7 @@ describe('validationOnInputPassword', () => {
     });
 
     test('should return false and display an error for a password with invalid characters', () => {
-        passwordInput.value = 'Пароль123$%';
+        passwordInput.value = 'Пароль 123$%';
         expect(validationOnInputPassword(passwordInput)).toBe(false);
         expect(errorName.textContent).toBe('Допустимы только символы латиницы, цифры, символы');
     });

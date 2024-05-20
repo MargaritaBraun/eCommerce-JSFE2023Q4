@@ -1,7 +1,7 @@
 const registrationPageTemplate: string = `
       <form class="registration">
         <a href='#main' class='logo_registration'></a>
-        <div class="title-inputs">Регистрация</div>
+        <h1 class="title">Регистрация</h1>
         <label class="label_basic">
         <span class='svg_user'></span>
         <input type="text" class="input_basic name_input" placeholder='Введите имя' pattern="^[А-ЯЁ][а-яё-0-9]{3,}$" required>
@@ -13,12 +13,12 @@ const registrationPageTemplate: string = `
         </label>
         <p class="basename_error registration__error"></p>
         <label class="label_basic">
-        <span class='svg_email'></span>
+        <span class='svg-email'></span>
         <input type="email" class="input_basic input_email" placeholder='Введите электронную почту' required autocomplete="on" pattern=".+(\\.ru|\\.com)$">
         </label>
         <p class="login_error registration__error"></p>
         <label class="label_basic">
-        <span class='svg_password'></span>
+        <span class='svg-lock'></span>
         <input type="password" class="input_basic input_password" placeholder='Введите пароль' required autocomplete="on" pattern="^(?=.*[a-zA-Z]).{8,}$">
         </label>
         <label class="show-pass-text">

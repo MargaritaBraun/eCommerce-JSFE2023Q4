@@ -1,9 +1,9 @@
 @mixin heading-1($color: $color-text, $style: normal) {
     font: {
         family: 'Open Sans', sans-serif;
-        size: 6.4rem;
+        size: 1.5rem;
         style: $style;
-        weight: 800;
+        weight: 500;
     }
 
     line-height: 105%;
@@ -35,7 +35,7 @@
     padding: 0.2rem;
 }
 
-@mixin input-text($color: $color-link, $size: 2rem) {
+@mixin input-text($color: $color-link, $size: 1.5rem) {
     font: {
         family: 'Quicksand', sans-serif;
         size: $size;

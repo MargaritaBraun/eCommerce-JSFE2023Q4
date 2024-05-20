@@ -5,7 +5,7 @@ const loginPageTemplate: string = `
     <a href='#main' class='logo_registration'></a>
     </label>
     <fieldset class="inputs">
-      <div class="title-inputs">Авторизация</div>
+      <h1 class="title">Авторизация</h1>
       <div class="email-box">
         <span class="svg-email"></span>
         <input class="email-input input_basic" placeholder="hello@example.com" type="email" autocomplete="on" pattern=".+(\\.ru|\\.com)$" required>
