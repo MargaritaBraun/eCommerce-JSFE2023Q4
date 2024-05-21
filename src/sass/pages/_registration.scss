@@ -3,7 +3,7 @@
     flex-basis: 50%;
     margin: 15rem;
     border-radius: 3rem;
-    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.58);
+    box-shadow: 10px 10px 25px -4px $color-shadow;
 }
 
 .registration {
@@ -81,23 +81,7 @@
     height: 2rem;
     background-size: contain;
 }
-/*
-.svg_email {
-    background-image: url('img/icons/mail.svg');
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    background-size: contain;
-}
 
-.svg_password {
-    background-image: url('img/icons/lock.svg');
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    background-size: contain;
-}
-*/
 .svg_calendar {
     background-image: url('img/icons/calendar.svg');
     display: block;

@@ -1,4 +1,4 @@
-export function validationOnInputName(inputName: HTMLInputElement) {
+export function validationOnInputName(inputName: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.name_error') as HTMLParagraphElement;
     const patternOnCyrillicAlphabetAndNumbers: RegExp = /^[А-ЯЁа-яё0-9]+$/;
     const patternOnUppercaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
@@ -26,7 +26,7 @@ export function validationOnInputName(inputName: HTMLInputElement) {
     return isValid;
 }
 
-export function validationOnInputBaseName(basename: HTMLInputElement) {
+export function validationOnInputBaseName(basename: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.basename_error') as HTMLParagraphElement;
     const patternOnCyrillicAlphabet: RegExp = /^[А-ЯЁа-яё]+$/;
     const patternOnUppercaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
@@ -53,7 +53,7 @@ export function validationOnInputBaseName(basename: HTMLInputElement) {
     return isValid;
 }
 
-export function validationOnInputLogin(emailInput: HTMLInputElement) {
+export function validationOnInputLogin(emailInput: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.login_error') as HTMLParagraphElement;
     const patternOnEnglishAlphabetAndNumbers: RegExp = /^[A-Za-z-0-9@.]+$/;
     const patternAtSymbol: RegExp = /@/;
@@ -79,50 +79,34 @@ export function validationOnInputLogin(emailInput: HTMLInputElement) {
     return isValid;
 }
 
-export function validationOnInputPassword(passwordInput: HTMLInputElement) {
+export function validationOnInputPassword(passwordInput: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.password_error') as HTMLParagraphElement;
-    const patternOnEnglishAlphabetAndNumbersAndSymbols: RegExp = /^[A-Za-z-0-9!@#$%^&*-.]+$/;
-    const patternOnUppercaseEnglishAlphabet: RegExp = /[A-Z]/;
-    const patternOnLowercaseEnglishAlphabet: RegExp = /[a-z]/;
-    const patternOnNumbers: RegExp = /[0-9]/;
-    const patternOnSpecialSymbols: RegExp = /[!@#$%^&*-.]/;
-    let isValid = false;
+    const minLength = 8;
+    const requirements = [
+        {
+            pattern: /^[A-Za-z-0-9!@#$%^&*-.]+$/,
+            message: 'Допустимы только символы латиницы, цифры, символы',
+        },
+        { pattern: /[A-Z]/, message: 'Необходимо использовать заглавную букву' },
+        { pattern: /[a-z]/, message: 'Необходимо использовать строчную букву' },
+        { pattern: /[0-9]/, message: 'Необходимо использовать цифру' },
+        { pattern: /[!@#$%^&*-.]/, message: 'Необходимо использовать специальный символ' },
+        {
+            pattern: new RegExp(`^.{${minLength},}$`),
+            message: `Необходимо использовать не менее ${minLength} символов`,
+        },
+    ];
 
-    if (patternOnEnglishAlphabetAndNumbersAndSymbols.test(passwordInput.value)) {
-        errorName.textContent = '';
-        if (patternOnUppercaseEnglishAlphabet.test(passwordInput.value)) {
-            errorName.textContent = '';
-            if (patternOnLowercaseEnglishAlphabet.test(passwordInput.value)) {
-                errorName.textContent = '';
-                if (patternOnNumbers.test(passwordInput.value)) {
-                    errorName.textContent = '';
-                    if (patternOnSpecialSymbols.test(passwordInput.value)) {
-                        errorName.textContent = '';
-                        if (passwordInput.value.length > 7) {
-                            errorName.textContent = '';
-                            isValid = true;
-                        } else {
-                            errorName.textContent = 'Необходимо использовать не менее 8 символов';
-                        }
-                    } else {
-                        errorName.textContent = 'Необходимо использовать специальный символ';
-                    }
-                } else {
-                    errorName.textContent = 'Необходимо использовать цифру';
-                }
-            } else {
-                errorName.textContent = 'Необходимо использовать строчную букву';
-            }
-        } else {
-            errorName.textContent = 'Необходимо использовать заглавную букву';
-        }
-    } else {
-        errorName.textContent = 'Допустимы только символы латиницы, цифры, символы';
-    }
+    const isValid = requirements.every(({ pattern, message }) => {
+        const isMatch = pattern.test(passwordInput.value);
+        errorName.textContent = isMatch ? '' : message;
+        return isMatch;
+    });
+
     return isValid;
 }
 
-export function validationOnInputBirthday(birthdayInput: HTMLInputElement) {
+export function validationOnInputBirthday(birthdayInput: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.birthday_error') as HTMLParagraphElement;
     const maxDate: Date = new Date('2010-01-01');
     let isValid = false;
@@ -138,7 +122,7 @@ export function validationOnInputBirthday(birthdayInput: HTMLInputElement) {
     return isValid;
 }
 
-export function validationOnInputPostalCode(postalCodeInput: HTMLInputElement) {
+export function validationOnInputPostalCode(postalCodeInput: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.postal_code_error') as HTMLParagraphElement;
     const expectedPrefix: string = '2460';
     const postalCodeLength: number = 6;
@@ -156,7 +140,7 @@ export function validationOnInputPostalCode(postalCodeInput: HTMLInputElement) {
     return isValid;
 }
 
-export function validationOnInputStreet(streetInput: HTMLInputElement) {
+export function validationOnInputStreet(streetInput: HTMLInputElement): boolean {
     const errorName: HTMLParagraphElement = document.querySelector('.street_error') as HTMLParagraphElement;
     const patternOnCyrillicAlphabet: RegExp = /^[А-ЯЁа-яё]+$/;
     const patternOnUpperCaseCyrillicAlphabet: RegExp = /^[А-ЯЁ]/;
@@ -183,7 +167,7 @@ export function validationOnInputStreet(streetInput: HTMLInputElement) {
     return isValid;
 }
 
-export function checkedOnField() {
+export function checkedOnField(): boolean {
     const registrationblock: HTMLInputElement = document.querySelector('.input_checkbox') as HTMLInputElement;
     const isChecked = registrationblock.checked;
     registrationblock.addEventListener('click', () => {
