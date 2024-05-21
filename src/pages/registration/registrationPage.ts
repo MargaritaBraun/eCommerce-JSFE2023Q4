@@ -52,7 +52,7 @@ export default class RegistrationPage extends Page {
             streetInput.addEventListener('input', isValidStreet);
             checkedOnField();
             this.showPass();
-            registrationForm.addEventListener('click', () => {
+            registrationForm.addEventListener('input', () => {
                 if (
                     isValidName() &&
                     isValidBaseName() &&
@@ -63,6 +63,8 @@ export default class RegistrationPage extends Page {
                     isValidStreet()
                 ) {
                     buttonSubmit.removeAttribute('disabled');
+                } else {
+                    buttonSubmit.setAttribute('disabled', 'true');
                 }
             });
         }
