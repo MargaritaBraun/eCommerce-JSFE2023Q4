@@ -1,4 +1,4 @@
-export default interface CreateUser {
+export interface CreateUser {
     email: string;
     password: string;
     firstName: string;
@@ -7,4 +7,16 @@ export default interface CreateUser {
         typeId: string;
         key: string;
     };
+    shippingAddresses: [number];
+    billingAddresses: [number];
+    addresses: Address[];
+}
+
+export interface Address {
+    streetName: string;
+    streetNumber: string;
+    postalCode: string;
+    apartment: string;
+    city: 'Гомель';
+    country: 'BY';
 }

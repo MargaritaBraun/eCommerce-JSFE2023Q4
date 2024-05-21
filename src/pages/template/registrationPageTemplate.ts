@@ -4,7 +4,7 @@ const registrationPageTemplate: string = `
         <h1 class="title">Регистрация</h1>
         <label class="label_basic">
         <span class='svg_user'></span>
-        <input type="text" class="input_basic name_input" placeholder='Введите имя' pattern="^[А-ЯЁ][а-яё-0-9]{3,}$" required>
+        <input type="text" class="input_basic name_input" placeholder='Введите имя' pattern="^[А-ЯЁ][а-яё]{3,}$" required>
         </label>
         <p class="name_error registration__error"></p>
         <label class="label_basic">

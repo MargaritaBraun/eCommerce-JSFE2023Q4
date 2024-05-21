@@ -10,7 +10,7 @@ import {
     validationOnInputStreet,
     checkedOnField,
 } from '../../utils/functions/validation-registration';
-import CreateUser from '../../utils/interface/createUser';
+import { CreateUser, Address } from '../../utils/interface/createUser';
 import { App, PagesID } from '../app';
 import { projectKey } from '../../api/constAPI';
 import createCustomer from '../../api/registration/registrationUser';
@@ -98,24 +98,89 @@ export default class RegistrationPage extends Page {
         const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
-        buttonSubmit!.addEventListener('click', async () => {
-            const userInfo: CreateUser = {
-                email: emailInput.value,
-                password: passwordInput.value,
-                firstName: inputName.value,
-                lastName: basename.value,
-                customerGroup: {
-                    typeId: 'customer-group',
-                    key: 'general',
-                },
+        let userInfo: CreateUser;
+
+        if (buttonSubmit) {
+            buttonSubmit.addEventListener('click', async () => {
+                const checkbox: HTMLInputElement | null = document.querySelector('.input_checkbox');
+                if (checkbox && checkbox.checked) {
+                    userInfo = {
+                        email: emailInput.value,
+                        password: passwordInput.value,
+                        firstName: inputName.value,
+                        lastName: basename.value,
+                        customerGroup: {
+                            typeId: 'customer-group',
+                            key: 'general',
+                        },
+                        addresses: [this.createBillingAddress()],
+                        shippingAddresses: [0],
+                        billingAddresses: [0],
+                    };
+                } else {
+                    userInfo = {
+                        email: emailInput.value,
+                        password: passwordInput.value,
+                        firstName: inputName.value,
+                        lastName: basename.value,
+                        customerGroup: {
+                            typeId: 'customer-group',
+                            key: 'general',
+                        },
+                        addresses: [this.createBillingAddress(), this.createShippingAddress()],
+                        shippingAddresses: [1],
+                        billingAddresses: [0],
+                    };
+                }
+
+                const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
+                if (customer) {
+                    await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
+                } else {
+                    this.showEmailError();
+                }
+            });
+        }
+    }
+
+    private createBillingAddress(): Address {
+        const billingForm: HTMLElement | null = document.querySelector('.billing_address');
+        let billingAddress: Address | null;
+        if (billingForm) {
+            const postIndex: HTMLInputElement | null = billingForm.querySelector('.input_postal_code');
+            const streetName: HTMLInputElement | null = billingForm.querySelector('.input_street');
+            const streetNumber: HTMLInputElement | null = billingForm.querySelector('.input_num_house');
+            const apartment: HTMLInputElement | null = billingForm.querySelector('.input_apartment');
+            billingAddress = {
+                streetName: streetName!.value,
+                streetNumber: streetNumber!.value,
+                postalCode: postIndex!.value,
+                apartment: apartment!.value,
+                city: 'Гомель',
+                country: 'BY',
             };
-            const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
-            if (customer) {
-                await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
-            } else {
-                this.showEmailError();
-            }
-        });
+        }
+        return billingAddress!;
+    }
+
+    private createShippingAddress(): Address {
+        const shippingForm: HTMLElement | null = document.querySelector('.shipping_address');
+        let shippingAddress: Address | null;
+        if (shippingForm) {
+            const postIndex: HTMLInputElement | null = shippingForm.querySelector('.input_postal_code');
+            const streetName: HTMLInputElement | null = shippingForm.querySelector('.input_street');
+            const streetNumber: HTMLInputElement | null = shippingForm.querySelector('.input_num_house');
+            const apartment: HTMLInputElement | null = shippingForm.querySelector('.input_apartment');
+            shippingAddress = {
+                streetName: streetName!.value,
+                streetNumber: streetNumber!.value,
+                postalCode: postIndex!.value,
+                apartment: apartment!.value,
+                city: 'Гомель',
+                country: 'BY',
+            };
+        }
+        return shippingAddress!;
     }
 
     private preventDefaultForm() {

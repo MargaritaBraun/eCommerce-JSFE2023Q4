@@ -1,4 +1,4 @@
-import CreateUser from '../../utils/interface/createUser';
+import { CreateUser } from '../../utils/interface/createUser';
 
 export default async function createCustomer(
     accessToken: string,
