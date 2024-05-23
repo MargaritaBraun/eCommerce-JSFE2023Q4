@@ -98,40 +98,26 @@ export default class RegistrationPage extends Page {
         const basename: HTMLInputElement = document.querySelector('.input_basename') as HTMLInputElement;
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
-        let userInfo: CreateUser;
+        const checkbox: HTMLInputElement | null = document.querySelector('.input_checkbox');
 
         if (buttonSubmit) {
             buttonSubmit.addEventListener('click', async () => {
-                const checkbox: HTMLInputElement | null = document.querySelector('.input_checkbox');
-                if (checkbox && checkbox.checked) {
-                    userInfo = {
-                        email: emailInput.value,
-                        password: passwordInput.value,
-                        firstName: inputName.value,
-                        lastName: basename.value,
-                        customerGroup: {
-                            typeId: 'customer-group',
-                            key: 'general',
-                        },
-                        addresses: [this.createBillingAddress()],
-                        shippingAddresses: [0],
-                        billingAddresses: [0],
-                    };
-                } else {
-                    userInfo = {
-                        email: emailInput.value,
-                        password: passwordInput.value,
-                        firstName: inputName.value,
-                        lastName: basename.value,
-                        customerGroup: {
-                            typeId: 'customer-group',
-                            key: 'general',
-                        },
-                        addresses: [this.createBillingAddress(), this.createShippingAddress()],
-                        shippingAddresses: [1],
-                        billingAddresses: [0],
-                    };
-                }
+                const userInfo: CreateUser = {
+                    email: emailInput.value,
+                    password: passwordInput.value,
+                    firstName: inputName.value,
+                    lastName: basename.value,
+                    customerGroup: {
+                        typeId: 'customer-group',
+                        key: 'general',
+                    },
+                    addresses:
+                        checkbox && checkbox.checked
+                            ? [this.createBillingAddress()]
+                            : [this.createBillingAddress(), this.createShippingAddress()],
+                    shippingAddresses: checkbox && checkbox.checked ? [1] : [0],
+                    billingAddresses: [0],
+                };
 
                 const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
                 if (customer) {
