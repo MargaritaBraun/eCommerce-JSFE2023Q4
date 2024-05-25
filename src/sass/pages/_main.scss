@@ -17,6 +17,9 @@
     font-weight: 700;
     color: $color-primary-light;
     cursor: default;
+    @include media-narrowing(800px) {
+        font-size: 2.5rem;
+    }
 }
 
 .btn-header {
@@ -29,6 +32,9 @@
 .navigation {
     display: flex;
     gap: 5%;
+    @include media-narrowing(800px) {
+        gap: 1rem;
+    }
 }
 
 .navigation a {
@@ -38,6 +44,9 @@
     cursor: pointer;
     white-space: nowrap;
     position: relative;
+    @include media-narrowing(800px) {
+        font-size: 1.5rem;
+    }
 }
 
 .tagline {

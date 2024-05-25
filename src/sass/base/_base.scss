@@ -3,6 +3,10 @@ html {
     font-family: 'Quicksand', sans-serif;
 
     @include media-tablet {
+        font-size: 9px;
+    }
+
+    @include mobile-big-width {
         font-size: 6px;
     }
 }
@@ -16,9 +20,17 @@ body {
 }
 
 .title {
-    @include heading-1($color: #218888, $style: italic);
+    @include heading-1($color: $color-dark, $style: italic);
+    padding: 1rem 0rem;
 }
 
 .basic-text {
-    @include basic-text($color: #650e70, $style: normal);
+    @include basic-text($color: $color-dark, $style: normal);
+}
+
+.text-register {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4%;
 }
