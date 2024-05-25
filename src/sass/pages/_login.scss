@@ -1,3 +1,125 @@
-.input_login {
-    @include input;
+.login-page {
+    display: flex;
+    background-color: $color-text;
+    width: 300px;
+    align-items: center;
+    flex-direction: column;
+    padding: 3%;
+    border-radius: 3rem;
+    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.58);
+    flex-basis: 50%;
+    margin: 15rem;
+}
+
+.title-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-inputs {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.email-box,
+.pass-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0;
+    width: 200px;
+    gap: 3%;
+}
+
+.email-input,
+.pass-input {
+    width: 100%;
+    height: 25px;
+    padding: 1% 5%;
+    border: 1px solid $color-border;
+    box-shadow: 3px 3px 5px -2px $color-shadow;
+    font-size: 1.2rem;
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: $color-border;
+        outline: none;
+    }
+}
+
+.svg-email {
+    background-image: url(/src/assets/icons/mail.svg);
+    display: block;
+    width: 2.2rem;
+    height: 2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.svg-lock {
+    background-image: url(/src/assets/icons/lock.svg);
+    display: block;
+    width: 2.2rem;
+    height: 2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.error-pass {
+    display: flex;
+    gap: 5px;
+    width: 175px;
+    height: 40px;
+    margin-left: 12%;
+    color: $color-hovered;
+}
+
+.error-email {
+    display: flex;
+    gap: 5px;
+    width: 175px;
+    height: 25px;
+    margin-left: 12%;
+    color: $color-hovered;
+}
+
+.btn-submit {
+    width: 100px;
+    background-color: $color-primary-light;
+    height: 30px;
+    border: 1px solid $color-black;
+    font-size: 1.5rem;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 9%;
+    opacity: 0.5;
+}
+
+.show-pass-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1% 0;
+    font-size: 1.1rem;
+    margin-right: 25%;
+    gap: 3px;
+}
+
+.show-pass {
+    cursor: pointer;
 }

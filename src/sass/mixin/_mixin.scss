@@ -1,9 +1,9 @@
 @mixin heading-1($color: $color-text, $style: normal) {
     font: {
         family: 'Open Sans', sans-serif;
-        size: 6.4rem;
+        size: 1.5rem;
         style: $style;
-        weight: 800;
+        weight: 500;
     }
 
     line-height: 105%;
@@ -25,8 +25,21 @@
 @mixin input-placeholder($color: $color-border, $style: normal) {
     font: {
         family: 'Quicksand', sans-serif;
-        size: 0.9rem;
+        size: 1.2rem;
         style: $style;
+        weight: 400;
+    }
+
+    line-height: 105%;
+    color: $color;
+    padding: 0.2rem;
+}
+
+@mixin input-text($color: $color-link, $size: 1.5rem) {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: $size;
+        style: normal;
         weight: 600;
     }
 
@@ -47,15 +60,16 @@
 }
 
 @mixin input() {
-    width: 19.4rem;
-    height: 2.3rem;
-    border: $color-border 2px solid;
-    border-radius: 0.6rem;
+    width: 21.4rem;
+    height: 3.3rem;
+    border: $color-border 1px solid;
+    box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.75);
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+    @include input-text;
     &::placeholder {
         @include input-placeholder($style: italic);
-        // color: $color-border-input;
-        // font-style: italic;
-        padding-left: 1rem;
     }
 }
 
