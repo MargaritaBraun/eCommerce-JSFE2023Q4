@@ -115,7 +115,7 @@ export default class RegistrationPage extends Page {
                         checkbox && checkbox.checked
                             ? [this.createBillingAddress()]
                             : [this.createBillingAddress(), this.createShippingAddress()],
-                    shippingAddresses: checkbox && checkbox.checked ? [1] : [0],
+                    shippingAddresses: checkbox && checkbox.checked ? [0] : [1],
                     billingAddresses: [0],
                 };
 
