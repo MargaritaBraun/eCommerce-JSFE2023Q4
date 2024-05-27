@@ -1,5 +1,6 @@
-const mainPageTemplate: string = `
+const headerPageTemplate: string = `
 <header class="header">
+<div class="header-up">
   <div class="header-logo">.Apoint</div>
   <div class="burger-nav">
     <ul class="navigation">
@@ -15,21 +16,18 @@ const mainPageTemplate: string = `
     <button class="btn-user-signup">Регистрация</button>
     <button class="btn-user-logout">Выйти</button>
   </div>
-</header>
-<main class="main">
+  </div>
+  <div class="header-down">
   <section class="search-box">
-    <div class="tagline">События в одной точке!</div>
-    <div class="input-search">
-      <input class="main-search" type="text" placeholder="Поиск событий в Гомеле...">
-      <button class="btn-search">Поиск</button>
-    </div>
-  </section>
-  <section class="recommend"></section>
-  <section class="product"></section>
-</main>
-<footer class="footer">
-  <div class="footer-logo"></div>
-</footer>
+  <div class="tagline">События в одной точке!</div>
+  <div class="input-search">
+    <input class="main-search" type="text" placeholder="Поиск событий в Гомеле...">
+    <button class="btn-search">Поиск</button>
+    <button class="btn-filter">Фильтр</button>
+  </div>
+</section>
+  </div>
+</header>
 `;
 
-export default mainPageTemplate;
+export default headerPageTemplate;

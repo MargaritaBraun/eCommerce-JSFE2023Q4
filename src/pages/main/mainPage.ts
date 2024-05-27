@@ -1,7 +1,7 @@
 import getAccessToken from '../../api/login/api';
 import { App, PagesID } from '../app';
 import Page from '../page';
-import mainPage from '../template/mainPageTemplate';
+import mainPage from '../template/headerPageTemplate';
 
 export default class MainPage extends Page {
     public render(): HTMLElement {
