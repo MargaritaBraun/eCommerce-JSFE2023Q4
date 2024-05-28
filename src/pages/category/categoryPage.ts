@@ -1,11 +1,13 @@
 import Page from '../page';
-import categoryPage from '../template/categoryPageTemplate';
+import categoryPageTemplate from '../template/categoryPageTemplate';
 
 export default class CategoryPage extends Page {
     public render(): HTMLElement {
-        this.container.innerHTML = categoryPage;
+        this.container.innerHTML = categoryPageTemplate;
         return this.container;
     }
 
-    public run() {}
+    public run() {
+        this.methodsForAllPages();
+    }
 }

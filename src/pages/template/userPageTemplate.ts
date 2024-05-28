@@ -1,4 +1,4 @@
-const categoryPageTemplate: string = `
+const userPageTemplate: string = `
 <header class="header">
 <div class="header-up">
   <div class="header-logo">.Apoint</div>
@@ -18,20 +18,20 @@ const categoryPageTemplate: string = `
   </div>
   </div>
   <div class="header-down">
-  <section class="search-box">
-  <div class="tagline">События в одной точке!</div>
-  <div class="input-search">
-    <input class="main-search" type="text" placeholder="Поиск событий в Гомеле...">
-    <button class="btn-search">Поиск</button>
-    <button class="btn-filter">Фильтр</button>
-  </div>
-</section>
+    <section class="search-box">
+      <div class="tagline">События в одной точке!</div>
+      <div class="input-search">
+        <input class="main-search" type="text" placeholder="Поиск событий в Гомеле...">
+      <button class="btn-search">Поиск</button>
+      <button class="btn-filter">Фильтр</button>
+      </div>
+    </section>
   </div>
 </header>
 
 <main class="main-box">
   <section class="main-wrap">
-    <h1>Категории</h1>
+    <h1>Страница профиля</h1>
   </section>
 </main>
 
@@ -62,4 +62,5 @@ const categoryPageTemplate: string = `
   </div>
 </footer>
 `;
-export default categoryPageTemplate;
+
+export default userPageTemplate;

@@ -1,17 +1,14 @@
 #main {
     background-color: $color-light;
     width: 90svw;
-    height: 100vh;
-    padding: 1% 2%;
 }
 
 .header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 2%;
     gap: 20px;
+    padding: 10px 20px;
 }
 
 .header-up {
@@ -36,7 +33,7 @@
     font-size: 4rem;
     font-weight: 700;
     color: $color-primary-light;
-    cursor: default;
+    cursor: pointer;
     @include media-narrowing(800px) {
         font-size: 2.5rem;
     }
@@ -44,7 +41,7 @@
 
 .btn-header {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 10px;
 }
@@ -78,6 +75,7 @@
 .input-search {
     display: flex;
     width: 100%;
+    height: 40px;
     justify-content: flex-start;
     gap: 1%;
 }
@@ -118,7 +116,10 @@
 }
 
 .header-user-name {
-    display: none;
+    display: block;
+    background-color: aquamarine;
+    width: 60px;
+    height: 20px;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -147,7 +148,7 @@
     color: $color-text;
     border: none;
     border-radius: 5px;
-    padding: 15%;
+    padding: 5%;
 }
 
 /* lines animation */
@@ -168,4 +169,80 @@
 .navigation a:hover::after,
 .navigation a:focus::after {
     width: 100%;
+}
+
+
+/* стили для блока MAIN */
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+.main-wrap {
+    display: flex;
+    width: 100%;
+    background-color:$color-background;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.main-wrap h1 {
+    align-items: center;
+    font-size: 3rem;
+}
+
+/* стили для блока FOOTER */
+
+.footer {
+    display: flex;
+    height: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-primary-light;
+}
+
+.nav-footer li {
+    margin-bottom: 5%;
+}
+
+.footer-link {
+    font-size: 1.8rem;
+    color: $color-text;
+}
+
+.left-footer {
+    width: 170px;
+}
+
+.middle-footer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.middle-footer label {
+    color: $color-text;
+    font-size: 1.5rem;
+}
+
+.right-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-footer {
+    color: $color-text;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.text-footer {
+    color: $color-additional;
+    font-size: 1.5rem;
 }
