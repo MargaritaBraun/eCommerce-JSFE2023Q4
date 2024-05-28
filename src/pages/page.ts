@@ -17,15 +17,6 @@ abstract class Page {
         this.methodsForAllPages();
     }
 
-    private switchLoginPage() {
-        const btnSwitchLogin: HTMLButtonElement | null = document.querySelector('.btn-user-login');
-        if (btnSwitchLogin) {
-            btnSwitchLogin.addEventListener('click', () => {
-                window.location.hash = PagesID.LOGIN;
-            });
-        }
-    }
-
     private hiddenLoginAndLogoutButton() {
         const token = localStorage.getItem('user');
         const btnLogin: HTMLElement | null = document.querySelector('.btn-user-login');
@@ -59,43 +50,9 @@ abstract class Page {
         }
     }
 
-    // переход на RegistrationPage
-    private switchRegistrationPage() {
-        const btnSwitchReg: HTMLButtonElement | null = document.querySelector('.btn-user-signup');
-        if (btnSwitchReg) {
-            btnSwitchReg.addEventListener('click', () => {
-                window.location.hash = PagesID.REGISTRATION;
-            });
-        }
-    }
-
-    // переход на Main по клику на логотип
-    private switchMainFromLogo() {
-        const btnMain: HTMLElement | null = document.querySelector('.header-logo');
-        if (btnMain) {
-            btnMain.addEventListener('click', () => {
-                window.location.hash = PagesID.MAIN;
-            });
-        }
-    }
-
-    // переход на страницу Пользователя по клику на его имя
-    private switchUserPage() {
-        const btnMain: HTMLElement | null = document.querySelector('.header-user-name');
-        if (btnMain) {
-            btnMain.addEventListener('click', () => {
-                window.location.hash = PagesID.USER;
-            });
-        }
-    }
-
     public methodsForAllPages() {
-        this.switchLoginPage();
-        this.switchRegistrationPage();
         this.switchLoginPageAuthorized();
         this.hiddenLoginAndLogoutButton();
-        this.switchMainFromLogo();
-        this.switchUserPage();
     }
 }
 
