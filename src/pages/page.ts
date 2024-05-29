@@ -1,5 +1,7 @@
 import getAccessToken from '../api/login/api';
 import { App, PagesID } from './app';
+import footerTemplate from './template/footerTemplate';
+import headerTemplate from './template/headerTemplate';
 
 abstract class Page {
     protected container: HTMLElement;
@@ -14,10 +16,28 @@ abstract class Page {
     }
 
     public run(): void {
-        this.methodsForAllPages();
+        // this.functionalityFromPage();
     }
 
-    private hiddenLoginAndLogoutButton() {
+    // protected functionalityFromPage(): void {
+    //     this.switchLoginPageAuthorized();
+    //     this.hiddenLoginAndLogoutButton();
+    // }
+
+    // метод создания хедера и футера
+    protected createHeaderFooter(): void {
+        const header: HTMLElement = document.createElement('header');
+        const footer: HTMLElement = document.createElement('footer');
+        header.innerHTML = headerTemplate;
+        footer.innerHTML = footerTemplate;
+        this.container.prepend(header);
+        this.container.append(footer);
+
+        this.switchLoginPageAuthorized();
+        this.hiddenLoginAndLogoutButton();
+    }
+
+    protected hiddenLoginAndLogoutButton() {
         const token = localStorage.getItem('user');
         const btnLogin: HTMLElement | null = document.querySelector('.btn-user-login');
         const btnUserName: HTMLElement | null = document.querySelector('.header-user-name');
@@ -39,7 +59,7 @@ abstract class Page {
     }
 
     // переход на LoginPage (выход из аккаунта авторизированных пользователей)
-    private async switchLoginPageAuthorized() {
+    protected async switchLoginPageAuthorized() {
         const btnSwitchLogin: HTMLButtonElement | null = document.querySelector('.btn-user-logout');
         if (btnSwitchLogin) {
             btnSwitchLogin.addEventListener('click', async () => {
@@ -48,11 +68,6 @@ abstract class Page {
                 App.accessToken = await getAccessToken();
             });
         }
-    }
-
-    public methodsForAllPages() {
-        this.switchLoginPageAuthorized();
-        this.hiddenLoginAndLogoutButton();
     }
 }
 
