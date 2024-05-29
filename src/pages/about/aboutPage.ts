@@ -9,7 +9,5 @@ export default class AboutPage extends Page {
         return this.container;
     }
 
-    public run() {
-        super.run();
-    }
+    public run() {}
 }

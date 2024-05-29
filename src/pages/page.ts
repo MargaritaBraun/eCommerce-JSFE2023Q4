@@ -15,14 +15,7 @@ abstract class Page {
         return this.container;
     }
 
-    public run(): void {
-        // this.functionalityFromPage();
-    }
-
-    // protected functionalityFromPage(): void {
-    //     this.switchLoginPageAuthorized();
-    //     this.hiddenLoginAndLogoutButton();
-    // }
+    public run(): void {}
 
     // метод создания хедера и футера
     protected createHeaderFooter(): void {
@@ -39,10 +32,10 @@ abstract class Page {
 
     protected hiddenLoginAndLogoutButton() {
         const token = localStorage.getItem('user');
-        const btnLogin: HTMLElement | null = document.querySelector('.btn-user-login');
-        const btnUserName: HTMLElement | null = document.querySelector('.header-user-name');
-        const btnRegistration: HTMLElement | null = document.querySelector('.btn-user-signup');
-        const btnLogout: HTMLElement | null = document.querySelector('.btn-user-logout');
+        const btnLogin: HTMLElement | null = this.container.querySelector('.btn-user-login');
+        const btnUserName: HTMLElement | null = this.container.querySelector('.header-user-name');
+        const btnRegistration: HTMLElement | null = this.container.querySelector('.btn-user-signup');
+        const btnLogout: HTMLElement | null = this.container.querySelector('.btn-user-logout');
         if (btnLogin && btnRegistration && btnLogout && btnUserName) {
             if (token) {
                 btnLogin.style.display = 'none';
@@ -60,7 +53,7 @@ abstract class Page {
 
     // переход на LoginPage (выход из аккаунта авторизированных пользователей)
     protected async switchLoginPageAuthorized() {
-        const btnSwitchLogin: HTMLButtonElement | null = document.querySelector('.btn-user-logout');
+        const btnSwitchLogin: HTMLButtonElement | null = this.container.querySelector('.btn-user-logout');
         if (btnSwitchLogin) {
             btnSwitchLogin.addEventListener('click', async () => {
                 window.location.hash = PagesID.LOGIN;

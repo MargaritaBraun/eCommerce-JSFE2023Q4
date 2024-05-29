@@ -9,7 +9,5 @@ export default class MainPage extends Page {
         return this.container;
     }
 
-    public run() {
-        // this.functionalityFromPage();
-    }
+    public run() {}
 }
