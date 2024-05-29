@@ -45,7 +45,7 @@ export class App {
 
     // сохранение токена клиента
     private async saveAccessToken(): Promise<void> {
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         if (token) {
             App.accessToken = token;
         } else {
@@ -89,7 +89,7 @@ export class App {
 
     private getHash() {
         let hash = window.location.hash.slice(1);
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         if (!hash) {
             hash = PagesID.LOGIN;
         }

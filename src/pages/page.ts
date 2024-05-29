@@ -1,4 +1,5 @@
 import getAccessToken from '../api/login/api';
+import UserInfo from '../utils/interface/userInfo';
 import { App, PagesID } from './app';
 import footerTemplate from './template/footerTemplate';
 import headerTemplate from './template/headerTemplate';
@@ -28,10 +29,11 @@ abstract class Page {
 
         this.switchLoginPageAuthorized();
         this.hiddenLoginAndLogoutButton();
+        this.getNameUser();
     }
 
     protected hiddenLoginAndLogoutButton() {
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         const btnLogin: HTMLElement | null = this.container.querySelector('.btn-user-login');
         const btnUserName: HTMLElement | null = this.container.querySelector('.header-user-name');
         const btnRegistration: HTMLElement | null = this.container.querySelector('.btn-user-signup');
@@ -57,10 +59,27 @@ abstract class Page {
         if (btnSwitchLogin) {
             btnSwitchLogin.addEventListener('click', async () => {
                 window.location.hash = PagesID.LOGIN;
+                localStorage.removeItem('token');
                 localStorage.removeItem('user');
                 App.accessToken = await getAccessToken();
             });
         }
+    }
+
+    protected getNameUser() {
+        let user: UserInfo | null = null;
+        window.addEventListener('hashchange', () => {
+            const userString = localStorage.getItem('user');
+            const userLink: HTMLElement | null = document.querySelector('.header-user-name');
+            if (userString) {
+                user = JSON.parse(userString) as UserInfo;
+                if (user.customer) {
+                    userLink!.innerHTML = `${user.customer?.firstName} ${user.customer?.lastName}`;
+                } else {
+                    userLink!.innerHTML = `${user.firstName} ${user.lastName}`;
+                }
+            }
+        });
     }
 }
 
