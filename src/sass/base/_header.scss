@@ -1,0 +1,169 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: $color-light;
+    width: 90svw;
+}
+
+.header-up {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-down {
+    display: flex;
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.header-logo {
+    font-size: 4rem;
+    font-weight: 700;
+    color: $color-primary-light;
+    cursor: pointer;
+    @include media-narrowing(800px) {
+        font-size: 2.5rem;
+    }
+}
+
+.btn-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation {
+    display: flex;
+    gap: 5%;
+    @include media-narrowing(800px) {
+        gap: 1rem;
+    }
+}
+
+.navigation a {
+    display: flex;
+    width: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    @include media-narrowing(800px) {
+        font-size: 1.5rem;
+    }
+}
+
+.tagline {
+    font-size: 2rem;
+    color: $color-link;
+    margin-bottom: 1%;
+}
+
+.input-search {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    justify-content: flex-start;
+    gap: 1%;
+}
+
+.main-search {
+    width: 100%;
+    height: 30px;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    padding-left: 1%;
+    border: 1px solid $color-black;
+    flex-shrink: 1;
+}
+
+.btn-search {
+    width: 100px;
+    background-color: $color-primary-light;
+    height: 30px;
+    font-size: 1.5rem;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 9%;
+    cursor: pointer;
+}
+
+.btn-filter {
+    width: 100px;
+    background-color: $color-link;
+    height: 30px;
+    font-size: 1.5rem;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 9%;
+    cursor: pointer;
+    padding: 1%;
+}
+
+.header-user-name {
+    display: block;
+    background-color: aquamarine;
+    width: 60px;
+    height: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-user-login {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-text;
+}
+
+.btn-user-signup {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-primary-light;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+}
+
+.btn-user-logout {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: $color-primary-light;
+    color: $color-text;
+    border: none;
+    border-radius: 5px;
+    padding: 5%;
+}
+
+/* lines animation */
+
+.navigation a::after {
+    display: block;
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: 28px;
+    height: 2px;
+    background-color: $color-primary-light;
+    content: '';
+    transition: width 0.4s ease-out;
+    cursor: pointer;
+}
+
+.navigation a:hover::after,
+.navigation a:focus::after {
+    width: 100%;
+}

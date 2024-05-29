@@ -4,7 +4,7 @@ const errorPageTemplate: string = `
     <div class="left-404">404</div>
     <div class="left-title">Oops! Такой страницы нет.</div>
     <div class="left-summary">Но есть много других полезных страниц</div>
-    <button class="btn-switch-main">Вернуться на главную</button>
+    <a href="#main" class="btn-switch-main">Вернуться на главную</a>
   </section>
   <section class="right">
     <div class="right-logo"></div>

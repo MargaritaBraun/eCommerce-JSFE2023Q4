@@ -46,6 +46,9 @@
 }
 
 .btn-switch-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 190px;
     background-color: $color-primary-light;
     height: 30px;
