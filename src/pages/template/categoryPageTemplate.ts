@@ -1,7 +1,7 @@
 const categoryPageTemplate: string = `
 <main class="main-box">
   <section class="main-wrap">
-    <h1>Категории</h1>
+    <h1 class="main-title">Категории</h1>
   </section>
 </main>
 `;

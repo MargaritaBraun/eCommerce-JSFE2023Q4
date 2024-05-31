@@ -1,21 +1,51 @@
-/* стили для блока CATEGORY */
+.title_checklist {
+    @include heading-2($color: $color-dark);
+    padding: 1rem 0;
+    cursor: pointer;
 
-.main-box {
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.title_categories {
+    @include heading-2($color: $color-dark);
+    padding: 1rem 0;
+}
+
+.reverse_button {
+  @include button-basic($color-bg: $color-light);
+}
+
+.categories_basic {
     display: flex;
     flex-direction: column;
-    height: 200px;
+    gap: 1rem;
 }
 
-.main-wrap {
+.categories_block {
     display: flex;
-    width: 100%;
-    background-color: $color-background;
+    gap: 0.8rem;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+    justify-content: space-between;
 }
 
-.main-wrap h1 {
+.products_container {
+    width: 22.5%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    border-radius: 4rem;
+
+    &:hover {
+        background-color: yellow;
+    }
+}
+
+.img_cards_view {
+    display: block;
+    width: 120px;
+    height: 180px;
 }

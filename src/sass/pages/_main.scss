@@ -3,19 +3,20 @@
 .main-box {
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 70vh;
 }
 
 .main-wrap {
     display: flex;
-    width: 100%;
-    background-color: $color-background;
+    flex-direction: column;
+    background-color: $color-light;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-grow: 1;
+    border: solid 2rem $color-background;
 }
 
-.main-wrap h1 {
+.main-title {
     align-items: center;
     font-size: 3rem;
 }
