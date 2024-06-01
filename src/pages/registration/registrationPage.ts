@@ -122,6 +122,7 @@ export default class RegistrationPage extends Page {
                 const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
                 if (customer) {
                     await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
+                    localStorage.setItem('user', JSON.stringify(userInfo));
                 } else {
                     this.showEmailError();
                 }
@@ -179,7 +180,7 @@ export default class RegistrationPage extends Page {
     private async saveTokenAfterRegistration(email: string, password: string) {
         const customerToken = await getCustomerToken(email, password);
         if (customerToken) {
-            localStorage.setItem('user', JSON.stringify(customerToken));
+            localStorage.setItem('token', JSON.stringify(customerToken));
             App.accessToken = customerToken;
             window.location.hash = PagesID.MAIN;
         }
