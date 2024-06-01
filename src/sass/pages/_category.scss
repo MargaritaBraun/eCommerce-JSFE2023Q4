@@ -9,12 +9,25 @@
 }
 
 .title_categories {
-    @include heading-2($color: $color-dark);
+    @include heading-2($color: $color-dark, $size: 2.1rem);
     padding: 1rem 0;
 }
 
-.reverse_button {
+.reverse_link {
     @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block_for_selected_category {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.nav_categories {
+    display: flex;
+    gap: 4rem;
 }
 
 .categories_basic {

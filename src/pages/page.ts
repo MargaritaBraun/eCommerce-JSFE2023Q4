@@ -76,7 +76,7 @@ abstract class Page {
                 if (user.customer) {
                     userLink!.innerHTML = `${user.customer?.firstName} ${user.customer?.lastName}`;
                 } else {
-                    userLink!.innerHTML = `${user.firstName} ${user.lastName}`;
+                    userLink!.innerHTML = `${user.firstName}`;
                 }
             }
         });

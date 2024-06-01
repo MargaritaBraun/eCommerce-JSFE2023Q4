@@ -1,1 +1,248 @@
-// стили для user
+/* стили для блока USER */
+
+.amain-box {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-background;
+    align-items: center;
+    justify-content: center;
+}
+
+.amain-wrap {
+    display: flex;
+    width: 97%;
+    padding: 20px;
+    margin: 20px;
+    background-color: $color-light;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.amain-wrap h1 {
+    align-items: center;
+    font-size: 3rem;
+}
+
+.atitle {
+    margin-bottom: 20px;
+}
+
+.auserlogo {
+    background-image: url('img/user.png');
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.aregistration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aregistration__error {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 1.2rem;
+        style: normal;
+        weight: 400;
+    }
+
+    line-height: 105%;
+    color: $color-error;
+}
+
+.alabel_basic {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.ainput_basic {
+    @include input;
+
+    &:focus {
+        background-color: #ff900893;
+        color: $color-primary;
+        border-color: $color-primary;
+        outline: 0;
+    }
+
+    &:invalid {
+        border: 2px solid $color-error;
+        color: $color-dark;
+        background-color: $color-invalid-body;
+    }
+
+    &:valid {
+        border: 2px solid $color-valid;
+        color: $color-primary;
+        background-color: $color-valid-body;
+    }
+}
+
+.asvg_calendar {
+    background-image: url('img/icons/calendar.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background-size: contain;
+}
+
+.asvg_map_pin {
+    background-image: url('img/icons/map-pin.svg');
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background-size: contain;
+}
+
+.aaddress_block {
+    border: $color-border 2px solid;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 20px;
+}
+
+.aaddress_span {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 1rem;
+        style: normal;
+        weight: 600;
+    }
+
+    line-height: 105%;
+    color: $color-primary;
+}
+
+.acheckbox_span {
+    @include input-text($size: 1.5rem);
+}
+
+.aselect_block {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.aselect_basic {
+    width: 10.5rem;
+    height: 3rem;
+    @include input-text($size: 1.5rem);
+    border: $color-border 2px solid;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    &:focus {
+        border-color: $color-primary;
+        outline: 0;
+    }
+
+    option {
+        @include input-text($size: 1.5rem);
+        background-color: hsla(33, 100%, 52%, 0.576);
+        color: $color-primary;
+    }
+}
+
+.aaddress_title {
+    font: {
+        family: 'Quicksand', sans-serif;
+        size: 2rem;
+        style: normal;
+        weight: 500;
+    }
+
+    line-height: 105%;
+    color: $color-primary;
+    text-align: center;
+    border-bottom: 1px solid $color-dark;
+    width: 20rem;
+    display: none;
+}
+
+.abutton_registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    background-color: $color-primary-light;
+    height: 30px;
+    font-size: 1.5rem;
+    color: $color-text;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-additional;
+        color: $color-light;
+    }
+
+    &:disabled {
+        background-color: darkgrey;
+        cursor: default;
+    }
+}
+
+.ashipping_address {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.abilling_address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.alink_to_loginPages {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    color: $color-link;
+    font-size: 1.9rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+
+    &:hover {
+        background-color: $color-additional;
+        color: $color-light;
+    }
+}
+
+.abasic_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 1.2rem;
+}
+
+.ashow-pass-text {
+    display: flex;
+    gap: 0.3rem;
+    margin-right: 17rem;
+}
+
+.abasic_box button:hover {
+    cursor: pointer;
+    color: $color-primary-light;
+}

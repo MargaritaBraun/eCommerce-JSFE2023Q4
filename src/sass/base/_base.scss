@@ -34,3 +34,27 @@ body {
     font-size: 1.1rem;
     margin-bottom: 4%;
 }
+
+/* стилизация глобального контейнера страницы */
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.main-wrap {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-light;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    border: solid 2rem $color-background;
+    flex-basis: 80%;
+}
+
+.main-title {
+    align-items: center;
+    font-size: 3rem;
+}
