@@ -1,7 +1,7 @@
 const mainPageTemplate: string = `
-<main class="main-box">
-  <section class="main-wrap">
-    <h1>Главная страница</h1>
+<main class="main-page-box">
+  <section class="main-page-wrap">
+    <h1>Погрузитесь в мир культуры и развлечения в Гомеле!</h1>
   </section>
 </main>
 `;

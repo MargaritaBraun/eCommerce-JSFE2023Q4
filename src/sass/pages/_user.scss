@@ -241,3 +241,8 @@
     gap: 0.3rem;
     margin-right: 17rem;
 }
+
+.abasic_box button:hover {
+    cursor: pointer;
+    color: $color-primary-light;
+}
