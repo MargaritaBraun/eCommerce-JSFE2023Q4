@@ -14,7 +14,7 @@
 }
 
 .reverse_button {
-  @include button-basic($color-bg: $color-light);
+    @include button-basic($color-bg: $color-light);
 }
 
 .categories_basic {
