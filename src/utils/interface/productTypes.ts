@@ -8,18 +8,53 @@ export interface RequestDatasetProducts {
     results: RequestOnProducts[];
 }
 
-interface LocationData {
-    [language: string]: string;
+export interface DateShowAttribute {
+    name: 'date-show';
+    // value: Date[];
+    value: string[];
 }
 
+export interface LocationAttribute {
+    name: 'data-location';
+    value: { ru: string }[];
+}
+
+export interface AddressAttribute {
+    name: 'data-address';
+    value: string[];
+}
+
+export type Attribute = DateShowAttribute | LocationAttribute | AddressAttribute;
+/*
+export type Attribute = [
+    {
+        name: 'date-show';
+        // value: Date[];
+        value: string[];
+    },
+    {
+        name: 'data-location';
+        value: { ru: string }[];
+    },
+    {
+        name: 'data-address';
+        value: string[];
+    },
+];
+*/
+export interface AttributesData {
+    attributes: Attribute[];
+}
+
+export interface LocationData {
+    [language: string]: string;
+}
+/*
 interface Attribute {
     name: 'date-show' | 'data-location' | 'data-address';
     value: (string | LocationData)[];
 }
-
-export interface AttributesData {
-    attributes: Attribute[];
-}
+*/
 
 export interface CategoryOrderHints {
     [categoryId: string]: `0.${string}[1-9]` | undefined;
