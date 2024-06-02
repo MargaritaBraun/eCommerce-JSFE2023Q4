@@ -114,11 +114,14 @@
 
 .header-user-name {
     display: block;
-    background-color: aquamarine;
-    width: 60px;
     height: 20px;
     font-size: 1.5rem;
     cursor: pointer;
+    color: $color-black;
+}
+
+.header-user-name:hover {
+    color: $color-primary-light;
 }
 
 .btn-user-login {

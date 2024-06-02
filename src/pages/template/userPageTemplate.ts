@@ -1,112 +1,114 @@
 const userPageTemplate: string = `
-<main class="main-box">
-  <section class="main-wrap">
-      <form class="registration">
-        <a href='#main' class='logo_registration'></a>
-        <h1 class="title">Данные покупателя</h1>
-        <label class="label_basic">
-        <span class='svg_user'></span>
-        <input type="text" class="input_basic name_input" placeholder='Введите имя' pattern="^[А-ЯЁ][а-яё]{3,}$" required disabled>
-        <button>Сменить имя</button>
-        </label>
-        <p class="name_error registration__error"></p>
-        <label class="label_basic">
-        <span class='svg_users'></span>
-        <input type="text" class="input_basic input_basename" placeholder='Введите фамилию' minlength='5' pattern="[А-ЯЁа-яё]+" required disabled>
-        <button>Сменить фамилию</button>
-        </label>
-        <p class="basename_error registration__error"></p>
-        <label class="label_basic">
-        <span class='svg-email'></span>
-        <input type="email" class="input_basic input_email" placeholder='Введите электронную почту' required autocomplete="on" pattern=".+(\\.ru|\\.com)$" disabled>
-        <button>Сменить email</button>
-        </label>
-        <p class="login_error registration__error"></p>
-        <label class="label_basic">
-        <span class='svg-lock'></span>
-        <input type="password" class="input_basic input_password" placeholder='Введите пароль' required autocomplete="on" pattern="^(?=.*[a-zA-Z]).{8,}$" disabled>
-        <button>Сменить пароль</button>
-        </label>
-        <label class="show-pass-text">
-        <input type="checkbox" class="show-pass" >Показать пароль
-        </label>
-        <p class="password_error registration__error"></p>
-        <label class="label_basic">
-        <span class='svg_calendar'></span>
-        <input type="date" class="input_basic input_birthday" max="2010-01-01" value="2024-06-04" disabled>
-        <button>Сменить дату рождения</button>
-        </label>
-        <p class="birthday_error registration__error">Введите дату рождения</p>
-        <div class="address_block">
-        <button>Сменить Адрес</button>
-        <label class="label_basic">
-        <span class='checkbox_span'>Использовать адрес по умолчанию</span>
-        <input type="checkbox" class="input_checkbox"  disabled>
-        </label>
-        <div class="select_block">
-        <span class='svg_map_pin'></span>
-        <select class="select_basic" >
-          <option value="Беларусь" selected>Беларусь</option>
-        </select>
-        <select class="select_basic">
-          <option value="Гомель" selected>Гомель</option>
-        </select>
-        </div>
-        <div class='billing_address'>
+<main class="amain-box">
+  <section class="amain-wrap">
+    <form class="aregistration">
 
-        <p class="address_title">Адрес для счёта</p>
-        <label class="label_basic">
-        <span class='address_span'>Индекс</span>
-        <input type="number" class="input_postal_code input_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051" disabled>
+      <h1 class="atitle">Данные покупателя</h1>
+
+      <span class="auserlogo"></span>
+
+
+      <div class="abasic_box">
+        <label class="alabel_basic">
+          <input type="text" class="ainput_basic aname_input" placeholder='Имя' pattern="^[А-ЯЁ][а-яё]{3,}$" required disabled>
+          <button>Изменить</button>
         </label>
-        <p class="postal_code_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Улица</span>
-        <input type="text" class="input_basic input_street" placeholder='Введите улицу' disabled>
+        <p class="aname_error aregistration__error"></p>
+        <label class="alabel_basic">
+          <input type="text" class="ainput_basic ainput_basename" placeholder='Фамилия' minlength='5' pattern="[А-ЯЁа-яё]+" required disabled>
+          <button>Изменить</button>
         </label>
-        <p class="street_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Дом</span>
-        <input type="text" class="input_num_house input_basic" placeholder='Введите номер дома' disabled>
+        <p class="abasename_error registration__error"></p>
+        <label class="alabel_basic">
+          <input type="email" class="ainput_basic ainput_email" placeholder='Электронная почта' required autocomplete="on" pattern=".+(\\.ru|\\.com)$" disabled>
+          <button>Изменить</button>
         </label>
-        <p class="num_house_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Квартира</span>
-        <input type="text" class="input_apartment input_basic" placeholder='Введите номер квартиры' disabled>
+        <p class="alogin_error aregistration__error"></p>
+        <label class="alabel_basic">
+          <input type="password" class="ainput_basic ainput_password" placeholder='Пароль' required autocomplete="on" pattern="^(?=.*[a-zA-Z]).{8,}$" disabled>
+          <button>Изменить</button>
         </label>
-        <p class="apartment_error registration__error"></p>
-        </div>
-        <div class="shipping_address">
-        <p class="address_title">Адрес доставки</p>
-        <label class="label_basic">
-        <span class='address_span'>Индекс</span>
-        <input type="number" class="input_postal_code input_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051" disabled>
+        <label class="ashow-pass-text">
+          <input type="checkbox" class="ashow-pass">Показать пароль
         </label>
-        <p class="postal_code_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Улица</span>
-        <input type="text" class="input_basic input_street" placeholder='Введите улицу' disabled>
-        </label >
-        <p class="street_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Дом</span>
-        <input type="text" class="input_num_house input_basic" placeholder='Введите номер дома' disabled>
+        <p class="apassword_error aregistration__error"></p>
+        <label class="alabel_basic">
+          <input type="date" class="ainput_basic ainput_birthday" max="2010-01-01" value="гггг-мм-дд" disabled>
+          <button>Изменить</button>
         </label>
-        <p class="num_house_error registration__error"></p>
-        <label class="label_basic">
-        <span class='address_span'>Квартира</span>
-        <input type="text" class="input_apartment input_basic" placeholder='Введите номер квартиры' disabled>
+        <p class="abirthday_error aregistration__error">Введите дату рождения</p>
+      </div>
+
+
+      <div class="aaddress_block">
+        <button>Изменить Адрес</button>
+        <label class="alabel_basic">
+          <span class='acheckbox_span'>Использовать адрес по умолчанию</span>
+          <input type="checkbox" class="ainput_checkbox">
         </label>
-        <p class="apartment_error registration__error"></p>
+
+        <div class="aselect_block">
+          <span class='asvg_map_pin'></span>
+          <select class="aselect_basic" disabled>
+            <option value="Беларусь" selected>Беларусь</option>
+          </select>
+          <select class="aselect_basic" disabled>
+            <option value="Гомель" selected>Гомель</option>
+          </select>
         </div>
 
+        <div class='abilling_address'>
+          <p class="aaddress_title">Адрес для счёта</p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Индекс</span>
+            <input type="number" class="ainput_postal_code ainput_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051" disabled>
+          </label>
+          <p class="apostal_code_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Улица</span>
+            <input type="text" class="ainput_basic ainput_street" placeholder='Введите улицу' disabled>
+          </label>
+          <p class="astreet_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Дом</span>
+            <input type="text" class="ainput_num_house ainput_basic" placeholder='Введите номер дома' disabled>
+          </label>
+          <p class="anum_house_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Квартира</span>
+            <input type="text" class="ainput_apartment ainput_basic" placeholder='Введите номер квартиры' disabled>
+          </label>
+          <p class="aapartment_error aregistration__error"></p>
         </div>
-        <button class='button_registration'>Согласие на изменение</button>
+
+        <div class="ashipping_address">
+          <p class="aaddress_title">Адрес доставки</p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Индекс</span>
+            <input type="number" class="ainput_postal_code ainput_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051">
+          </label>
+          <p class="apostal_code_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Улица</span>
+            <input type="text" class="ainput_basic ainput_street" placeholder='Введите улицу'>
+          </label>
+          <p class="astreet_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Дом</span>
+            <input type="text" class="ainput_num_house ainput_basic" placeholder='Введите номер дома'>
+          </label>
+          <p class="anum_house_error aregistration__error"></p>
+          <label class="alabel_basic">
+            <span class='aaddress_span'>Квартира</span>
+            <input type="text" class="ainput_apartment ainput_basic" placeholder='Введите номер квартиры'>
+          </label>
+          <p class="aapartment_error aregistration__error"></p>
         </div>
-      <button class='button_registration' disabled='true'>Изменить </button>
-        </div>
-        </form>
-        
+
+      </div>
+        <button class='abutton_registration'>Сохранить изменения</button>
+        <button class='abutton_registration' disabled>Изменить </button>
+    </form>
   </section>
 </main>
 `;
