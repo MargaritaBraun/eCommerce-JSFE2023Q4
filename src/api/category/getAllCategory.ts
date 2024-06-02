@@ -1,7 +1,7 @@
 import { App } from '../../pages/app';
 import { projectKey, region } from '../constAPI';
 import getAccessToken from '../login/api';
-import { CategoriesName } from '../../utils/interface/categoriesDataName';
+import { RequestDatasetCategory } from '../../utils/interface/categoriesDataName';
 
 export default async function getCategories() {
     const response = await fetch(`https://api.${region}.commercetools.com/${projectKey}/categories/`, {
@@ -23,7 +23,7 @@ export default async function getCategories() {
         }
     }
 
-    const categories: CategoriesName = await response.json();
+    const categories: RequestDatasetCategory = await response.json();
     console.log(categories);
     return categories;
 }

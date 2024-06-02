@@ -1,3 +1,4 @@
+// import { RequestOnProducts } from './productTypes';
 /*
 {
   "limit": 20,
@@ -178,7 +179,7 @@ export enum Categories {
     'movie' = '9a9ea5e9-918e-4ce6-abe9-3f003518b806',
     'dance-events' = '518d37f2-1dc1-4bba-9213-fdc33b33c9fd',
 }
-export interface CategoriesName {
+export interface RequestDatasetCategory {
     limit: number;
     offset: number;
     count: number;
@@ -219,7 +220,7 @@ export interface CategoriesNameObject {
 export interface DeveloperIdOfDataset {
     isPlatformClient: boolean;
     user: {
-        typeId: string;
+        typeId: 'user';
         id: string;
     };
 }
