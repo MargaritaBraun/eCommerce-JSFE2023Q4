@@ -28,7 +28,7 @@ const userPageTemplate: string = `
         <button>Сменить пароль</button>
         </label>
         <label class="show-pass-text">
-        <input type="checkbox" class="show-pass" disabled>Показать пароль
+        <input type="checkbox" class="show-pass" >Показать пароль
         </label>
         <p class="password_error registration__error"></p>
         <label class="label_basic">
@@ -41,14 +41,14 @@ const userPageTemplate: string = `
         <button>Сменить Адрес</button>
         <label class="label_basic">
         <span class='checkbox_span'>Использовать адрес по умолчанию</span>
-        <input type="checkbox" class="input_checkbox" checked disabled>
+        <input type="checkbox" class="input_checkbox"  disabled>
         </label>
         <div class="select_block">
         <span class='svg_map_pin'></span>
-        <select class="select_basic" disabled>
+        <select class="select_basic" >
           <option value="Беларусь" selected>Беларусь</option>
         </select>
-        <select class="select_basic" disabled>
+        <select class="select_basic">
           <option value="Гомель" selected>Гомель</option>
         </select>
         </div>
@@ -80,22 +80,22 @@ const userPageTemplate: string = `
         <p class="address_title">Адрес доставки</p>
         <label class="label_basic">
         <span class='address_span'>Индекс</span>
-        <input type="number" class="input_postal_code input_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051">
+        <input type="number" class="input_postal_code input_basic" placeholder='Введите индекс' value="246003" min="246000" max="246051" disabled>
         </label>
         <p class="postal_code_error registration__error"></p>
         <label class="label_basic">
         <span class='address_span'>Улица</span>
-        <input type="text" class="input_basic input_street" placeholder='Введите улицу'>
-        </label>
+        <input type="text" class="input_basic input_street" placeholder='Введите улицу' disabled>
+        </label >
         <p class="street_error registration__error"></p>
         <label class="label_basic">
         <span class='address_span'>Дом</span>
-        <input type="text" class="input_num_house input_basic" placeholder='Введите номер дома'>
+        <input type="text" class="input_num_house input_basic" placeholder='Введите номер дома' disabled>
         </label>
         <p class="num_house_error registration__error"></p>
         <label class="label_basic">
         <span class='address_span'>Квартира</span>
-        <input type="text" class="input_apartment input_basic" placeholder='Введите номер квартиры'>
+        <input type="text" class="input_apartment input_basic" placeholder='Введите номер квартиры' disabled>
         </label>
         <p class="apartment_error registration__error"></p>
         </div>

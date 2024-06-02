@@ -99,6 +99,7 @@ export default class RegistrationPage extends Page {
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
         const checkbox: HTMLInputElement | null = document.querySelector('.input_checkbox');
+        const birthday: HTMLInputElement = document.querySelector('.input_birthday') as HTMLInputElement;
 
         if (buttonSubmit) {
             buttonSubmit.addEventListener('click', async () => {
@@ -107,6 +108,7 @@ export default class RegistrationPage extends Page {
                     password: passwordInput.value,
                     firstName: inputName.value,
                     lastName: basename.value,
+                    dateOfBirth: birthday.value,
                     customerGroup: {
                         typeId: 'customer-group',
                         key: 'general',

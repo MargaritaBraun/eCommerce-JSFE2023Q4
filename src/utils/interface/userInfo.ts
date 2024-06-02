@@ -1,5 +1,6 @@
 export default interface UserInfo {
     customer?: {
+        dateOfBirth?: string;
         addresses?: [];
         authenticationMode: string;
         billingAddressIds?: [];
@@ -29,6 +30,7 @@ export default interface UserInfo {
         version: number;
         versionModifiedAt: string;
     };
+    dateOfBirth?: string;
     addresses?: [];
     authenticationMode: string;
     billingAddressIds?: [];
