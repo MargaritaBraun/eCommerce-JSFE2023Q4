@@ -14,7 +14,7 @@ import { CreateUser, Address } from '../../utils/interface/createUser';
 import { App, PagesID } from '../app';
 import { projectKey } from '../../api/constAPI';
 import createCustomer from '../../api/registration/registrationUser';
-import { getCustomerToken } from '../../api/login/login';
+import { getCustomerToken, loginCustomer } from '../../api/login/login';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
@@ -123,8 +123,10 @@ export default class RegistrationPage extends Page {
 
                 const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
                 if (customer) {
+                    const saveInfo = await loginCustomer(emailInput.value, passwordInput.value);
                     await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
-                    localStorage.setItem('user', JSON.stringify(userInfo));
+                    localStorage.setItem('user', JSON.stringify(saveInfo));
+                    localStorage.setItem('pass', JSON.stringify(passwordInput.value));
                 } else {
                     this.showEmailError();
                 }

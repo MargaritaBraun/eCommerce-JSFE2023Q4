@@ -1,5 +1,4 @@
 import getAccessToken from '../api/login/api';
-import UserInfo from '../utils/interface/userInfo';
 import { App, PagesID } from './app';
 import footerTemplate from './template/footerTemplate';
 import headerTemplate from './template/headerTemplate';
@@ -26,10 +25,8 @@ abstract class Page {
         footer.innerHTML = footerTemplate;
         this.container.prepend(header);
         this.container.append(footer);
-
         this.switchLoginPageAuthorized();
         this.hiddenLoginAndLogoutButton();
-        this.getNameUser();
     }
 
     protected hiddenLoginAndLogoutButton() {
@@ -61,25 +58,10 @@ abstract class Page {
                 window.location.hash = PagesID.LOGIN;
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
+                localStorage.removeItem('pass');
                 App.accessToken = await getAccessToken();
             });
         }
-    }
-
-    protected getNameUser() {
-        let user: UserInfo | null = null;
-        window.addEventListener('hashchange', () => {
-            const userString = localStorage.getItem('user');
-            const userLink: HTMLElement | null = document.querySelector('.header-user-name');
-            if (userString) {
-                user = JSON.parse(userString) as UserInfo;
-                if (user.customer) {
-                    userLink!.innerHTML = `${user.customer?.firstName} ${user.customer?.lastName}`;
-                } else {
-                    userLink!.innerHTML = `${user.firstName}`;
-                }
-            }
-        });
     }
 }
 
