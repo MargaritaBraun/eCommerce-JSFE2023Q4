@@ -1,9 +1,5 @@
 .registration_container {
-    background-color: $color-light;
     flex-basis: 50%;
-    margin: 15rem;
-    border-radius: 3rem;
-    box-shadow: 10px 10px 25px -4px $color-shadow;
 }
 
 .registration {
@@ -13,6 +9,11 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    margin: 3rem auto;
+    border-radius: 3rem;
+    background-color: $color-light;
+    box-shadow: 10px 10px 25px -4px $color-shadow;
+    width: 65%;
 }
 
 .logo_registration {
