@@ -1,4 +1,3 @@
-// import CategoryPage from '../../pages/category/categoryPage';
 import getCategories from '../../api/category/getAllCategory';
 import { RequestDatasetCategory } from '../interface/categoriesDataName';
 import checkedOnCategory from './checkedOnCategoryTitle';

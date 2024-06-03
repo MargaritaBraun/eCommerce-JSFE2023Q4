@@ -19,6 +19,11 @@ body {
     align-items: center;
 }
 
+body > div:first-of-type {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .title {
     @include heading-1($color: $color-dark, $style: italic);
     padding: 1rem 0rem;
@@ -40,7 +45,6 @@ body {
 .main-box {
     display: flex;
     flex-direction: column;
-    height: 70vh;
 }
 
 .main-wrap {

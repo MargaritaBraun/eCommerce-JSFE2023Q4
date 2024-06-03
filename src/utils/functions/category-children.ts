@@ -1,13 +1,9 @@
-// import getCategories from '../../api/category/getAllCategory';
 import { CategoriesNameObject } from '../interface/categoriesDataName';
-import getProducts from '../../api/category/getAllProducts';
-import { Attribute, AttributesData, RequestDatasetProducts } from '../interface/productTypes';
 import clickedOnButtonReverse from './clickedOnButtonReverse';
-// import renderOnProductCard from './renderOnProductCard';
+import renderOnProductCard from './renderOnProductCard';
 
 export default async function createdChildrenOnCategory(categoryObject: CategoriesNameObject) {
     const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
-    const dataProducts: RequestDatasetProducts = await getProducts();
     if (categoriesContainer) {
         categoriesContainer.innerHTML = '';
         const blockChildrenCategories = document.createElement('div');
@@ -27,23 +23,7 @@ export default async function createdChildrenOnCategory(categoryObject: Categori
         navigationsChildCategories.append(reverseButton);
         blockChildrenCategories.append(navigationsChildCategories);
         categoriesContainer.append(blockChildrenCategories);
-        dataProducts.results.forEach((data) => {
-            // console.log(data);
-            if (categoryObject.id === data.masterData.staged.categories[0].id) {
-                const dataInProduct: AttributesData = data.masterData.staged.masterVariant.attributes;
-                console.log(
-                    dataInProduct.forEach((obj) => {
-                        obj.name === 'date-show';
-                    })
-                );
-                // const dateShowData: DateShowAttribute = dataInProduct.find((attr) => attr.name === 'date-show');
-                // const dateShowValue = dateShowData.value[0];
-                // console.log(dateShowValue);
-            }
-        });
-        /*
-         */
     }
     clickedOnButtonReverse();
-    // renderOnProductCard();
+    renderOnProductCard();
 }

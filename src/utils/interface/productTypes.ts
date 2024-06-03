@@ -10,8 +10,7 @@ export interface RequestDatasetProducts {
 
 export interface DateShowAttribute {
     name: 'date-show';
-    // value: Date[];
-    value: string[];
+    value: [Date];
 }
 
 export interface LocationAttribute {
@@ -25,36 +24,10 @@ export interface AddressAttribute {
 }
 
 export type Attribute = DateShowAttribute | LocationAttribute | AddressAttribute;
-/*
-export type Attribute = [
-    {
-        name: 'date-show';
-        // value: Date[];
-        value: string[];
-    },
-    {
-        name: 'data-location';
-        value: { ru: string }[];
-    },
-    {
-        name: 'data-address';
-        value: string[];
-    },
-];
-*/
-export interface AttributesData {
-    attributes: Attribute[];
-}
 
 export interface LocationData {
     [language: string]: string;
 }
-/*
-interface Attribute {
-    name: 'date-show' | 'data-location' | 'data-address';
-    value: (string | LocationData)[];
-}
-*/
 
 export interface CategoryOrderHints {
     [categoryId: string]: `0.${string}[1-9]` | undefined;
@@ -119,7 +92,7 @@ export interface RequestOnProducts {
                 key: string;
                 prices: []; // ???
                 images: ImagesProduct[];
-                attributes: AttributesData[];
+                attributes: Attribute[];
                 assets: [];
             };
             variants: [];
@@ -149,7 +122,7 @@ export interface RequestOnProducts {
                 key: string;
                 prices: []; // ?????
                 images: ImagesProduct[];
-                attributes: AttributesData[];
+                attributes: Attribute[];
                 assets: [];
             };
             variants: [];
