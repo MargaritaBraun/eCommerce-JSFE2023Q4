@@ -14,10 +14,10 @@ export default async function renderOnProductCard() {
         dataProducts.results.forEach((item: RequestOnProducts) => {
             const categoryInProd = item.masterData.staged.categories[0].id;
             const skuInProduct = item.masterData.current.masterVariant.sku;
-            const urlInProductisEmpty = item.masterData.current.masterVariant.images;
+            const urlInProductisEmpty = item.masterData.staged.masterVariant.images;
             let urlInProduct;
             if (urlInProductisEmpty.length !== 0) {
-                urlInProduct = item.masterData.current.masterVariant.images[0].url;
+                urlInProduct = urlInProductisEmpty[0].url;
             } else {
                 urlInProduct = './img/img-not-fond.png';
             }

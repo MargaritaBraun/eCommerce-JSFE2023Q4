@@ -24,6 +24,5 @@ export default async function getCategories() {
     }
 
     const categories: RequestDatasetCategory = await response.json();
-    console.log(categories);
     return categories;
 }
