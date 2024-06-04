@@ -28,10 +28,19 @@ export default class CategoryPage extends Page {
 
     public run() {
         this.rendercategoryOnPages();
+        // this.createModalBlock();
     }
 
     public rendercategoryOnPages() {
         renderOnCategoryList();
         this.getNameUser();
     }
+    /*
+        public createModalBlock() {
+        const productContainer: HTMLElement | null = document.querySelector('.products_container');
+        if (productContainer) {
+            productContainer.addEventListener('click', createModalWindow);
+        }
+    }
+    */
 }

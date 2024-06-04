@@ -22,11 +22,11 @@
     color: $color;
 }
 
-@mixin basic-text($color: $color-text, $style: normal) {
+@mixin basic-text($color: $color-text, $size: 3.4rem) {
     font: {
         family: 'Quicksand', sans-serif;
-        size: 6.4rem;
-        style: $style;
+        size: $size;
+        style: normal;
         weight: 600;
     }
 

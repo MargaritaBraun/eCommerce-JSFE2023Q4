@@ -1,6 +1,8 @@
 import getProducts from '../../api/category/getAllProducts';
-import { Attribute, RequestDatasetProducts, RequestOnProducts } from '../interface/productTypes';
+import { Attribute, CostPrices, RequestDatasetProducts, RequestOnProducts } from '../interface/productTypes';
 import showDateInText from './dateInText';
+import getPricesOfProduct from './getPriceProduct';
+import clickedModalWindow from './clickModalWindov';
 
 export default async function renderOnProductCard() {
     const dataProducts: RequestDatasetProducts = await getProducts();
@@ -14,10 +16,12 @@ export default async function renderOnProductCard() {
         dataProducts.results.forEach((item: RequestOnProducts) => {
             const categoryInProd = item.masterData.staged.categories[0].id;
             const skuInProduct = item.masterData.current.masterVariant.sku;
-            const urlInProductisEmpty = item.masterData.staged.masterVariant.images;
+            const urlInProductsEmpty = item.masterData.staged.masterVariant.images;
+            const pricesObjectData: CostPrices[] = item.masterData.staged.masterVariant.prices;
+
             let urlInProduct;
-            if (urlInProductisEmpty.length !== 0) {
-                urlInProduct = urlInProductisEmpty[0].url;
+            if (urlInProductsEmpty.length !== 0) {
+                urlInProduct = urlInProductsEmpty[0].url;
             } else {
                 urlInProduct = './img/img-not-fond.png';
             }
@@ -53,11 +57,21 @@ export default async function renderOnProductCard() {
                     dateProducts.textContent = date;
                 }
 
+                // Цена
+                const costStr = getPricesOfProduct(pricesObjectData);
+
+                const priceProductsBlock = document.createElement('div');
+                priceProductsBlock.classList.add('prices_products');
+                priceProductsBlock.textContent = costStr;
+
                 productsContainer.appendChild(logoProducts);
                 productsContainer.appendChild(titleProducts);
                 productsContainer.appendChild(dateProducts);
-
+                productsContainer.appendChild(priceProductsBlock);
                 categoriesBasic.appendChild(productsContainer);
+
+                productsContainer.addEventListener('click', clickedModalWindow);
+                // categoriesBasic это контейнер где все категории
             }
         });
         dataCategoriesContainer.append(categoriesBasic);

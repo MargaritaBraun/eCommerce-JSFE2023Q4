@@ -30,7 +30,7 @@ body > div:first-of-type {
 }
 
 .basic-text {
-    @include basic-text($color: $color-dark, $style: normal);
+    @include basic-text($color: $color-dark);
 }
 
 .text-register {
