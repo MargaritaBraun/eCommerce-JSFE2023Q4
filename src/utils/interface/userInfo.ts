@@ -1,8 +1,11 @@
+import Address from './address';
+
 export default interface UserInfo {
     customer?: {
-        addresses?: [];
+        dateOfBirth?: string;
+        addresses: Address[];
         authenticationMode: string;
-        billingAddressIds?: [];
+        billingAddressIds?: string[] | number[];
         createdAt: string;
         createdBy: {
             clientID: string;
@@ -24,14 +27,15 @@ export default interface UserInfo {
         };
         lastName: string;
         password: string;
-        shippingAddressIds?: [];
+        shippingAddressIds?: string[] | number[];
         stores?: [];
         version: number;
         versionModifiedAt: string;
     };
-    addresses?: [];
+    dateOfBirth?: string;
+    addresses?: Address[];
     authenticationMode: string;
-    billingAddressIds?: [];
+    billingAddressIds?: string[] | number[];
     createdAt: string;
     createdBy: {
         clientID: string;
@@ -53,7 +57,7 @@ export default interface UserInfo {
     };
     lastName: string;
     password: string;
-    shippingAddressIds?: [];
+    shippingAddressIds?: string[] | number[];
     stores?: [];
     version: number;
     versionModifiedAt: string;

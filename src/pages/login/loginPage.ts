@@ -93,6 +93,7 @@ export default class LoginPage extends Page {
                 localStorage.setItem('token', JSON.stringify(customerToken));
                 App.accessToken = customerToken;
                 localStorage.setItem('user', JSON.stringify(infoUser));
+                localStorage.setItem('pass', JSON.stringify(input.value));
                 window.location.hash = PagesID.MAIN;
             }
         }
