@@ -2,6 +2,7 @@
     display: flex;
     gap: 2rem;
     flex-basis: 80%;
+
     @include mobile-small-width {
         flex-direction: column;
     }
@@ -30,8 +31,8 @@
 
 .modal_image {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    // height: 100%;
     object-fit: contain;
     border-radius: 1rem;
 
