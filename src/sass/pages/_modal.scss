@@ -1,8 +1,10 @@
 .modal_container {
     display: flex;
     gap: 2rem;
-    // flex-direction: column;
     flex-basis: 80%;
+    @include mobile-small-width {
+        flex-direction: column;
+    }
 }
 
 .modal_title {
@@ -28,7 +30,12 @@
 
 .modal_image {
     display: block;
-    width: 270px;
-    height: 390px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 1rem;
+
+    @include media-tablet {
+        width: 65%;
+    }
 }

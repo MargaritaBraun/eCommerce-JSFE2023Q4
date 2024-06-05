@@ -60,7 +60,7 @@ export default async function renderOnProductCard() {
                 // Цена
                 const costStr = getPricesOfProduct(pricesObjectData);
 
-                const priceProductsBlock = document.createElement('div');
+                const priceProductsBlock = document.createElement('p');
                 priceProductsBlock.classList.add('prices_products');
                 priceProductsBlock.textContent = costStr;
 
