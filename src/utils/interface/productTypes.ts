@@ -63,8 +63,46 @@ export interface CostPrices {
         fractionDigits: number;
     };
     key: string;
+    discounted?: {
+        value: {
+            type: string; // "centPrecision"
+            currencyCode: 'BYN';
+            centAmount: number;
+            fractionDigits: number;
+        };
+        discount?: {
+            typeId: string; // 'product-discount'
+            id: string;
+        };
+    };
 }
 
+/*
+"prices": [
+                    {
+                        "id": "494de994-71b6-420d-9aae-4e28cf786e10",
+                        "value": {
+                            "type": "centPrecision",
+                            "currencyCode": "BYN",
+                            "centAmount": 3700,
+                            "fractionDigits": 2
+                        },
+                        "key": "cost-37",
+                        "discounted": {
+                            "value": {
+                                "type": "centPrecision",
+                                "currencyCode": "BYN",
+                                "centAmount": 3500,
+                                "fractionDigits": 2
+                            },
+                            "discount": {
+                                "typeId": "product-discount",
+                                "id": "eeb4890a-8cae-4055-83b9-3f56433edb89"
+                            }
+                        }
+                    }
+                ],
+*/
 /*
 {
     "id": "d9a354fd-7d86-4f56-9e9b-d7b5931afc48",

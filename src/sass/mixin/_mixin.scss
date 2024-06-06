@@ -87,13 +87,14 @@
 
 @mixin button-basic($color-bg: $color-light) {
     display: block;
-    width: 12rem;
-    height: 4.4rem;
+    // width: 12rem;
+    // height: 4.4rem;
     background-color: $color-bg;
     border-radius: 1rem;
     border: solid 2px $color-border;
     text-align: center;
     @include button-text;
+    padding: 0.1rem 0.5rem;
     cursor: pointer;
 
     &:hover {
