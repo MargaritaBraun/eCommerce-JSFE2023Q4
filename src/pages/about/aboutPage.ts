@@ -13,7 +13,6 @@ export default class AboutPage extends Page {
     public getNameUser() {
         const userInfo: UserInfo | null = JSON.parse(localStorage.getItem('user') || 'null');
         if (userInfo) {
-            console.log(123);
             const userLink: HTMLElement | null = document.querySelector('.header-user-name');
             if (userLink) {
                 if (userInfo.customer) {
