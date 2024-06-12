@@ -3,21 +3,20 @@ import { CostPrices, RequestOnProducts } from '../interface/productTypes';
 import getPricesOfProduct from './getPriceProduct';
 
 export default async function renderModalProduct(idProduct: string | null) {
-    console.log(`показывает полную карточку ${idProduct}`);
-    if (idProduct) {
+    if (idProduct && idProduct !== '') {
         const dataProduct: RequestOnProducts = await getProductOnID(idProduct);
-        console.log(dataProduct);
-        const title = dataProduct.masterData.staged.masterVariant.sku;
-        const url: string = dataProduct.masterData.staged.masterVariant.images[0].url;
-        const description = dataProduct.masterData.staged.description.ru;
-        const costObj: CostPrices[] = dataProduct.masterData.staged.masterVariant.prices;
-        const cost = getPricesOfProduct(costObj);
+        if (idProduct && idProduct.trim() !== '') {
+            const title = dataProduct.masterData.staged.masterVariant.sku;
+            const url: string = dataProduct.masterData.staged.masterVariant.images[0].url;
+            const description = dataProduct.masterData.staged.description.ru;
+            const costObj: CostPrices[] = dataProduct.masterData.staged.masterVariant.prices;
+            const cost = getPricesOfProduct(costObj);
 
-        const parantContainer = document.querySelector('.categories_basic');
-        if (parantContainer) {
-            parantContainer.innerHTML = '';
+            const parantContainer = document.querySelector('.categories_basic');
+            if (parantContainer) {
+                parantContainer.innerHTML = '';
 
-            const template = `
+                const template = `
             <div class='modal_container'>
             <div>
             <p class='modal_title'>${title}</p>
@@ -28,7 +27,8 @@ export default async function renderModalProduct(idProduct: string | null) {
             <img class='modal_image' src="${url}" alt="${title}" />
             </div>
           `;
-            parantContainer.innerHTML = template;
+                parantContainer.innerHTML = template;
+            }
         }
     }
 }

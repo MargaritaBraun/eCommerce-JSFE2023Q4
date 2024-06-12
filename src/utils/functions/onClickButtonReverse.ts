@@ -1,6 +1,6 @@
 import renderOnCategoryList from './renderOnCategoryList';
 
-export default function clickedOnButtonReverse() {
+export default function onClickButtonReverse() {
     const buttonOnReverse: HTMLElement | null = document.querySelector('.reverse_button');
     if (buttonOnReverse) {
         buttonOnReverse.addEventListener('click', () => {

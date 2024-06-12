@@ -1,6 +1,6 @@
 import getCategories from '../../api/category/getAllCategory';
 import { RequestDatasetCategory } from '../interface/categoriesDataName';
-import checkedOnCategory from './checkedOnCategoryTitle';
+import handleCategorySelection from './handleCategorySelection';
 
 export default async function renderOnCategoryList() {
     const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
@@ -15,7 +15,7 @@ export default async function renderOnCategoryList() {
             titleCategories.classList.add('title_checklist');
             titleCategories.textContent = data.name.ru;
             titleCategories.setAttribute('id', data.id);
-            titleCategories.addEventListener('click', checkedOnCategory);
+            titleCategories.addEventListener('click', handleCategorySelection);
             categoriesContainer.append(titleCategories);
         }
     });

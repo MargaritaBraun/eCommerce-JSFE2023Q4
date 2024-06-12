@@ -1,8 +1,8 @@
 import { CategoriesNameObject } from '../interface/categoriesDataName';
-import clickedOnButtonReverse from './clickedOnButtonReverse';
+import onClickButtonReverse from './onClickButtonReverse';
 import renderOnProductCard from './renderOnProductCard';
 
-export default async function createdChildrenOnCategory(categoryObject: CategoriesNameObject) {
+export default function createChildrenOnCategory(categoryObject: CategoriesNameObject) {
     const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
     if (categoriesContainer) {
         categoriesContainer.innerHTML = '';
@@ -24,6 +24,6 @@ export default async function createdChildrenOnCategory(categoryObject: Categori
         blockChildrenCategories.append(navigationsChildCategories);
         categoriesContainer.append(blockChildrenCategories);
     }
-    clickedOnButtonReverse();
+    onClickButtonReverse();
     renderOnProductCard();
 }

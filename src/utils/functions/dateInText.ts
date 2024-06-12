@@ -1,7 +1,7 @@
-export default function showDateInText(dateString: Date | null): string {
+export default function showDateInText(dateObject: Date | null): string {
     let date: Date;
-    if (dateString) {
-        date = new Date(dateString);
+    if (dateObject !== null) {
+        date = new Date(dateObject);
     } else {
         const startDate = new Date('2024-01-01');
         const endDate = new Date('2024-12-31');

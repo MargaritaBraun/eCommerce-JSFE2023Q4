@@ -9,6 +9,5 @@ export default async function getProducts() {
         },
     });
     const products = await response.json();
-    console.log(products);
     return products;
 }
