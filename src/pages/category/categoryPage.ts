@@ -1,8 +1,7 @@
-import getCategories from '../../api/category/getAllCategory';
-import getProducts from '../../api/category/getAllProducts';
 import UserInfo from '../../utils/interface/userInfo';
 import Page from '../page';
 import categoryPageTemplate from '../template/categoryPageTemplate';
+import renderOnCategoryList from '../../utils/functions/renderOnCategoryList';
 
 export default class CategoryPage extends Page {
     public render(): HTMLElement {
@@ -10,11 +9,6 @@ export default class CategoryPage extends Page {
         this.container.innerHTML = categoryPageTemplate;
         this.createHeaderFooter();
         return this.container;
-    }
-
-    private async getAllCategoriesAndProducts() {
-        await getCategories();
-        await getProducts();
     }
 
     public getNameUser() {
@@ -33,7 +27,11 @@ export default class CategoryPage extends Page {
     }
 
     public run() {
-        this.getAllCategoriesAndProducts();
+        this.rendercategoryOnPages();
+    }
+
+    public rendercategoryOnPages() {
+        renderOnCategoryList();
         this.getNameUser();
     }
 }

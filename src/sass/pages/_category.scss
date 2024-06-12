@@ -1,1 +1,114 @@
-/* стили для блока CATEGORY */
+.title_checklist {
+    @include heading-2($color: $color-dark);
+    padding: 1rem 0;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.title_categories {
+    @include heading-2($color: $color-dark, $size: 2.1rem);
+    padding: 1rem 0;
+}
+
+.reverse_button {
+    @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reverse_link {
+    @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block_for_selected_category {
+    display: flex;
+    flex-basis: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.nav_categories {
+    display: flex;
+    gap: 4rem;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.categories_basic {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @include mobile-big-width {
+        width: 76%;
+    }
+}
+
+.categories_block {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.products_container {
+    width: 35.5%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4rem;
+    gap: 0.5rem;
+
+    &:hover {
+        background-color: $color-primary-light;
+    }
+}
+
+.img_cards_view {
+    display: block;
+    width: 80%;
+    object-fit: contain;
+    border-radius: 1rem;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    @include media-tablet {
+        width: 65%;
+    }
+}
+
+.prices_products {
+    @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.3rem;
+
+    @include media-tablet {
+        font-size: 9px;
+    }
+
+    @include mobile-big-width {
+        font-size: 7px;
+    }
+}

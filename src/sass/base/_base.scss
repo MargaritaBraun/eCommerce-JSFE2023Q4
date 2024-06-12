@@ -19,13 +19,18 @@ body {
     align-items: center;
 }
 
+body > div:first-of-type {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .title {
     @include heading-1($color: $color-dark, $style: italic);
     padding: 1rem 0rem;
 }
 
 .basic-text {
-    @include basic-text($color: $color-dark, $style: normal);
+    @include basic-text($color: $color-dark);
 }
 
 .text-register {
@@ -44,14 +49,16 @@ body {
 
 .main-wrap {
     display: flex;
-    width: 100%;
-    background-color: $color-background;
+    flex-direction: column;
+    background-color: $color-light;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-grow: 1;
+    border: solid 2rem $color-background;
+    flex-basis: 80%;
 }
 
-.main-wrap h1 {
+.main-title {
     align-items: center;
     font-size: 3rem;
 }

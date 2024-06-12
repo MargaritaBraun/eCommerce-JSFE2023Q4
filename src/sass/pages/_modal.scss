@@ -1,0 +1,40 @@
+.modal_container {
+    display: flex;
+    gap: 2rem;
+    flex-basis: 80%;
+
+    @include mobile-small-width {
+        flex-direction: column;
+    }
+}
+
+.modal_title {
+    @include heading-2($color: $color-primary);
+    padding: 1rem 0;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.modal_text {
+    @include basic-text($color: $color-primary, $size: 3.4rem);
+    padding: 1rem 0;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.modal_image {
+    display: block;
+    width: 80%;
+    object-fit: contain;
+    border-radius: 1rem;
+
+    @include media-tablet {
+        width: 65%;
+    }
+}
