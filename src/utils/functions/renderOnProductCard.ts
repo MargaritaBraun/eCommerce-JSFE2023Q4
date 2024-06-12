@@ -31,9 +31,7 @@ export default async function renderOnProductCard() {
                 const productsContainer = document.createElement('div');
                 productsContainer.classList.add('products_container');
                 productsContainer.setAttribute('id', item.id);
-                // image-container
-                // const imageContainerProducts = document.createElement('div');
-                // imageContainerProducts.classList.add('image-container');
+
                 const logoProducts = document.createElement('img');
                 logoProducts.classList.add('img_cards_view');
                 if (urlInProduct) {
@@ -67,8 +65,6 @@ export default async function renderOnProductCard() {
                 priceProductsBlock.classList.add('prices_products');
                 priceProductsBlock.textContent = costStr;
 
-                // imageContainerProducts.appendChild(logoProducts);
-                // productsContainer.appendChild(imageContainerProducts);
                 productsContainer.appendChild(logoProducts);
 
                 productsContainer.appendChild(titleProducts);
