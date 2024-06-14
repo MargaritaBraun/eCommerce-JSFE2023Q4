@@ -103,6 +103,7 @@
     align-items: center;
     justify-content: center;
     padding: 0.9rem 1.3rem;
+    cursor: default;
 
     @include media-tablet {
         font-size: 9px;
