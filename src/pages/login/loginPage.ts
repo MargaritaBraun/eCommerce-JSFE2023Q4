@@ -90,8 +90,10 @@ export default class LoginPage extends Page {
                 this.errorPass();
             } else {
                 const customerToken = await getCustomerToken(inputEmail.value, input.value);
-                localStorage.setItem('user', JSON.stringify(customerToken));
+                localStorage.setItem('token', JSON.stringify(customerToken));
                 App.accessToken = customerToken;
+                localStorage.setItem('user', JSON.stringify(infoUser));
+                localStorage.setItem('pass', JSON.stringify(input.value));
                 window.location.hash = PagesID.MAIN;
             }
         }

@@ -1,68 +1,30 @@
-import getAccessToken from '../../api/login/api';
-import { App, PagesID } from '../app';
+import UserInfo from '../../utils/interface/userInfo';
 import Page from '../page';
 import mainPage from '../template/mainPageTemplate';
 
 export default class MainPage extends Page {
     public render(): HTMLElement {
+        this.container = super.render();
         this.container.innerHTML = mainPage;
+        this.createHeaderFooter();
         return this.container;
     }
 
-    // переход на LoginPage
-    private switchLoginPage() {
-        const btnSwitchLogin: HTMLButtonElement | null = document.querySelector('.btn-user-login');
-        if (btnSwitchLogin) {
-            btnSwitchLogin.addEventListener('click', () => {
-                window.location.hash = PagesID.LOGIN;
-            });
-        }
-    }
-
-    private hiddenLoginAndLogoutButton() {
-        const token = localStorage.getItem('user');
-        const btnLogin: HTMLElement | null = document.querySelector('.btn-user-login');
-        const btnRegistration: HTMLElement | null = document.querySelector('.btn-user-signup');
-        const btnLogout: HTMLElement | null = document.querySelector('.btn-user-logout');
-        if (btnLogin && btnRegistration && btnLogout) {
-            if (token) {
-                btnLogin.style.display = 'none';
-                btnRegistration.style.display = 'none';
-                btnLogout.style.display = 'flex';
-            } else {
-                btnLogin.style.display = 'flex';
-                btnRegistration.style.display = 'flex';
-                btnLogout.style.display = 'none';
+    public getNameUser() {
+        const userInfo: UserInfo | null = JSON.parse(localStorage.getItem('user') || 'null');
+        if (userInfo) {
+            const userLink: HTMLElement | null = document.querySelector('.header-user-name');
+            if (userLink) {
+                if (userInfo.customer) {
+                    userLink.innerHTML = `${userInfo.customer.firstName} ${userInfo.customer.lastName}`;
+                } else if (userInfo.firstName && userInfo.lastName) {
+                    userLink.innerHTML = `${userInfo.firstName} ${userInfo.lastName}`;
+                }
             }
         }
     }
 
-    // переход на LoginPage (выход из аккаунта авторизированных пользователей)
-    private async switchLoginPageAuthorized() {
-        const btnSwitchLogin: HTMLButtonElement | null = document.querySelector('.btn-user-logout');
-        if (btnSwitchLogin) {
-            btnSwitchLogin.addEventListener('click', async () => {
-                window.location.hash = PagesID.LOGIN;
-                localStorage.removeItem('user');
-                App.accessToken = await getAccessToken();
-            });
-        }
-    }
-
-    // переход на RegistrationPage
-    private switchRegistrationPage() {
-        const btnSwitchReg: HTMLButtonElement | null = document.querySelector('.btn-user-signup');
-        if (btnSwitchReg) {
-            btnSwitchReg.addEventListener('click', () => {
-                window.location.hash = PagesID.REGISTRATION;
-            });
-        }
-    }
-
     public run() {
-        this.switchLoginPage();
-        this.switchRegistrationPage();
-        this.switchLoginPageAuthorized();
-        this.hiddenLoginAndLogoutButton();
+        this.getNameUser();
     }
 }

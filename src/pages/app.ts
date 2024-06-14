@@ -7,6 +7,7 @@ import CategoryPage from './category/categoryPage';
 import DiscountsPage from './discounts/discountsPage';
 import AboutPage from './about/aboutPage';
 import BasketPage from './basket/basketPage';
+import UserPage from './user/user';
 
 export const enum PagesID {
     REGISTRATION = 'registration',
@@ -17,6 +18,7 @@ export const enum PagesID {
     DISCOUNTS = 'discounts',
     ABOUT = 'about',
     BASKET = 'basket',
+    USER = 'user',
 }
 
 export type Page =
@@ -27,7 +29,8 @@ export type Page =
     | CategoryPage
     | DiscountsPage
     | AboutPage
-    | BasketPage;
+    | BasketPage
+    | UserPage;
 
 export class App {
     static container: HTMLElement = document.body;
@@ -42,7 +45,7 @@ export class App {
 
     // сохранение токена клиента
     private async saveAccessToken(): Promise<void> {
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         if (token) {
             App.accessToken = token;
         } else {
@@ -66,6 +69,8 @@ export class App {
                 return new AboutPage(id);
             case PagesID.BASKET:
                 return new BasketPage(id);
+            case PagesID.USER:
+                return new UserPage(id);
             default:
                 return new ErrorPage(id);
         }
@@ -84,7 +89,7 @@ export class App {
 
     private getHash() {
         let hash = window.location.hash.slice(1);
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         if (!hash) {
             hash = PagesID.LOGIN;
         }

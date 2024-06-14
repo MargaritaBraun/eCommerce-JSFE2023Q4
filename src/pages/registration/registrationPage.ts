@@ -14,7 +14,7 @@ import { CreateUser, Address } from '../../utils/interface/createUser';
 import { App, PagesID } from '../app';
 import { projectKey } from '../../api/constAPI';
 import createCustomer from '../../api/registration/registrationUser';
-import { getCustomerToken } from '../../api/login/login';
+import { getCustomerToken, loginCustomer } from '../../api/login/login';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
@@ -99,6 +99,7 @@ export default class RegistrationPage extends Page {
         const emailInput: HTMLInputElement = document.querySelector('.input_email') as HTMLInputElement;
         const passwordInput: HTMLInputElement = document.querySelector('.input_password') as HTMLInputElement;
         const checkbox: HTMLInputElement | null = document.querySelector('.input_checkbox');
+        const birthday: HTMLInputElement = document.querySelector('.input_birthday') as HTMLInputElement;
 
         if (buttonSubmit) {
             buttonSubmit.addEventListener('click', async () => {
@@ -107,6 +108,7 @@ export default class RegistrationPage extends Page {
                     password: passwordInput.value,
                     firstName: inputName.value,
                     lastName: basename.value,
+                    dateOfBirth: birthday.value,
                     customerGroup: {
                         typeId: 'customer-group',
                         key: 'general',
@@ -121,7 +123,10 @@ export default class RegistrationPage extends Page {
 
                 const customer = await createCustomer(App.accessToken!, projectKey, userInfo);
                 if (customer) {
+                    const saveInfo = await loginCustomer(emailInput.value, passwordInput.value);
                     await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
+                    localStorage.setItem('user', JSON.stringify(saveInfo));
+                    localStorage.setItem('pass', JSON.stringify(passwordInput.value));
                 } else {
                     this.showEmailError();
                 }
@@ -179,7 +184,7 @@ export default class RegistrationPage extends Page {
     private async saveTokenAfterRegistration(email: string, password: string) {
         const customerToken = await getCustomerToken(email, password);
         if (customerToken) {
-            localStorage.setItem('user', JSON.stringify(customerToken));
+            localStorage.setItem('token', JSON.stringify(customerToken));
             App.accessToken = customerToken;
             window.location.hash = PagesID.MAIN;
         }

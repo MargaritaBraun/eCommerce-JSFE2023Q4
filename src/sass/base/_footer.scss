@@ -1,0 +1,50 @@
+.footer {
+    display: flex;
+    height: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-primary-light;
+}
+
+.nav-footer li {
+    margin-bottom: 5%;
+}
+
+.footer-link {
+    font-size: 1.8rem;
+    color: $color-text;
+}
+
+.left-footer {
+    width: 170px;
+}
+
+.middle-footer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.middle-footer label {
+    color: $color-text;
+    font-size: 1.5rem;
+}
+
+.right-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-footer {
+    color: $color-text;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.text-footer {
+    color: $color-additional;
+    font-size: 1.5rem;
+}
