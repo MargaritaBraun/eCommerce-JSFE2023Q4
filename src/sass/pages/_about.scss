@@ -1,105 +1,105 @@
 /* стили для блока ABOUT */
 
 .about-box {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .about-text {
-  padding: 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  label {
-    font-size: 1.5rem;
-  }
+    label {
+        font-size: 1.5rem;
+    }
 
-  strong {
-    font-size: 1.5rem;
-  }
+    strong {
+        font-size: 1.5rem;
+    }
 }
 
 .command {
-  display: flex;
-  width:100%;
-  justify-content: flex-start;
-  align-items: flex-start;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .about-name {
-  display: flex;
-  width: 33%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    width: 33%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  strong {
-    font-size: 1.7rem;
-    margin-bottom: 10px;
-  }
+    strong {
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+    }
 
-  label {
-    font-size: 1.6rem;
-  }
+    label {
+        font-size: 1.6rem;
+    }
 
-  a {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
+    a {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
 
-  a:hover {
-    color: $color-primary-light;
-  }
+    a:hover {
+        color: $color-primary-light;
+    }
 }
 
 .about-rss {
-  margin: 20px;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url(/src/assets/logo-rss.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  cursor: pointer;
+    margin: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(/src/assets/logo-rss.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
 }
 
 .m-img {
-  margin: 20px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url(/src/assets/marg-img.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(/src/assets/marg-img.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .v-img {
-  margin: 20px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url(/src/assets/vlad-img.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(/src/assets/vlad-img.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .p-img {
-  margin: 20px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url(/src/assets/pavel-img.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(/src/assets/pavel-img.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
