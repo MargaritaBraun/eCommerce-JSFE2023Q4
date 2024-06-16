@@ -37,6 +37,8 @@ export class App {
 
     static accessToken: null | string;
 
+    static cartID: null | string;
+
     static renderNewPage(id: string): void {
         App.container.innerHTML = '';
         const page: Page = this.getPage(id);

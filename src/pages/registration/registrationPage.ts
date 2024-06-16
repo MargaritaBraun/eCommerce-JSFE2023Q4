@@ -15,6 +15,8 @@ import { App, PagesID } from '../app';
 import { projectKey } from '../../api/constAPI';
 import createCustomer from '../../api/registration/registrationUser';
 import { getCustomerToken, loginCustomer } from '../../api/login/login';
+import UserInfo from '../../utils/interface/userInfo';
+import { createUserCart } from '../../api/basket/basket';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
@@ -127,11 +129,21 @@ export default class RegistrationPage extends Page {
                     await this.saveTokenAfterRegistration(emailInput.value, passwordInput.value);
                     localStorage.setItem('user', JSON.stringify(saveInfo));
                     localStorage.setItem('pass', JSON.stringify(passwordInput.value));
+                    if (localStorage.getItem('user')) {
+                        await this.getUserCart();
+                    }
                 } else {
                     this.showEmailError();
                 }
             });
         }
+    }
+
+    private async getUserCart() {
+        const user: UserInfo = JSON.parse(localStorage.getItem('user')!);
+        const cartId: string = (await createUserCart(user.customer!.id)).id;
+        App.cartID = cartId;
+        localStorage.setItem('cart', cartId);
     }
 
     private createBillingAddress(): Address {

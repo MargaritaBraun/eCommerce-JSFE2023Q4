@@ -59,6 +59,8 @@ abstract class Page {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
                 localStorage.removeItem('pass');
+                localStorage.removeItem('cart');
+                localStorage.removeItem('cartInfo');
                 App.accessToken = await getAccessToken();
             });
         }
