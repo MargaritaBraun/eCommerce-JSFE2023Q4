@@ -36,7 +36,6 @@ const userPageTemplate: string = `
           <input type="date" class="ainput_basic ainput_birthday" max="2010-01-01" value="гггг-мм-дд" disabled>
           <button class='change_birthday'>Изменить</button>
         </label>
-      
       </div>
 
 

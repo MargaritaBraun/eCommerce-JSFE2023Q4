@@ -8,6 +8,12 @@
     }
 }
 
+.info_modal_container {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
 .modal_title {
     @include heading-2($color: $color-primary);
     padding: 1rem 0;
@@ -30,11 +36,27 @@
 
 .modal_image {
     display: block;
-    width: 80%;
+    width: 60%;
     object-fit: contain;
     border-radius: 1rem;
 
     @include media-tablet {
-        width: 65%;
+        width: 45%;
+    }
+}
+
+.button_add_basket {
+    @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.3rem;
+
+    @include media-tablet {
+        font-size: 9px;
+    }
+
+    @include mobile-big-width {
+        font-size: 7px;
     }
 }

@@ -4,10 +4,13 @@ export default function onClickButtonReverse() {
     const buttonOnReverse: HTMLElement | null = document.querySelector('.reverse_button');
     if (buttonOnReverse) {
         buttonOnReverse.addEventListener('click', () => {
+            /*
             const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
             if (categoriesContainer) {
                 renderOnCategoryList();
             }
+                */
+            renderOnCategoryList();
         });
     }
 }
