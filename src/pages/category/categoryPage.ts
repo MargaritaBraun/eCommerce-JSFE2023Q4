@@ -2,6 +2,8 @@ import UserInfo from '../../utils/interface/userInfo';
 import Page from '../page';
 import categoryPageTemplate from '../template/categoryPageTemplate';
 import renderOnCategoryList from '../../utils/functions/renderOnCategoryList';
+import { createAnonimCart } from '../../api/basket/basket';
+import { App } from '../app';
 
 export default class CategoryPage extends Page {
     public render(): HTMLElement {
@@ -25,8 +27,18 @@ export default class CategoryPage extends Page {
         }
     }
 
-    public run() {
+    private async getAnonimCartId() {
+        const user = localStorage.getItem('user');
+        if (!user && !App.cartID) {
+            const cartId: string = (await createAnonimCart()).id;
+            App.cartID = cartId;
+            localStorage.setItem('cart', cartId);
+        }
+    }
+
+    public async run() {
         this.rendercategoryOnPages();
+        await this.getAnonimCartId();
     }
 
     public rendercategoryOnPages() {

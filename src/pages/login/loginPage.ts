@@ -1,5 +1,7 @@
+import { createUserCart } from '../../api/basket/basket';
 import { checkoutCustomer, getCustomerToken, loginCustomer } from '../../api/login/login';
 import { isValidEmail, isValidPass } from '../../utils/functions/validation-loginpage';
+import UserInfo from '../../utils/interface/userInfo';
 import { App, PagesID } from '../app';
 import Page from '../page';
 import loginPage from '../template/loginPageTemplate';
@@ -95,6 +97,9 @@ export default class LoginPage extends Page {
                 localStorage.setItem('user', JSON.stringify(infoUser));
                 localStorage.setItem('pass', JSON.stringify(input.value));
                 window.location.hash = PagesID.MAIN;
+                if (localStorage.getItem('user')) {
+                    await this.getUserCart();
+                }
             }
         }
     }
@@ -127,6 +132,13 @@ export default class LoginPage extends Page {
                 window.location.hash = PagesID.MAIN;
             });
         }
+    }
+
+    private async getUserCart() {
+        const user: UserInfo = JSON.parse(localStorage.getItem('user')!);
+        const cartId: string = (await createUserCart(user.customer!.id)).id;
+        App.cartID = cartId;
+        localStorage.setItem('cart', cartId);
     }
 
     public run() {

@@ -3,7 +3,7 @@ import onClickButtonReverse from './onClickButtonReverse';
 import renderOnProductCard from './renderOnProductCard';
 
 export default function createChildrenOnCategory(categoryObject: CategoriesNameObject) {
-    const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
+    const categoriesContainer: HTMLElement | null = document.querySelector('.category_container');
     if (categoriesContainer) {
         categoriesContainer.innerHTML = '';
         const blockChildrenCategories = document.createElement('div');

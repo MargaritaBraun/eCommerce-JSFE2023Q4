@@ -1,6 +1,7 @@
 const aboutPageTemplate: string = `
 <main class="main-box">
   <section class="main-wrap">
+   <div class="about_container">
     <h1 class="main-title">Введение</h1>
     <div class="about-box">
       <div class="about-text">
@@ -35,9 +36,10 @@ const aboutPageTemplate: string = `
         </div>
       </div>
     </div>
-    <a target="_blank" href="https://rs.school/">
-      <div class="about-rss"></div>
-    </a>
+    <div class="about_footer">
+    <a target="_blank" href="https://rs.school/" class="about-rss"></a>
+    </div>
+    </div>
   </section>
 </main>
 `;

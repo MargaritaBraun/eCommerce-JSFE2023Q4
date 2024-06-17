@@ -3,7 +3,7 @@ import { RequestDatasetCategory } from '../interface/categoriesDataName';
 import handleCategorySelection from './handleCategorySelection';
 
 export default async function renderOnCategoryList() {
-    const categoriesContainer: HTMLElement | null = document.querySelector('.main-wrap');
+    const categoriesContainer: HTMLElement | null = document.querySelector('.category_container');
     const dataCategories: RequestDatasetCategory = await getCategories();
     const productsContainer: HTMLElement | null = document.querySelector('.block_for_selected_category');
     if (productsContainer) {
