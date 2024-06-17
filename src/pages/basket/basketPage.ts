@@ -1,5 +1,6 @@
 import { getBasket } from '../../utils/functions/basketFunctions/allFunsBasket';
 import renderCardOnBasket from '../../utils/functions/basketFunctions/renderCardOnBasket';
+import showEmptyBasket from '../../utils/functions/basketFunctions/showEmptyBasket';
 import UserInfo from '../../utils/interface/userInfo';
 import Page from '../page';
 import basketPageTemplate from '../template/basketPageTemplate';
@@ -26,16 +27,13 @@ export default class BasketPage extends Page {
         }
     }
 
-    isEmply() {
-        // Тут реализовать если пусто
-        // getBasket();
-        // console.log(localStorage.myBasket);
+    isEmpty() {
         const basket = getBasket();
-        if (!basket) {
+        if (!basket || basket.length === 0) {
             console.log('Корзина пуста');
+            showEmptyBasket();
         } else {
             console.log('Корзина не пуста, содержимое:', basket);
-            // console.log(basket.length); // массив id
             basket.forEach((id: string) => {
                 renderCardOnBasket(id);
             });
@@ -44,6 +42,6 @@ export default class BasketPage extends Page {
 
     public run() {
         this.getNameUser();
-        this.isEmply();
+        this.isEmpty();
     }
 }

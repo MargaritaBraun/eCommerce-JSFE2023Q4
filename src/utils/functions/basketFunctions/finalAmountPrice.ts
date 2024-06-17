@@ -20,9 +20,17 @@ export default function finalAmountPrice() {
                     }
                     fullPrice += priceInfo.originalPrice;
                 }
+                // console.log(fullPrice);
+                // console.log(discountedPrice);
+                if (fullPrice > discountedPrice) {
+                    finalAmountSpan.textContent = `Цена без скидки ${fullPrice.toFixed(2)} BYN
+                 Цена со скидкой ${discountedPrice.toFixed(2)} BYN`;
+                } else if (fullPrice === discountedPrice) {
+                    finalAmountSpan.textContent = `${fullPrice.toFixed(2)} BYN`;
+                }
             });
-            finalAmountSpan.textContent = `Цена без скидки ${fullPrice.toFixed(2)}
-             Цена со скидкой ${discountedPrice.toFixed(2)}`;
+            // finalAmountSpan.textContent = `Цена без скидки ${fullPrice.toFixed(2)}
+            // Цена со скидкой ${discountedPrice.toFixed(2)}`;
         }
     }
 }

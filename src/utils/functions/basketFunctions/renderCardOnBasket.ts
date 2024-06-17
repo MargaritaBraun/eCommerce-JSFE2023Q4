@@ -1,6 +1,7 @@
 import getProductOnID from '../../../api/category/getProduct';
 import { CostPrices, RequestOnProducts } from '../../interface/productTypes';
 import getPricesOfProduct from '../getPriceProduct';
+import deleteSelectProductBasket from './deleteSelectProductBasket';
 import finalAmountPrice from './finalAmountPrice';
 import getPricesThisProduct from './getPriceThisProduct';
 
@@ -63,6 +64,7 @@ export default async function renderCardOnBasket(idProduct: string) {
             // getPricesThisProduct();
             parantContainer.addEventListener('click', getPricesThisProduct);
             finalAmountPrice();
+            removeButton.addEventListener('click', deleteSelectProductBasket);
         }
     }
 }
