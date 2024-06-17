@@ -1,7 +1,9 @@
 import { getBasket } from '../../utils/functions/basketFunctions/allFunsBasket';
 import renderCardOnBasket from '../../utils/functions/basketFunctions/renderCardOnBasket';
 import showEmptyBasket from '../../utils/functions/basketFunctions/showEmptyBasket';
+import { createAnonimCart, getCart } from '../../api/basket/basket';
 import UserInfo from '../../utils/interface/userInfo';
+import { App } from '../app';
 import Page from '../page';
 import basketPageTemplate from '../template/basketPageTemplate';
 
@@ -40,8 +42,27 @@ export default class BasketPage extends Page {
         }
     }
 
-    public run() {
+    private async getAnonimCartId() {
+        const user = localStorage.getItem('user');
+        if (!user && !App.cartID) {
+            const cartId: string = (await createAnonimCart()).id;
+            App.cartID = cartId;
+            localStorage.setItem('cart', cartId);
+        }
+    }
+
+    private async getCartUser() {
+        let user: string | UserInfo | null = localStorage.getItem('user');
+        if (user) {
+            user = JSON.parse(user as string) as UserInfo;
+            await getCart(user.customer!.id);
+        }
+    }
+
+    public async run() {
         this.getNameUser();
+        await this.getAnonimCartId();
+        await this.getCartUser();
         this.isEmpty();
     }
 }

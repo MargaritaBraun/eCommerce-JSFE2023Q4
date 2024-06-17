@@ -3,8 +3,10 @@ export default function showEmptyBasket() {
     const footerBasketContainer = document.querySelector('.basket__footer') as HTMLDivElement;
     if (contentContainer && footerBasketContainer) {
         contentContainer.innerHTML = `
-        <h2>Корзина пуста</h2>
-        <a href="#category">Перейти к каталогу</a>
+        <div class="empty_basket_container">
+        <h2 class="card_basket_title">Корзина пуста</h2>
+        <a href="#category" class="basket_link">Перейти к каталогу</a>
+        <div></div>
         `;
         footerBasketContainer.style.display = 'none';
     }

@@ -177,3 +177,20 @@
         font-size: 1.1rem;
     }
 }
+
+.basket_link {
+    @include button-basic($color-bg: $color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty_basket_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
