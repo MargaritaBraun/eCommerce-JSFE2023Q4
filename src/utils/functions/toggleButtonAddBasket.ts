@@ -12,13 +12,10 @@ export default function toggleButtonAddBasket() {
                 buttonAddBasket.textContent = 'Удалить из корзины';
             }
             buttonAddBasket.addEventListener('click', () => {
-                buttonAddBasket.classList.toggle('active');
                 if (buttonAddBasket.classList.contains('active')) {
-                    buttonAddBasket.textContent = 'Удалить из корзины';
-                    addToBasket(idProduct);
-                } else if (!buttonAddBasket.classList.contains('active')) {
-                    buttonAddBasket.textContent = 'Добавить в корзину';
                     removeFromBasket(idProduct);
+                } else if (!buttonAddBasket.classList.contains('active')) {
+                    addToBasket(idProduct);
                 }
                 // данные хранятся localStorage.myBasket
             });

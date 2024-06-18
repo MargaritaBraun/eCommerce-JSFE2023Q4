@@ -31,6 +31,7 @@ export default async function renderModalProduct(idProduct: string | null) {
             </div>
           `;
                 parantContainer.innerHTML = template;
+                //
             }
             // тут вызов
             toggleButtonAddBasket();

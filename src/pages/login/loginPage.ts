@@ -1,6 +1,7 @@
 import { createUserCart } from '../../api/basket/basket';
 import { checkoutCustomer, getCustomerToken, loginCustomer } from '../../api/login/login';
 import { isValidEmail, isValidPass } from '../../utils/functions/validation-loginpage';
+import Cart from '../../utils/interface/Cart';
 import UserInfo from '../../utils/interface/userInfo';
 import { App, PagesID } from '../app';
 import Page from '../page';
@@ -99,6 +100,8 @@ export default class LoginPage extends Page {
                 window.location.hash = PagesID.MAIN;
                 if (localStorage.getItem('user')) {
                     await this.getUserCart();
+                    localStorage.setItem('user', JSON.stringify(infoUser));
+                    localStorage.setItem('cart', JSON.stringify((infoUser as UserInfo).cart!));
                 }
             }
         }
@@ -136,9 +139,9 @@ export default class LoginPage extends Page {
 
     private async getUserCart() {
         const user: UserInfo = JSON.parse(localStorage.getItem('user')!);
-        const cartId: string = (await createUserCart(user.customer!.id)).id;
-        App.cartID = cartId;
-        localStorage.setItem('cart', cartId);
+        const cartId: Cart = await createUserCart(user.customer!.id);
+        App.cartID = cartId.id;
+        localStorage.setItem('cart', JSON.stringify(cartId));
     }
 
     public run() {

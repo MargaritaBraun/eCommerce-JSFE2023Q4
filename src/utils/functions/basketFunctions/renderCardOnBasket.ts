@@ -1,12 +1,12 @@
 import getProductOnID from '../../../api/category/getProduct';
 import { CostPrices, RequestOnProducts } from '../../interface/productTypes';
 import getPricesOfProduct from '../getPriceProduct';
-import deleteAllProductsBasket from './deleteAllProductsBasket';
 import deleteSelectProductBasket from './deleteSelectProductBasket';
 import finalAmountPrice from './finalAmountPrice';
 import getPricesThisProduct from './getPriceThisProduct';
+import deleteAllProductsBasket from './deleteAllProductsBasket';
 
-export default async function renderCardOnBasket(idProduct: string) {
+export default async function renderCardOnBasket(idProduct: string, value: string) {
     const dataProduct: RequestOnProducts = await getProductOnID(idProduct);
     if (idProduct && idProduct.trim() !== '') {
         const title = dataProduct.masterData.staged.masterVariant.sku;
@@ -38,7 +38,7 @@ export default async function renderCardOnBasket(idProduct: string) {
             quantityInput.classList.add('input_basket');
             quantityInput.type = 'number';
             quantityInput.id = idProduct;
-            quantityInput.value = '1';
+            quantityInput.value = `${value}`;
             quantityInput.min = '1';
             quantityInput.max = '10';
 
@@ -68,3 +68,4 @@ export default async function renderCardOnBasket(idProduct: string) {
         }
     }
 }
+// }

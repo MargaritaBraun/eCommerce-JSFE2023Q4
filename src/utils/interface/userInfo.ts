@@ -1,7 +1,9 @@
+import Cart from './Cart';
 import Address from './address';
 
 export default interface UserInfo {
     customer?: {
+        cart?: Cart;
         dateOfBirth?: string;
         addresses: Address[];
         authenticationMode: string;
@@ -32,6 +34,7 @@ export default interface UserInfo {
         version: number;
         versionModifiedAt: string;
     };
+    cart?: Cart;
     dateOfBirth?: string;
     addresses?: Address[];
     authenticationMode: string;
