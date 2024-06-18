@@ -17,6 +17,7 @@ import createCustomer from '../../api/registration/registrationUser';
 import { getCustomerToken, loginCustomer } from '../../api/login/login';
 import UserInfo from '../../utils/interface/userInfo';
 import { createUserCart } from '../../api/basket/basket';
+import Cart from '../../utils/interface/Cart';
 
 export default class RegistrationPage extends Page {
     public render(): HTMLElement {
@@ -141,9 +142,9 @@ export default class RegistrationPage extends Page {
 
     private async getUserCart() {
         const user: UserInfo = JSON.parse(localStorage.getItem('user')!);
-        const cartId: string = (await createUserCart(user.customer!.id)).id;
-        App.cartID = cartId;
-        localStorage.setItem('cart', cartId);
+        const cartId: Cart = await createUserCart(user.customer!.id);
+        App.cartID = cartId.id;
+        localStorage.setItem('cart', JSON.stringify(cartId));
     }
 
     private createBillingAddress(): Address {

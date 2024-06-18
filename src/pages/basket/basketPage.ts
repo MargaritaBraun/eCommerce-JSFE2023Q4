@@ -1,11 +1,11 @@
-import { getBasket } from '../../utils/functions/basketFunctions/allFunsBasket';
 import renderCardOnBasket from '../../utils/functions/basketFunctions/renderCardOnBasket';
 import showEmptyBasket from '../../utils/functions/basketFunctions/showEmptyBasket';
-import { createAnonimCart, getCart } from '../../api/basket/basket';
+import { changeItem, createAnonimCart, getCart, plusAndMinus } from '../../api/basket/basket';
 import UserInfo from '../../utils/interface/userInfo';
 import { App } from '../app';
 import Page from '../page';
 import basketPageTemplate from '../template/basketPageTemplate';
+import Cart from '../../utils/interface/Cart';
 
 export default class BasketPage extends Page {
     public render(): HTMLElement {
@@ -30,14 +30,53 @@ export default class BasketPage extends Page {
     }
 
     isEmpty() {
-        const basket = getBasket();
-        if (!basket || basket.length === 0) {
-            console.log('Корзина пуста');
+        const cart: Cart = JSON.parse(localStorage.getItem('cart')!);
+        if (cart.lineItems.length === 0) {
             showEmptyBasket();
         } else {
-            console.log('Корзина не пуста, содержимое:', basket);
-            basket.forEach((id: string) => {
-                renderCardOnBasket(id);
+            cart.lineItems.forEach((x) => {
+                renderCardOnBasket(x.productId, String(x.quantity));
+            });
+        }
+    }
+
+    private async plusAndMinusItem() {
+        const div = document.querySelector('.main-box');
+        if (div) {
+            div.addEventListener('click', (e) => {
+                if ((e.target as HTMLInputElement).classList.contains('input_basket')) {
+                    const cartJSON = localStorage.getItem('cart');
+                    const cart: Cart = JSON.parse(cartJSON!);
+                    const version: number = this.getVersionCart();
+                    const index = cart.lineItems.findIndex((x) => x.productId === (e.target as HTMLInputElement).id);
+                    plusAndMinus(cart.id, cart.lineItems[index].id, +(e.target as HTMLInputElement).value, version);
+                }
+            });
+        }
+    }
+
+    private getVersionCart(): number {
+        const cartJSON = localStorage.getItem('cart');
+        if (!cartJSON) {
+            return 1;
+        }
+        const cart: Cart = JSON.parse(cartJSON);
+        const version = +cart.version;
+        return version;
+    }
+
+    private async removeItem() {
+        const div: HTMLElement | null = document.querySelector('.main-box');
+        if (div) {
+            div.addEventListener('click', async (e) => {
+                if ((e.target as HTMLButtonElement).classList.contains('button_delete_basket')) {
+                    const cart: Cart = JSON.parse(localStorage.getItem('cart')!);
+                    const version: number = this.getVersionCart();
+                    const index = cart.lineItems.findIndex(
+                        (x) => x.productId === (e.target as HTMLButtonElement).parentElement!.id
+                    );
+                    changeItem(cart.id, cart.lineItems[index].id, version);
+                }
             });
         }
     }
@@ -45,9 +84,9 @@ export default class BasketPage extends Page {
     private async getAnonimCartId() {
         const user = localStorage.getItem('user');
         if (!user && !App.cartID) {
-            const cartId: string = (await createAnonimCart()).id;
-            App.cartID = cartId;
-            localStorage.setItem('cart', cartId);
+            const cart: Cart = await createAnonimCart();
+            App.cartID = cart.id;
+            localStorage.setItem('cart', JSON.stringify(cart));
         }
     }
 
@@ -55,7 +94,7 @@ export default class BasketPage extends Page {
         let user: string | UserInfo | null = localStorage.getItem('user');
         if (user) {
             user = JSON.parse(user as string) as UserInfo;
-            await getCart(user.customer!.id);
+            if (!user.cart) await getCart(user.customer!.id);
         }
     }
 
@@ -64,5 +103,7 @@ export default class BasketPage extends Page {
         await this.getAnonimCartId();
         await this.getCartUser();
         this.isEmpty();
+        await this.removeItem();
+        await this.plusAndMinusItem();
     }
 }

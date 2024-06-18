@@ -61,6 +61,96 @@ export async function getCart(customerId: string) {
     }
 
     const cart: CartInfo = await response.json();
-    localStorage.setItem('cartInfo', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
     return cart;
+}
+
+export async function addItem(cartId: string, productId: string, version: number = 1): Promise<Cart> {
+    const response = await fetch(`https://api.${region}.commercetools.com/${projectKey}/carts/${cartId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${App.accessToken}`,
+        },
+        body: JSON.stringify({
+            version,
+            actions: [
+                {
+                    action: 'addLineItem',
+                    productId,
+                    variantId: 1,
+                    quantity: 1,
+                },
+            ],
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data: Cart = await response.json();
+    localStorage.setItem('cart', JSON.stringify(data));
+    return data;
+}
+
+export async function changeItem(cartId: string, lineItemId: string, version: number = 1): Promise<Cart> {
+    const response = await fetch(`https://api.${region}.commercetools.com/${projectKey}/carts/${cartId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${App.accessToken}`,
+        },
+        body: JSON.stringify({
+            version,
+            actions: [
+                {
+                    action: 'changeLineItemQuantity',
+                    lineItemId,
+                    quantity: 0,
+                },
+            ],
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data: Cart = await response.json();
+    localStorage.setItem('cart', JSON.stringify(data));
+    return data;
+}
+
+export async function plusAndMinus(
+    cartId: string,
+    lineItemId: string,
+    quantity: number,
+    version: number = 1
+): Promise<Cart> {
+    const response = await fetch(`https://api.${region}.commercetools.com/${projectKey}/carts/${cartId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${App.accessToken}`,
+        },
+        body: JSON.stringify({
+            version,
+            actions: [
+                {
+                    action: 'changeLineItemQuantity',
+                    lineItemId,
+                    quantity,
+                },
+            ],
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data: Cart = await response.json();
+    localStorage.setItem('cart', JSON.stringify(data));
+    return data;
 }
