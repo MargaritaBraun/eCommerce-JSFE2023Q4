@@ -7,9 +7,7 @@ export default function deleteSelectProductBasket(event: Event): void {
     if (target instanceof Element) {
         const cardBasketContainer = target.closest('.card_basket_container');
         if (cardBasketContainer) {
-            // Теперь вы можете получить ID этого контейнера
             const containerId = cardBasketContainer.id;
-            console.log('ID родительского контейнера:', containerId);
             removeFromBasket(containerId);
             cardBasketContainer.remove();
             finalAmountPrice();

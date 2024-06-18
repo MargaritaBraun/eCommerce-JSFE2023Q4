@@ -1,6 +1,7 @@
 import getProductOnID from '../../../api/category/getProduct';
 import { CostPrices, RequestOnProducts } from '../../interface/productTypes';
 import getPricesOfProduct from '../getPriceProduct';
+import deleteAllProductsBasket from './deleteAllProductsBasket';
 import deleteSelectProductBasket from './deleteSelectProductBasket';
 import finalAmountPrice from './finalAmountPrice';
 import getPricesThisProduct from './getPriceThisProduct';
@@ -50,7 +51,6 @@ export default async function renderCardOnBasket(idProduct: string) {
             priceElement.textContent = cost;
 
             const totalPriceElement = document.createElement('p');
-            // totalPriceElement.classList.add('prices_products');
             totalPriceElement.classList.add('total_prices_basket');
             totalPriceElement.textContent = cost;
 
@@ -61,10 +61,10 @@ export default async function renderCardOnBasket(idProduct: string) {
             cardContainer.appendChild(totalPriceElement);
 
             parantContainer.appendChild(cardContainer);
-            // getPricesThisProduct();
             parantContainer.addEventListener('click', getPricesThisProduct);
             finalAmountPrice();
             removeButton.addEventListener('click', deleteSelectProductBasket);
+            deleteAllProductsBasket();
         }
     }
 }
