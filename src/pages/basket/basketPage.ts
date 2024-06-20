@@ -1,11 +1,12 @@
 import renderCardOnBasket from '../../utils/functions/basketFunctions/renderCardOnBasket';
 import showEmptyBasket from '../../utils/functions/basketFunctions/showEmptyBasket';
-import { changeItem, createAnonimCart, getCart, plusAndMinus } from '../../api/basket/basket';
+import { addDiscount, changeItem, createAnonimCart, getCart, plusAndMinus } from '../../api/basket/basket';
 import UserInfo from '../../utils/interface/userInfo';
 import { App } from '../app';
 import Page from '../page';
 import basketPageTemplate from '../template/basketPageTemplate';
 import Cart from '../../utils/interface/Cart';
+import finalAmountPrice from '../../utils/functions/basketFunctions/finalAmountPrice';
 
 export default class BasketPage extends Page {
     public render(): HTMLElement {
@@ -31,6 +32,7 @@ export default class BasketPage extends Page {
 
     isEmpty() {
         const cart: Cart = JSON.parse(localStorage.getItem('cart')!);
+
         if (cart.lineItems.length === 0) {
             showEmptyBasket();
         } else {
@@ -38,6 +40,7 @@ export default class BasketPage extends Page {
                 renderCardOnBasket(x.productId, String(x.quantity));
             });
         }
+        finalAmountPrice();
     }
 
     private async plusAndMinusItem() {
@@ -99,12 +102,68 @@ export default class BasketPage extends Page {
         }
     }
 
+    showDiscountCode(): boolean {
+        const buttonDiscountCode = document.querySelector('.button_discount_сode');
+        const inputDiscountCode = document.querySelector('.input_discount_сode') as HTMLInputElement;
+        if (buttonDiscountCode) {
+            if (inputDiscountCode) {
+                inputDiscountCode.addEventListener('input', () => {
+                    console.log(inputDiscountCode.value);
+                    const patternOnDiscountCode: RegExp = /^summer24$/;
+                    if (patternOnDiscountCode.test(inputDiscountCode.value)) {
+                        buttonDiscountCode.removeAttribute('disabled');
+                        inputDiscountCode.value = 'summer24';
+                        this.addDiscount();
+                        return true;
+                    }
+                    buttonDiscountCode.setAttribute('disabled', 'true');
+                    return false;
+                });
+            }
+        }
+        return false;
+    }
+
+    showInputDiscountCode() {
+        const buttonDiscountCode = document.querySelector('.button_discount_сode');
+        const inputDiscountCode = document.querySelector('.input_discount_сode') as HTMLInputElement;
+        if (inputDiscountCode && buttonDiscountCode) {
+            const cart: Cart = JSON.parse(localStorage.getItem('cart')!);
+            if (cart.discountOnTotalPrice) {
+                inputDiscountCode.value = 'summer24';
+                buttonDiscountCode.setAttribute('disabled', 'true');
+            }
+        }
+    }
+
+    private getIdCart(): string {
+        const cartJSON = localStorage.getItem('cart');
+        if (!cartJSON) {
+            return '';
+        }
+        const cart: Cart = JSON.parse(cartJSON);
+        const id = cart.id;
+        return id;
+    }
+
+    private async addDiscount() {
+        const buttonDiscountCode = document.querySelector('.button_discount_сode');
+        if (buttonDiscountCode) {
+            buttonDiscountCode.addEventListener('click', async () => {
+                console.log('Клик на кнопку');
+                await addDiscount(this.getIdCart(), this.getVersionCart());
+            });
+        }
+    }
+
     public async run() {
         this.getNameUser();
+        this.showDiscountCode();
         await this.getAnonimCartId();
         await this.getCartUser();
         this.isEmpty();
         await this.removeItem();
         await this.plusAndMinusItem();
+        this.showInputDiscountCode();
     }
 }

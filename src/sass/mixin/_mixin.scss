@@ -104,4 +104,9 @@
         background-color: $color-primary;
         color: $color-additional;
     }
+
+    &:disabled {
+        background-color: darkgrey;
+        cursor: not-allowed;
+    }
 }

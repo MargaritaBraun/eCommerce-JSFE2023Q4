@@ -13,6 +13,24 @@ interface CartItem {
     };
 }
 
+interface DiscountedAmount {
+    type: 'centPrecision';
+    currencyCode: 'BYN';
+    centAmount: number;
+    fractionDigits: 2;
+}
+interface DiscountOnTotalPrice {
+    discountedAmount: DiscountedAmount;
+    includedDiscounts: [
+        {
+            discount: {
+                typeId: 'cart-discount';
+                id: string;
+            };
+            discountedAmount: DiscountedAmount;
+        },
+    ];
+}
 export default interface Cart {
     id: string;
     version: number;
@@ -32,6 +50,7 @@ export default interface Cart {
         centAmount: number;
         fractionDigits: number;
     };
+    discountOnTotalPrice: DiscountOnTotalPrice;
     shippingMode: 'Single' | 'MultipleShipping';
     shipping: [];
     customLineItems: [];

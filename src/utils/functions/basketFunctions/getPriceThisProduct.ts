@@ -21,7 +21,7 @@ export default function getPricesThisProduct(event: Event): void {
                     totalPricesBasket.textContent = `${newPriceOriginValue.toFixed(2)} BYN (Скидка ${newPriceDiscountedValue.toFixed(2)} BYN)`;
                 }
             }
+            finalAmountPrice();
         }
-        finalAmountPrice();
     }
 }

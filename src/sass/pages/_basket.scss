@@ -141,7 +141,8 @@
     margin: 2rem;
 }
 
-.button_delete_all {
+.button_delete_all,
+.button_discount_сode {
     @include button-basic($color-bg: $color-light);
     display: flex;
     align-items: center;
@@ -164,7 +165,9 @@
     }
 }
 
-.final_amount_span {
+.final_amount_span,
+.final_amount_span_discount,
+.final_amount_span_discount_code {
     @include basic-text($color: $color-primary, $size: 1.9rem);
     flex-basis: 35%;
 
@@ -193,4 +196,9 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 3rem;
+}
+
+.basket_discount_сode {
+    display: flex;
+    gap: 2rem;
 }

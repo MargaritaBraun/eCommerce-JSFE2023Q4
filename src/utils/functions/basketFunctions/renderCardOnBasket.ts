@@ -5,6 +5,7 @@ import deleteSelectProductBasket from './deleteSelectProductBasket';
 import finalAmountPrice from './finalAmountPrice';
 import getPricesThisProduct from './getPriceThisProduct';
 import deleteAllProductsBasket from './deleteAllProductsBasket';
+import renderPriceOnCount from './renderPriceOnCount';
 
 export default async function renderCardOnBasket(idProduct: string, value: string) {
     const dataProduct: RequestOnProducts = await getProductOnID(idProduct);
@@ -52,7 +53,8 @@ export default async function renderCardOnBasket(idProduct: string, value: strin
 
             const totalPriceElement = document.createElement('p');
             totalPriceElement.classList.add('total_prices_basket');
-            totalPriceElement.textContent = cost;
+            const totalPrice = renderPriceOnCount(cost, value);
+            totalPriceElement.textContent = totalPrice;
 
             cardContainer.appendChild(titleElement);
             cardContainer.appendChild(removeButton);

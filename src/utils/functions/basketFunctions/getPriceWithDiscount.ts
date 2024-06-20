@@ -2,21 +2,15 @@ export default function getPriceWithDiscount(priceString: string): {
     discountedPrice: number | null;
     originalPrice: number;
 } {
-    const priceRegex = /(\d+\.\d{2}) BYN/;
-    const discountRegex = /\(Скидка: (\d+\.\d{2}) BYN\)/;
-
-    const priceMatch = priceString.match(priceRegex);
-    const discountMatch = priceString.match(discountRegex);
+    const priceRegex = /(\d+\.\d{2})/g;
+    const matches = priceString.match(priceRegex);
 
     let originalPrice = 0;
     let discountedPrice: number | null = null;
 
-    if (priceMatch && priceMatch.length >= 2) {
-        originalPrice = parseFloat(priceMatch[1]);
-    }
-
-    if (discountMatch && discountMatch.length >= 2) {
-        discountedPrice = parseFloat(discountMatch[1]);
+    if (matches) {
+        originalPrice = parseFloat(matches[0]);
+        discountedPrice = matches.length > 1 ? parseFloat(matches[1]) : null;
     }
 
     return { discountedPrice, originalPrice };

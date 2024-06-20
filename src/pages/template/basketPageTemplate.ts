@@ -12,7 +12,18 @@ const basketPageTemplate: string = `
     </div>
     </div>
     <div class="basket__footer">
-    <p class="card_basket_title">Итоговая сумма : <span class="final_amount_span">0,00 BYN</span></p>
+    <div class="basket_discount_сode">
+    <label class="label_basic">
+    <span class='address_span'>Ввести промокод</span>
+    <input type="text" class="input_discount_сode input_basic" pattern="^summer24$" value='Тут'>
+    </label>
+    <button class="button_discount_сode" disabled>Применить промокод</button>
+    </div>
+    <p class="card_basket_title">Итоговая сумма
+    <p class="final_amount_span">0,00 BYN</p>
+    <p class="final_amount_span_discount">0,00 BYN</p>
+    <p class="final_amount_span_discount_code">0,00 BYN</p>
+    </p>
     <button class="button_delete_all">Удалить все продукты из корзины</button>
     </div>
   </section>

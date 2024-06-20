@@ -154,3 +154,31 @@ export async function plusAndMinus(
     localStorage.setItem('cart', JSON.stringify(data));
     return data;
 }
+
+export async function addDiscount(cartId: string, version: number = 1): Promise<Cart> {
+    const response = await fetch(`https://api.${region}.commercetools.com/${projectKey}/carts/${cartId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${App.accessToken}`,
+        },
+        body: JSON.stringify({
+            version,
+            actions: [
+                {
+                    action: 'addDiscountCode',
+                    code: 'summer24',
+                },
+            ],
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data: Cart = await response.json();
+    console.log(data);
+    localStorage.setItem('cart', JSON.stringify(data));
+    return data;
+}
